@@ -7,7 +7,6 @@
 	$sql .= "WHERE `productId` = '".$_GET['id']."'";
 	$sqlresult = sql_exec($sql);
 	$value = $sqlresult->fetch_assoc();
-
 	if ($value['productFlag'] != "") {
 		echo "<p>This product no longer exist!</p>";
 	} else {
@@ -58,6 +57,10 @@
 					echo "Call for Price";
 				} else {
 					echo "<b>$".number_format($value['productPrice1'], $site['template']['price']['decimal'])."</b>";
+					if (($value['productPrice2'] !== null) && ($value['productPrice2'] !== 0)){
+						echo "<b style='padding-left:10px;text-decoration:line-through;'>WAS $".number_format($value['productPrice2'], $site['template']['price']['decimal'])."</b>";
+					}
+					
 #					if ($m = getmin($value['productId'])) {
 #						echo "<br /><span class='cartnote'>Min Order: 1 ".$m."</span>";
 #					}

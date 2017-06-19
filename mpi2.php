@@ -1,12 +1,12 @@
 <?php
-	$db_user     = 'newg_ubc';	//database user
-	$db_password = 'eureka2009';		//database password
+	$db_user     = 'root';//'newg_ubc';	//database user
+	$db_password = '';//'eureka2009';		//database password
 	$db_database = 'newg_hosting';	//database definition file
 	$db_server   = 'localhost';	//database server -- usually localhost, but one never knows
 
 
 	// MySQLi Connection
-	include "/home/hosting/template-v0d/global-sqli.php";
+	include "template-v0d/global-sqli.php";
 
 	function sql_exec($sql) {
 		$result = "";

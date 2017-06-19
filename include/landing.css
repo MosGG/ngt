@@ -1,0 +1,78 @@
+html,body,h1{
+	margin:0;
+}
+html,body{
+	height:100%;
+	overflow: hidden;
+}
+#window{
+	right:0;
+	bottom:0;
+	z-index:30;
+}
+#hand{
+	left:4%;
+	top:5%;
+}
+#cloud-1{
+	-webkit-animation:move1 6s infinite ease-in-out;
+	top:40%;
+	left:40%;
+}
+#cloud-2{
+	-webkit-animation:move1 10s infinite ease-in-out;
+	top:70%;
+	left:93.5%;
+}
+#cloud-3{
+	-webkit-animation:float 4s infinite ease-in-out;
+	top:23%;
+	left:80%;
+}
+#cloud-4{
+	-webkit-animation:float 8s infinite ease-in-out;
+	top:67%;
+	left:58%;
+}
+#cloud-5{
+	-webkit-animation:float 6s infinite ease-in-out;
+	top:12%;
+	left:66%;
+}
+#cloud-6{
+	-webkit-animation:move1 8s infinite ease-in-out;
+	top:82%;
+	left:65%;
+	z-index:40;
+}
+
+#logo, #enter-site{
+	position:absolute;
+	left:10.5%;
+}
+#logo{
+	top:calc(50% - 71px);
+	/*color: #FFF;*/
+	/*font-family: 'BebasNeueBold';
+	font-size: 72px;
+	line-height: 70px;*/
+	z-index:99;
+}
+#enter-site{
+	width:158px;
+	height:35px;
+	top:calc(59% + 71px);
+	font-family: 'Montserrat-UltraLight';
+	font-size: 24px;
+	line-height: 27px;
+	color: #FFF;
+}
+#enter-site span{
+	float:left;
+}
+#enter-site-icon{
+	float:left;
+	margin-left:16px;
+	width:27px;
+	height:27px;
+}

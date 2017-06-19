@@ -1,4 +1,5 @@
 <?php
+	
 	$table['product']['productId']['searchHeading']		= 'ID';
 	$table['product']['productDateUpdate']['searchHeading']		= 'Update Date';
 	$table['product']['productCategory']['display']		= 'Y';
@@ -13,6 +14,8 @@
 	$table['product']['productDescription']['search']	= 'Y';
 	$table['product']['productPrice1']['display']		= 'Y';
 	$table['product']['productPrice1']['searchHeading']	= 'Unit';
+	$table['product']['productPrice2']['display']		= 'Y';
+	$table['product']['productPrice2']['searchHeading']	= 'Was';
 	$table['product']['productStock']['display']		= 'Y';
 	$table['product']['productInner']['display']		= 'Y';
 	$table['product']['productInner']['searchHeading']	= 'Inner Qty';

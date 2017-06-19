@@ -109,7 +109,10 @@
 			echo "</table>\n";
 			echo "</form>\n";
 		echo "</div>\n";
-		echo "<div id='wholesalernote'><p>Don't have a login? <a href='".$site['url']['full']."become-a-member'>Become a member</a>.</p></div>";
+		echo "<div id='wholesalernote'>".
+			"<p>Don't have a login? <a href='".$site['url']['full']."become-a-member'>Become a member</a>.</p>".
+			"<p>Forget password? <a href='".$site['url']['full']."forget-password'>Click here</a>.</p>".
+			"</div>";
 	} else {
 		echo "<p>Welcome ".$_SESSION['membership']['mmemberNameF'].$_SESSION['membership']['mmemberName'].",<br />Feel free to browse through our <a href='".$site['url']['full']."products'>product range</a>.</p>";
 		echo "<form action='".$site['url']['actual']."' method='post'>";

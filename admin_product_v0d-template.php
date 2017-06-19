@@ -197,7 +197,6 @@
 		$sql = "SELECT * FROM ".$tableId." WHERE `".$index."` = '".$_GET['edit']."'";
 		$result = sql_exec($sql);
 		$line = $result->fetch_assoc();
-
 		$_SESSION['submit'] = $line;
 	}
 

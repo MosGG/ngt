@@ -1,4 +1,8 @@
 <?php
+	// if(!isset($_COOKIE["landingPageFlag"])){
+	// 	header('location: /landingPage');
+	// }
+
 	$timerstart = time()+microtime();
 
 	include 'include/common.inc.php';
@@ -56,7 +60,7 @@
 
 	$path = url_path($_SESSION['page']);
 
-	if ($site['layoutParent'][$_SESSION['page']]) {
+	if (isset($site['layoutParent'][$_SESSION['page']])) {
 		$page['subpage'] = "<table border='0' cellpadding='0' cellspacing='12'>";
 		$pointer = "0";
 		foreach($site['layoutParent'][$_SESSION['page']] as $key=>$data) {
@@ -64,7 +68,7 @@
 			if ($pointer == "1") { $page['subpage'] .= "<tr>"; }
 			if ($pointer == $site['template']['subpage']['columns']) { $page['subpage'] .= "</tr><tr>"; $pointer = "1"; }
 			if ($_SESSION['access'] > $site['layout'][$data]['pageMenuHAccess'] || $_SESSION['access'] > $site['layout'][$data]['pageMenuVAccess'] ) {
-				if ($_SERVER['HTTPS'] == 'on') {
+				if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) {
 					$url = "http://".$site['url']['url']."/".$path."".$page['pageUrl'];
 				} else {
 					$url = $site['url']['full'].$path."".$page['pageUrl'];
@@ -125,20 +129,21 @@
 	#######################################################################
 
 	$site['menu']['v'] = "<ul>\n";
+	$site['menu']['h'] = "";
 	$pointer = "0";
 	foreach ($site['layout'] as $key=>$data) {
 		if ($data['pageMenuH'] || $data['pageMenuV']) {
 			$path = url_path($data['pageId']);
-			if ($_SERVER['HTTPS'] == 'on') {
+			if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) {
 				$url = "http://".$site['url']['url']."/".$path."".$data['pageUrl'];
 			} else {
-				if (!$data['pageLink']) {
+				// if (!$data['pageLink']) {
 					$url = $site['url']['full'].$path."".$data['pageUrl'];
 					$target = "";
-				} else {
-					$url = "http://".$data['pageLink'];
-					$target = "target='_blank'";
-				}
+				// } else {
+				// 	$url = "http://".$data['pageLink'];
+				// 	$target = "target='_blank'";
+				// }
 			}
 			if ($page['pageId'] == $key) {
 				$class = "menuhselect";
@@ -149,7 +154,7 @@
 				if ($pointer > "0") {
 					$site['menu']['h'] .= "";
 				}
-				$site['menu']['h'] .= "<span class='".$class."'><a href='".$url."' title='".$data['pageMenu']."' $target><img src='".$site['url']['full']."images/menuleft.png' width='5' height='27' alt='' border='0' /><span>".$data['pageMenuH']."</span><img src='".$site['url']['full']."images/menuright.png' width='5' height='27' alt='' border='0' /></a></span>";
+				$site['menu']['h'] .= "<span class='".$class." hvr-underline-from-left'><a href='".$url."' title='".$data['pageMenu']."' $target>".$data['pageMenuH']."</span></a></span>";
 				$pointer ++;
 			}
 			if ($page['pageId'] == $key) {
@@ -251,4 +256,6 @@
 		}
 		echo "</pre></div>";
 	}
+
+
 ?>

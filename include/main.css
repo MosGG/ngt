@@ -2,11 +2,12 @@
 
 body { 
 	color: #555555;
-	background: #ffffff url(../images/siteback.jpg) top center no-repeat;
+	/*background: #ffffff url(../images/siteback.jpg) top center no-repeat;*/
+	background-color: #F9F9F9;
 	padding: 0px;
 	margin: 0px;
 	text-align: left;
-	font-family: Arial, Helvetica, Geneva, sans-serif;
+	font-family: Montserrat, Arial, Helvetica, Geneva, sans-serif;
 }
 
 html, body {
@@ -73,7 +74,7 @@ html[xmlns] .clearfix {
 }
 
 #wrapper {
-	width: 960px;
+	width: 1200px;
 	margin: 0 auto;
 	padding: 0;
 }
@@ -88,8 +89,8 @@ html[xmlns] .clearfix {
 #header {
 	position: relative;
 	top: 0px;
-	width: 960px;
-	height: 120px;
+	max-width: 1200px;
+	height: 371px;
 	margin: 0 auto;
 }
 
@@ -199,22 +200,25 @@ p {
 }
 
 #menuh {
+	text-transform:uppercase;
 	position: absolute;
-	top: 43px;
+	top: 122px;
 	max-width: 740px;
-	right: -12px;
+	right: 30px;
 	text-align: right;
 	font-size: 14px;
 	padding: 0;
 	margin: 0;
 	z-index: 2;
 }
-
+#menuh span{
+	margin: 0 8px;
+}
 #menuh a:link, #menuh a:visited {
-	font-family: Arial, Helvetica, Geneva, sans-serif;
-	font-weight: bold;
-	font-size: 16px;
-	display: inline-block;
+	font-family: Montserrat-Bold, Arial, Helvetica, Geneva, sans-serif;
+	/*font-weight: bold;*/
+	font-size: 18px;
+	/*display: inline-block;*/
 	height: 27px;
 	line-height: 27px;
 	position: relative;
@@ -231,39 +235,42 @@ p {
 
 #menuh .menuhnotselect a:link, #menuh .menuhnotselect a:visited {
 	padding: 0;
-	margin: 0 8px;
+	/*margin: 0 8px;*/
 	color: #ffffff;
 	text-decoration: none;
 }
 
 #menuh .menuhselect a:link, #menuh .menuhselect a:visited {
 	padding: 0;
-	margin: 0 8px;
-	color: #d3241b;
+	/*margin: 0 8px;*/
+	color: #4A4A4A;
 	text-decoration: none;
-	background: #ffffff;
+	border-bottom: 3px solid #4A4A4A;
+	/*background: #ffffff;*/
 }
 
-#menuh .menuhnotselect a:hover {
+/*#menuh .menuhnotselect a:hover {
 	padding: 0;
 	margin: 0 8px;
 	color: #d3241b;
 	text-decoration: none;
 	background: #ffffff;
-}
+}*/
 
-#menuh .menuhselect a span, #menuh .menuhnotselect a span {
-	padding: 0 3px;
-}
+/*#menuh .menuhselect a span, #menuh .menuhnotselect a span {*/
+	/*padding: 0 3px;*/
+/*}*/
 
-#menuh .menuhnotselect a:hover span {
+/*#menuh .menuhnotselect a:hover span {
 	padding: 0 3px;
-}
+}*/
 
 #menuh .menuhselect a:hover {
-	padding: 0;
+	/*padding: 0;
 	margin: 0 8px;
-	text-decoration: none;
+	text-decoration: none;*/
+	border-bottom: none;
+	color: #ffffff;
 }
 
 #pagetree {
@@ -1121,20 +1128,21 @@ p {
 }
 
 #footer {
-	border-top: 18px solid #ffffff;
-	position: absolute;
-	bottom: 0;
+	/*border-top: 18px solid #ffffff;*/
+	position: relative;
+	/*bottom: 0;*/
 	width: 100%;
-	height: 56px;
-	background: url(../images/footerback.png) repeat-x;
+	height: 375px;
+	/*background: url(../images/footerback.png) repeat-x;*/
 	clear: both;
 	padding: 0;
 	margin: 0;
+	background-color: #4A4A4A;
 }
 
 #footercont {
-	width: 960px;
-	height: 56px;
+	max-width: 1200px;
+	/*height: 56px;*/
 	margin: 0 auto;
 	position: relative;
 }
@@ -1173,9 +1181,9 @@ p {
 	text-decoration: underline;
 }
 
-#footer img {
+/*#footer img {
 	margin-left: 5px;
-}
+}*/
 
 #debug {
 	position: relative;

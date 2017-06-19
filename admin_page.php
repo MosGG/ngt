@@ -26,5 +26,5 @@
 
 	$pageInput['insert']['size']		= '60';
 
-	include '/home/hosting/template-v0d/admin_page.php';
+	include 'template-v0d/admin_page.php';
 ?>

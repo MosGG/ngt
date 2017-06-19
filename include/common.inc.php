@@ -66,6 +66,7 @@
 	$table['product']['productPart']	= array('type'=>'I', 'heading'=>'Part No.',	'size'=>'50');
 	$table['product']['productDescription']	= array('type'=>'T', 'heading'=>'Description',	'size'=>'50');
 	$table['product']['productPrice1']	= array('type'=>'I', 'heading'=>'Unit Price',	'size'=>'20');
+	$table['product']['productPrice2']	= array('type'=>'I', 'heading'=>'Was Price',	'size'=>'20');
 	$table['product']['productStock']	= array('type'=>'I', 'heading'=>'Stock Level',	'size'=>'20');
 	$table['product']['productInner']	= array('type'=>'I', 'heading'=>'Inner Qty',	'size'=>'20');
 	$table['product']['productCarton']	= array('type'=>'I', 'heading'=>'Carton Qty',	'size'=>'20');
@@ -164,13 +165,13 @@
 	# DATABASE SETTINGS 
 	##############################################################
 
-	$dbUser     = 'newg_ubc';	# database user
-	$dbPassword = 'eureka2009';	# database password
+	$dbUser     = 'root';//'newg_ubc';	# database user
+	$dbPassword = '';//'eureka2009';	# database password
 	$dbDatabase = 'newg_hosting';	# database definition file
 	$dbServer   = 'localhost';	# database server -- usually localhost, but one never knows
 
 	// MySQLi Connection
-	include "/home/hosting/template-v0d/global-sqli.php";
+	include "template-v0d/global-sqli.php";
 
 	$dbPrefix				= "`ubc-";
 	$site['database']['log']		= $dbPrefix."log`";
@@ -206,7 +207,7 @@
 	# GLOBAL SETTINGS 
 	##############################################################
 
-	include '/home/hosting/template-v0d/global.php';
+	include 'template-v0d/global.php';
 
 	$site['sms']['email']			= "From: ".$site['company']['name']."<".$static['sms']['email'].">";
 
@@ -229,11 +230,11 @@
 	} else {
 		$site['url']['id']		= "/"; # Live
 		$site['url']['url']		= "www.newglobalmel.com.au";
-		if ($_SERVER['HTTPS'] == 'on') {
+		if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) {
 			$static['server']['url'] = "https://";
 		}
 		$site['url']['full']		= $static['server']['url'].$site['url']['url']."/";
-		$site['url']['path']		= $static['server']['path']."newg/public_html/";
+		$site['url']['path']		= "C:/Users/Lmz/Documents/Cheee/cheee website project/NewGlobal/newglobal/";//$static['server']['path']."newg/public_html/";
 
 #		$site['url']['id']		= "~newg/"; # No Domain
 #		$site['url']['full']		= $static['server']['url']."venus.ubcserver.com/".$site['url']['id'];

@@ -1,14 +1,14 @@
 <?php
 	echo content_converter($page['pageText'], "converter_function.inc.php");
-	if ($_SESSION['membership'] || $_SESSION['member']) {
-		include 'product.php';
+	if (isset($_SESSION['membership']) || isset($_SESSION['member'])) {
+		include 'product_inc.php';
 	} else {
 		echo "<p>Please <a href='".$site['url']['full'].$_SESSION['cache']['layout']['287']['pageUrl']."'>Login</a> to view our product range.</p>";
 		echo "<p>Don't have a login? <a href='".$site['url']['full']."become-a-member'>Become a member</a>.</p>";
 	}
 	$_SESSION['pageurl'] = $site['url']['actual'];
 
-	if ($site['url']['decode']['edmid']) {
+	if (isset($site['url']['decode']['edmid'])) {
 		$sql  = "SELECT * FROM ".$site['database']['edm-sent']." WHERE `mailSEmail` = '".$site['url']['decode']['email']."' ";
 		$sql .= "AND `mailSId` = '".$site['url']['decode']['edmid']."'";
 		$result = sql_exec($sql);
