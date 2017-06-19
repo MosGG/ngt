@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule !\.(js|ico|gif|jpg|css)$ /index.php [L]
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 64.235.154.144
+deny from 158.85.94.4
+deny from 192.171.240.224
+deny from 158.85.89.7

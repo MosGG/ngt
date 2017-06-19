@@ -1,0 +1,3 @@
+SQL_OPTIMISE:1494243556
+
+-- Created by Global Database Optimisation program --

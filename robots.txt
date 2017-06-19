@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://www.newglobalmel.com.au/sitemap.xml
+
+Sitemap: http://www.newglobalmel.com.au/sitemap.xml
