@@ -198,7 +198,7 @@
 
 	$site['pageRecommend'] = "<a href='".$site['url']['full']."recommend"."' title=\"Recommend ".$site['company']['name']." to a Friend\"><img src='".$site['url']['full']."images/friend.png' alt='Recommend ".$site['company']['name']." to a friend' border='0' /> Recommend this site</a>";
 	$site['pageBookmark']  = "<a href=\"javascript:bookmarksite('".str_replace("'", "", $site['company']['name'])."', 'http://".$site['company']['web']."')\" title=' Add ".htmlspecialchars($site['company']['name'], ENT_QUOTES)." to your Favourites'><img src='".$site['url']['full']."images/fav.png' alt='Bookmark ".$site['company']['name']."' border='0' /> Bookmark this site!</a>";
-	$site['pageFooter']    =  date_copyright()." &copy; Copyright ".$site['company']['footer']." - All Rights Reserved<br />Design by <a href='".$static['ubc']['url']."' target='_blank' title='".$static['ubc']['title']."'>".$static['ubc']['name']."</a>";
+	$site['pageFooter']    =  date_copyright()." &copy; Copyright ".$site['company']['footer']." - All Rights Reserved<br />Made with ❤ by <a href='http://www.cheee.com.au' target='_blank' title='Cheee Creative Studio'>Cheee</a>";
 
 	#######################################################################
 	# Include Template (*.tpl.php) & log.inc.php

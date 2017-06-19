@@ -51,7 +51,7 @@
 			echo "<div id='header-container' class='bgblue'>";
 				echo "<div id='header'>";
 				if (isset($_SESSION['membership'])){
-
+					echo "<div id='loginblock'><a class='hvr-underline-from-left' href='/become-a-member'><div id='shopping-bag' class='floatleft'>67</div>My Shopping Cart</a></div>";
 				} else {
 					echo "<div id='loginblock'><a class='hvr-underline-from-left' href='/become-a-member'>Register</a>|<a class='hvr-underline-from-left' href='http://www.newglobalmel.com.au/login'>Login</a></div>";
 				}
@@ -71,15 +71,16 @@
 		echo "<div id='wrapper' class='mainbody'>";
 	
 #################################################################################################
-# Left Container and Vertical Menu                                                             #
+# Left Container and Vertical Menu                                                              #
 #################################################################################################
-
+		echo "<div id='leftcontainer-bg'>";
 			echo "<div id='leftcontainer'>";
 				echo "<h3>Our Products</h3>";
 				echo "".$site['menu']['v']."";
 				echo "<div id='facebook'><a href='http://www.facebook.com/NewGlobalTradingMelbourne' target='_blank'><img src='".$site['url']['full']."images/facebook.jpg' alt='Find us on Facebook link' title='Click to visit New Global Trading on Facebook' width='159' height='36' /></a></div>";
 			echo "</div> <!-- leftcontainer -->";
-	
+		echo "</div>";
+
 #################################################################################################
 # Middle Container                                                                              #
 #################################################################################################
@@ -118,13 +119,15 @@
 						<div><img src='/images/new/footer-location.png'/><span>4 Croft St, Oakleigh, VIC 3166</span></div>
 						<div><img src='/images/new/footer-email.png'/><span id='footet-contact-last'>sales@newglobalmel.com.au</span></div>
 					</div>";
-					echo "<div id='footleft'>".$site['pageFooter']."</div>";
 					echo "<div id='footright'>";
-						echo "<img src='".$site['url']['full']."images/logo-revell.png' width='105' height='50' alt='' title='' border='0' />";
-						echo "<img src='".$site['url']['full']."images/logo-umbrella.png' width='47' height='50' alt='' title='' border='0' />";
-						echo "<img src='".$site['url']['full']."images/logo-kingston.png' width='45' height='50' alt='' title='' border='0' />";
-						echo "<img src='".$site['url']['full']."images/logo-globalstar.png' width='110' height='50' alt='' title='' border='0' />";
+						echo "<img class='footer-ads' src='".$site['url']['full']."images/logo-umbrella.png' width='47' height='50' alt='' title='' border='0' />";
+						echo "<img class='footer-ads' src='".$site['url']['full']."images/logo-globalstar.png' width='110' height='50' alt='' title='' border='0' />";
+						echo "<img src='".$site['url']['full']."images/new/ngt-logo.png' width='130' height='107' alt='' title='' border='0' />";
+						echo "<img class='footer-ads' src='".$site['url']['full']."images/logo-revell.png' width='105' height='50' alt='' title='' border='0' />";
+						echo "<img class='footer-ads' src='".$site['url']['full']."images/logo-kingston.png' width='45' height='50' alt='' title='' border='0' />";
 					echo "</div>";
+					echo "<div id='footleft'>".$site['pageFooter']."</div>";
+					
 				echo "</div>";
 			echo "</div> <!-- footer -->";
 		echo "</div>"; ## Site Container ##

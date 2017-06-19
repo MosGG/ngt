@@ -64,6 +64,9 @@
     90% {transform: translate(0px, 0px); }
     100% {transform: translate(0, 0px); }
 }
+.floatleft{
+	float:left;
+}
 
 /* header */
 #window,
@@ -99,7 +102,7 @@
 	position:relative;
 }
 #cloud-header-1{
-	-webkit-animation:move1 13s infinite ease-in-out;
+	-webkit-animation:move1 15s infinite ease-in-out;
 	top:45px;
 	left:94%;
 }
@@ -109,7 +112,7 @@
 	left:58%;
 }
 #cloud-header-3{
-	-webkit-animation:move1 8s infinite ease-in-out;
+	-webkit-animation:move1 10s infinite ease-in-out;
 	top:185px;
 	left:39%;
 }
@@ -131,8 +134,26 @@
 	text-decoration: none;
 	font-family: Montserrat-Light;
 	font-size: 16px;
+	line-height: 24px;
 }
-
+#shopping-bag{
+	position:relative;
+	background: url('../images/new/shopping-bag.png') left no-repeat;
+	width:21px;
+	height:22px;
+	color: #4A4A4A;
+	font-family: Montserrat-Bold;
+	font-size: 10px;
+	line-height: 28px;
+	text-align: center;
+	padding-right:5px;
+}
+/* left container*/
+#leftcontainer-bg{
+	width:342px;
+	float:left;
+	background-color: #E8E8E8;
+}
 /* footer */
 #footet-contact-last{
 	padding-right: 0px !important;
@@ -151,14 +172,19 @@
 #footet-contact img{
 	height:24px;
 	padding-right: 10px;
+	position:relative;
+	top: 3px;
 }
 #footet-contact span{
 	padding-right: 34px;
 	font-family: Montserrat;
 	font-size: 14px;
-	color: #FFF;
+	color: #EFEFEF;
 }
-
+.footer-ads{
+	position:relative;
+	top:-40px;
+}
 @media(max-width:1439px){
 	#hand{
 		width:45px;

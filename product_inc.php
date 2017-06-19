@@ -37,7 +37,6 @@
 			while ($image = $resultimage->fetch_assoc()) {
 				$image_array[] = $image;
 			}
-
 			if ($site['database']['product-pdf']) {
 				$pdf_array = array();
 				$sql  = "SELECT * FROM ".$site['database']['product-pdf']." WHERE `productPdfProduct` = '".$line['productId']."' ORDER BY `productPdfOrder`, `productPdfDescription`";
