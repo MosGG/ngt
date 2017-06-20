@@ -15,6 +15,10 @@
     font-family: 'Montserrat-Light';
     src: url('font/montserrat/Montserrat-Light.otf');
 }
+@font-face {
+    font-family: 'Montserrat-Black';
+    src: url('font/montserrat/Montserrat-Black.otf');
+}
 .blue{
 	color:#4ABDAC;
 }
@@ -232,6 +236,16 @@
 	border-left: solid 30px #EFEFEF;
 	float:left;
 	background-color: #E8E8E8;
+}
+#left-menu-line{
+	width: 289px;
+	margin:18px 0px 18px 22px;
+	border-bottom: 1px solid #9B9B9B;
+}
+#left-cart{
+	position:absolute;
+	bottom: 0px;
+	left:4%;
 }
 /* footer */
 #footet-contact-last{

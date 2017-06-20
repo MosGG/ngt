@@ -30,7 +30,7 @@
 			echo "<![endif]-->";
 			echo "<script type='text/javascript' src='".$site['url']['full']."include/jquery-3.2.0.min.js'></script>";
 			// if (($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] != 'on')) {
-				echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
+				// echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
 			// }
 			echo "<script type='text/javascript' src='".$site['url']['full']."images/tours/swfObject.js'></script>";
 			// echo "<script type='text/javascript' src='".$site['url']['full']."include/prototype.js'></script>";
@@ -96,13 +96,13 @@
 					}
 				}
 				echo "</ul>";
-
+				echo "<div id='left-menu-line'></div>";
 
 				echo "".$site['menu']['v']."";
-				echo "<div id='facebook'><a href='http://www.facebook.com/NewGlobalTradingMelbourne' target='_blank'><img src='".$site['url']['full']."images/facebook.jpg' alt='Find us on Facebook link' title='Click to visit New Global Trading on Facebook' width='159' height='36' /></a></div>";
+				//echo "<div id='facebook'><a href='http://www.facebook.com/NewGlobalTradingMelbourne' target='_blank'><img src='".$site['url']['full']."images/facebook.jpg' alt='Find us on Facebook link' title='Click to visit New Global Trading on Facebook' width='159' height='36' /></a></div>";
 			echo "</div> <!-- leftcontainer -->";
 		echo "</div>";
-
+		echo "<img id='left-cart' src='/images/new/left-cart.png'/>";
 #################################################################################################
 # Middle Container                                                                              #
 #################################################################################################
@@ -126,7 +126,7 @@
 		echo $page['contactMessage']; 
 	}
 							
-			echo "<div style='clear: both;'></div>";
+			// echo "<div style='clear: both;'></div>";
 			echo "</div> <!-- middle -->";
 		echo "</div> <!-- wrapper -->";
 

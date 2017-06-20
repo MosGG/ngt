@@ -78,14 +78,15 @@ html[xmlns] .clearfix {
 	width: 1200px;
 	margin: 0 auto;
 	padding: 0;
-	overflow: hidden;
+	/*overflow: hidden;*/
+	position: relative;
 }
 
 .mainbody {
-	background: #ffffff url(../images/wrapperback.png) repeat-y;
+/*	background: #ffffff url(../images/wrapperback.png) repeat-y;
 	width: 100%;
 	padding: 0px;
-	margin: 0px;
+	margin: 0px;*/
 }
 
 #header {
@@ -98,7 +99,7 @@ html[xmlns] .clearfix {
 
 #middle {
 	/*float:left;*/
-	width: 706px;
+	/*width: 706px;*/
 	margin-left: 372px;
 	/*margin: 0px 5px 0px 240px;*/
 	/*padding: 3px 0px 80px 0px;*/
@@ -354,17 +355,17 @@ p {
 }
 
 #leftcontainer ul .menuvnotselect a:link, #leftcontainer ul .menuvnotselect a:visited {
-	color: #333333;
+	color: #4ABDAC;
 }
 
 #leftcontainer ul .menuvselect a:link, #leftcontainer ul .menuvselect a:visited {
 	color: #ffffff;
-	background: #d4251c;
+	background: #4ABDAC;
 }
 
 #leftcontainer ul .menuvnotselect a:hover {
-	color: #ffffff;
-	background: #d4251c;
+	/*color: #ffffff;
+	background: #d4251c;*/
 }
 
 .pagegallery {
