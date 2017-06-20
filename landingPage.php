@@ -24,8 +24,5 @@
 	<img id="cloud-5" class="cloud-sml" src="/images/new/landing-cloud.png" alt=""/>
 	<img id="cloud-6" class="cloud-sml" src="/images/new/landing-cloud.png" alt=""/>
 	<img id="window" src="/images/new/landing-window.png" alt=""/>
-	<!-- <script type='text/javascript' src='include/jquery-3.2.0.min.js'></script>
-	<script type='text/javascript' src='include/move.min.js'></script>
-	<script type='text/javascript' src='include/landing.js'></script> -->
 </body>
 </html>
