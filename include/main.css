@@ -78,7 +78,7 @@ html[xmlns] .clearfix {
 	width: 1200px;
 	margin: 0 auto;
 	padding: 0;
-	/*overflow: hidden;*/
+	overflow: hidden;
 	position: relative;
 }
 
@@ -286,7 +286,7 @@ p {
 #pagetree p {
 	text-transform: uppercase;
 	font-size: 10px;
-	font-family: Tahoma, Arial, Helvetica, sans-seirf;
+	font-family: Montserrat, Tahoma, Arial, Helvetica, sans-seirf;
 	margin: 0 0 -21px 1px;
 	padding: 0;
 }
@@ -350,8 +350,9 @@ p {
 	font-size: 16px;
 	/*top: 0px;*/
 	/*width: 342px;*/
-	font-family: Montserrat Lucida Sans Unicode, Lucida Grande, sans-serif;
+	font-family: Montserrat;
 	line-height: 35px;
+	text-transform: capitalize;
 }
 
 #leftcontainer ul .menuvnotselect a:link, #leftcontainer ul .menuvnotselect a:visited {
@@ -925,7 +926,19 @@ p {
 
 #email-view		{ display: none; }
 
-.logout, #shopping a, input[type=submit]			{ display: inline-block; width: 90px; height: 27px; background: url(../images/btn.jpg) no-repeat; border: none; line-height: 27px; color: #ffffff; font-weight: bold; font-size: 14px; text-align: center; text-decoration: none; }
+.logout, #shopping a, input[type=submit]{
+	display: inline-block;
+	width: 90px; 
+	height: 27px; 
+	background-color:#4ABDAC;
+	border: none; 
+	line-height: 27px; 
+	color: #ffffff; 
+	font-weight: bold; 
+	font-size: 14px; 
+	text-align: center; 
+	text-decoration: none; 
+}
 .logout:hover, #shopping a:hover, input[type=submit]:hover	{ text-decoration: underline; cursor: pointer; }
 
 #adminpage {
@@ -1042,11 +1055,11 @@ p {
 }
 
 #wholesaler {
-	width: 400px;
-	height: 190px;
+	width: 592px;
+	height: 556px;
 	margin: 0 auto;
-	background: #f5f5f5;
-	border: 12px solid #f8f8f8;
+	background: #fff;
+	margin-top: 70px;
 }
 
 #wholesaler table {
@@ -1062,28 +1075,31 @@ p {
 }
 
 #wholesaler input[type='text'], #wholesaler input[type='password'] {
-	padding: 4px 8px;
-	width: 350px;
-	color: #666666;
-	font-size: 13px;
-	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
-	border: 4px solid #efefef;
+	padding: 5px 60px;
+	width: 230px;
+	height: 40px;
+	color: #4A4A4A;
+	font-size: 12px;
+	font-family: Montserrat;
+	letter-spacing: 1px;
+	border: 1px solid #4A4A4A;
 }
 
 #wholesaler input[type='submit'] {
 	display: block;
 	border: none;
-	width: 90px;
-	height: 27px;
-	background: url(../images/btn.jpg) no-repeat;
-	line-height: 27px;
+	width: 350px;
+	height: 50px;
+	background-color: #4ABDAC;
+	line-height: 50px;
 	color: #ffffff;
-	font-weight: bold;
-	font-size: 14px;
+	margin:0 auto;
+	font-size: 18px;
 	text-align: center;
 	text-decoration: none;
 	text-transform: none;
 	cursor: pointer;
+	font-family: Montserrat;
 }
 
 #wholesalernote {
@@ -1116,12 +1132,12 @@ p {
 
 #contact {
 	width: auto;
-	clear: both;
+	/*clear: both;*/
 	color: #242424;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 15px;
-	margin-bottom: 5px;
+	/*margin-bottom: 5px;*/
 	text-align: center;
 	font-size: 13px;
 }

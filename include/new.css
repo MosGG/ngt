@@ -210,7 +210,7 @@
 	text-align: center;
 	padding-right:5px;
 }
-#our-product{
+#our-product a{
 	width: 282px;
 	height: 70px;
 	padding:0 30px;
@@ -235,7 +235,7 @@
 	width:342px;
 	border-left: solid 30px #EFEFEF;
 	float:left;
-	background-color: #E8E8E8;
+	background: linear-gradient(to bottom, #E8E8E8, #EFEFEF);
 }
 #left-menu-line{
 	width: 289px;
@@ -244,8 +244,8 @@
 }
 #left-cart{
 	position:absolute;
-	bottom: 0px;
-	left:4%;
+	top: -127px;
+	left:3%;
 }
 /* footer */
 #footet-contact-last{
@@ -277,6 +277,51 @@
 .footer-ads{
 	position:relative;
 	top:-40px;
+}
+
+/* login and register  */
+.login-tab{
+	width:296px;
+	height:107px;
+	float:left;
+	font-size: 24px;
+	line-height: 107px;
+	text-align: center;
+}
+.login-tab-active{
+	color: #4ABDAC;
+}
+.login-tab-inactive{
+	color: #fff;
+	background-color: #E8E8E8;
+}
+.login-logo{
+	position: absolute;
+	top:14px;
+}
+.login-div{
+	position: relative;
+	text-align: center;
+	margin:50px auto;
+}
+#login-eye{
+	position: absolute;
+	top:19px;
+	margin-left:-40px;
+}
+#forget-password{
+	text-align: center;
+	margin-top:15px;
+}
+#forget-password a{
+	font-family: Montserrat-Ultralight;
+	font-size: 14px;
+	color:#4A4A4A;
+	letter-spacing: .6px;
+	text-decoration: none;
+}
+#forget-password a:hover{
+	color: #4ABDAC;
 }
 @media(max-width:1439px){
 	#hand{

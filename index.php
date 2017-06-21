@@ -165,7 +165,7 @@
 				$class2 = "hvr-underline-from-left-blue";
 			}
 			if ($data['pageMenuV'] && $_SESSION['access'] > $data['pageMenuVAccess']) {
-				$site['menu']['v'] .= "<li class='".$class."'><a href='".$url."' title='".$data['pageMenu']."' $target><span class='".$class2."'>".$data['pageMenuV']."</span></a></li>\n";
+				$site['menu']['v'] .= "<li class='".$class."'><a href='".$url."' title='".$data['pageMenu']."' $target><span class='".$class2."'>".strtolower($data['pageMenuV'])."</span></a></li>\n";
 			}
 		}
 	}

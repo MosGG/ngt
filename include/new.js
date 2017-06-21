@@ -7,3 +7,26 @@ window.onload = function(){
 		document.getElementById('leftcontainer-bg').style.height = right_height + 'px';
 	}
 };
+
+function passwordeye(){
+	var type = document.getElementById('input-password').type;
+	if (type == 'password') {
+		document.getElementById('input-password').type = 'text';
+	} else {
+		document.getElementById('input-password').type = 'password';
+	}
+};
+
+function formLogout(){
+    var form1 = document.createElement("form");  
+    document.body.appendChild(form1);
+    var input = document.createElement("input"); 
+    input.type = "text";  
+    input.name = "logout";  
+    input.value = "Logout";  
+    form1.appendChild(input); 
+    form1.method = "POST";  
+    form1.action = "/login/";  
+    form1.submit();   
+    document.body.removeChild(form1);  
+}
