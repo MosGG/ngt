@@ -235,7 +235,7 @@
 			$static['server']['url'] = "https://";
 		}
 		$site['url']['full']		= $static['server']['url'].$site['url']['url']."/";
-		$site['url']['path']		= "C:/Users/Lmz/Documents/Cheee/cheee website project/NewGlobal/newglobal/";//$static['server']['path']."newg/public_html/";
+		$site['url']['path']		= "C:/Users/Lmz/Documents/Cheee/cheee website project/NewGlobal/public_html/";//$static['server']['path']."newg/public_html/";
 
 #		$site['url']['id']		= "~newg/"; # No Domain
 #		$site['url']['full']		= $static['server']['url']."venus.ubcserver.com/".$site['url']['id'];

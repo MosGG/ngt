@@ -3,11 +3,12 @@
 body { 
 	color: #555555;
 	/*background: #ffffff url(../images/siteback.jpg) top center no-repeat;*/
-	background-color: #F9F9F9;
+	background-color: #EFEFEF;
 	padding: 0px;
 	margin: 0px;
 	text-align: left;
 	font-family: Montserrat, Arial, Helvetica, Geneva, sans-serif;
+	overflow-x: hidden;
 }
 
 html, body {
@@ -77,13 +78,15 @@ html[xmlns] .clearfix {
 	width: 1200px;
 	margin: 0 auto;
 	padding: 0;
+	/*overflow: hidden;*/
+	position: relative;
 }
 
 .mainbody {
-	background: #ffffff url(../images/wrapperback.png) repeat-y;
+/*	background: #ffffff url(../images/wrapperback.png) repeat-y;
 	width: 100%;
 	padding: 0px;
-	margin: 0px;
+	margin: 0px;*/
 }
 
 #header {
@@ -95,9 +98,11 @@ html[xmlns] .clearfix {
 }
 
 #middle {
-	width: 706px;
-	margin: 0px 5px 0px 240px;
-	padding: 3px 0px 80px 0px;
+	/*float:left;*/
+	/*width: 706px;*/
+	margin-left: 372px;
+	/*margin: 0px 5px 0px 240px;*/
+	/*padding: 3px 0px 80px 0px;*/
 }
 
 a:link, a:visited {
@@ -304,51 +309,63 @@ p {
 }
 
 #leftcontainer {
-	float: left;
-	width: 230px;
+	/*float: left;*/
+	/*width: 230px;*/
+	/*position:relative;*/
+	/*top:-12px;*/
+	/*left: -30px;*/
 }
 
-#leftcontainer h3 {
+/*#leftcontainer h3 {
 	margin: 0;
 	padding: 7px 0 0 17px;
+}*/
+.left-menu-selected a{
+	color: #EFEFEF!important;
 }
-
+#left-menu-top a{
+	color: #FC4A1A;
+}
+.left-menu-selected{
+	background-color: #FC4A1A;
+}
 #leftcontainer ul {
 	position: relative;
-	top: 5px;
+	left: -30px;
 	list-style: none;
 	text-align: left;
 	margin: 0 auto;
 	padding: 0px;
 	margin-top: 0px;
 }
-
+#leftcontainer ul li{
+	/*display:block;*/
+}
 #leftcontainer ul li a:link, #leftcontainer ul li a:visited {
 	position: relative;
 	text-decoration: none;
 	display: block;
-	padding: 2px 7px;
-	margin-bottom: 1px;
-	margin-left: 11px;
-	font-size: 13px;
-	top: 0px;
-	width: 187px;
-	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
-	line-height: 17px;
+	padding-left: 52px;
+	margin: 10px 0;
+	font-size: 16px;
+	/*top: 0px;*/
+	/*width: 342px;*/
+	font-family: Montserrat Lucida Sans Unicode, Lucida Grande, sans-serif;
+	line-height: 35px;
 }
 
 #leftcontainer ul .menuvnotselect a:link, #leftcontainer ul .menuvnotselect a:visited {
-	color: #333333;
+	color: #4ABDAC;
 }
 
 #leftcontainer ul .menuvselect a:link, #leftcontainer ul .menuvselect a:visited {
 	color: #ffffff;
-	background: #d4251c;
+	background: #4ABDAC;
 }
 
 #leftcontainer ul .menuvnotselect a:hover {
-	color: #ffffff;
-	background: #d4251c;
+	/*color: #ffffff;
+	background: #d4251c;*/
 }
 
 .pagegallery {
@@ -1148,26 +1165,22 @@ p {
 }
 
 #footleft {
-	width: 450px;
-	height: 20px;
-	padding: 16px 0 0 18px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	color: #ffffff;
-	font-weight: normal;
-	font-size: 11px;
+	padding-top: 30px;
+	color: #E8E8E8;
+	font-family: Montserrat-Light;
+	text-align: center;
+	font-size: 12px;
+	line-height: 19px;
 }
 
 #footright {
-	width: 450px;
-	height: 50px;
-	padding-top: 4px;
-	padding-right: 18px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	text-align: right;
+	text-align: center;
+	padding-top:50px;
+	margin:0 auto;
+}
+
+#footright img{
+	margin:0 25px;
 }
 
 #footer a:link, #footer a:visited {
@@ -1177,8 +1190,7 @@ p {
 }
 
 #footer a:hover {
-	color: #ffffff;
-	text-decoration: underline;
+	color: #4ABDAC;
 }
 
 /*#footer img {
