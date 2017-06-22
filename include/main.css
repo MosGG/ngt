@@ -106,15 +106,15 @@ html[xmlns] .clearfix {
 }
 
 a:link, a:visited {
-	color: #d4251c;
-	font-size: 12px;
-	text-decoration: underline;
+	/*color: #d4251c;*/
+	/*font-size: 12px;*/
+	text-decoration: none;
 }
 
 a:hover {
-	color: #8c0c05;
-	font-size: 12px;
-	text-decoration: underline;
+	/*color: #8c0c05;*/
+	/*font-size: 12px;*/
+	/*text-decoration: underline;*/
 }
 
 h1 {
@@ -154,13 +154,13 @@ h6 {
 }
 
 p, li, td, th {
-	color: #555555;
-	font-weight: normal;
+	color: #4A4A4A;
+	font-family: Montserrat-Light;
 	font-size: 12px;
 }
 
 p {
-	line-height: 20px;
+	line-height: 16px;
 }
 
 #facebook {
@@ -284,28 +284,35 @@ p {
 }
 
 #pagetree p {
-	text-transform: uppercase;
-	font-size: 10px;
-	font-family: Montserrat, Tahoma, Arial, Helvetica, sans-seirf;
-	margin: 0 0 -21px 1px;
+	font-family: Montserrat-Ultralight;
+	margin: 12px 0 12px 30px;
 	padding: 0;
 }
 
 #pagetree p a:link, #pagetree p a:visited {
-	font-weight: normal;
-	font-size: 10px;
-	text-decoration: underline;
+	font-size: 14px;
+	text-decoration: none;
 	text-transform: uppercase;
+	color:#4A4A4A;
+	margin: 0 2px;
+	position:relative;
+	top:1px;
 }
 
 #pagetree p a:hover {
-	text-decoration: underline;
+	color:#4ABDAC;
 }
 
 #pageheading {
-	text-align: left;
+	text-align: center;
 	width: auto;
-	padding-bottom: 0px;
+	padding-bottom: 30px;
+	padding-top:50px;
+	text-transform: uppercase;
+}
+#pageheading h1{
+	font-size: 24px;
+	font-family: Montserrat-Bold;
 }
 
 #leftcontainer {
@@ -939,7 +946,7 @@ p {
 	text-align: center; 
 	text-decoration: none; 
 }
-.logout:hover, #shopping a:hover, input[type=submit]:hover	{ text-decoration: underline; cursor: pointer; }
+/*.logout:hover, #shopping a:hover, input[type=submit]:hover	{ text-decoration: underline; cursor: pointer; }*/
 
 #adminpage {
 	font-weight: normal;
@@ -1057,9 +1064,9 @@ p {
 #wholesaler {
 	width: 592px;
 	height: 556px;
-	margin: 0 auto;
+	margin: -40px auto 0 auto;
 	background: #fff;
-	margin-top: 70px;
+	border-bottom: 90px solid #EFEFEF;
 }
 
 #wholesaler table {
@@ -1151,7 +1158,7 @@ p {
 }
 
 #contactpage table {
-	margin: 0 auto;
+	/*margin: 0 auto;*/
 }
 
 .contactThankyou {  }

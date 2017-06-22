@@ -323,6 +323,7 @@
 #forget-password a:hover{
 	color: #4ABDAC;
 }
+
 @media(max-width:1439px){
 	#hand{
 		width:45px;

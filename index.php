@@ -50,7 +50,7 @@
 	# Create Page Tree ($page['tree'])
 	#######################################################################
 
-	$page['tree'] = url_tree($_SESSION['page'], '//');
+	$page['tree'] = url_tree($_SESSION['page'], '>');
 
 	#######################################################################
 	# Create Page Subpage ($page['subpage'])

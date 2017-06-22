@@ -30,7 +30,7 @@
 			echo "<![endif]-->";
 			echo "<script type='text/javascript' src='".$site['url']['full']."include/jquery-3.2.0.min.js'></script>";
 			// if (($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] != 'on')) {
-				echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
+				// echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
 			// }
 			echo "<script type='text/javascript' src='".$site['url']['full']."images/tours/swfObject.js'></script>";
 			// echo "<script type='text/javascript' src='".$site['url']['full']."include/prototype.js'></script>";
@@ -102,7 +102,6 @@
 #################################################################################################
 # Middle Container                                                                              #
 #################################################################################################
-
 			echo "<div id='middle'>";
 	if ($page['pageId'] != '1' && !$page['pageAdmin']) {
 					echo "<div id='pagetree'><p>".$page['tree']."</p></div>";

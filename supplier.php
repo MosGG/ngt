@@ -2,8 +2,6 @@
 .suppliers-div{
 	background-color: #EFEFEF; 
 	color:#4A4A4A;
-	padding-top:30px;
-	/*text-align: center;*/
 }
 .suppliers-div h2{
 	font-family: Montserrat-Bold;
@@ -13,7 +11,6 @@
 #suppliers-wrapper{
 	margin:0 auto;
 	width: 600px;
-	margin-top:30px;
 	text-align: center;
 }
 .suppliers-left{
@@ -82,9 +79,6 @@
 }
 </style>
 <div class="suppliers-div">
-	<h2>
-		SUPPLIERS
-	</h2>
 	<div id="suppliers-wrapper">
 		<div class="suppliers-left">
 			<div class="suppliers-title">New Global Requests</div>
@@ -108,7 +102,7 @@
 			If you consider you are the right one, please email me your submission to 
 				<a href="mailto:buyer@newglobalmel.com.au" class="hvr-underline-from-left-blue">buyer@newglobalmel.com.au</a>
 			</p>
-			<a href='/'><div>Contact Us</div></a>
+			<a href='/contact'><div>Contact Us</div></a>
 		</div>
 		<img id="suppliers-bottom" src='images/new/supplier-bottom.png'/>
 	</div>
