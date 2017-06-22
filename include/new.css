@@ -71,7 +71,7 @@
 	right:100%;
 	bottom:0;
 	background:#FC4A1A;
-	height:3px;
+	height:2px;
 	-webkit-transition-property:right;
 	transition-property:right;
 	-webkit-transition-duration:.3s;transition-duration:.3s;
@@ -100,7 +100,7 @@
 	right:100%;
 	bottom:0;
 	background:#4ABDAC;
-	height:3px;
+	height:2px;
 	-webkit-transition-property:right;
 	transition-property:right;
 	-webkit-transition-duration:.3s;transition-duration:.3s;
