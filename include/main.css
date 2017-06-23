@@ -106,7 +106,7 @@ html[xmlns] .clearfix {
 }
 
 a:link, a:visited {
-	color: #4ABDAC;
+	/*color: #4ABDAC;*/
 	/*font-size: 12px;*/
 	text-decoration: none;
 }
@@ -288,6 +288,7 @@ p {
 	font-family: Montserrat-Ultralight;
 	margin: 12px 0 12px 30px;
 	padding: 0;
+	text-align: left;
 }
 
 #pagetree p a:link, #pagetree p a:visited {

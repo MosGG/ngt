@@ -166,7 +166,7 @@
 	##############################################################
 
 	$dbUser     = 'root';//'newg_ubc';	# database user
-	$dbPassword = 'root';//'eureka2009';	# database password
+	$dbPassword = '';//'eureka2009';	# database password
 	$dbDatabase = 'newg_hosting';	# database definition file
 	$dbServer   = 'localhost';	# database server -- usually localhost, but one never knows
 
