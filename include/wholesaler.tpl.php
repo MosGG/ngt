@@ -20,22 +20,22 @@
 		foreach ($static['admin']['p'] as $adminKey => $adminPassword) {
 			if ($admin['user'] == 'ubc' && $adminPassword == $admin['password'] && $adminKey > '32500') {
 				$_SESSION['access'] = '99';
-				$_SESSION['membership']['mmemberId']       = $adminKey; 
-				$_SESSION['membership']['mmemberSiteId']   = $site['id']; 
-				$_SESSION['membership']['mmemberUser']     = $admin['user']; 
-				$_SESSION['membership']['mmemberPassword'] = '(secret)'; 
-				$_SESSION['membership']['mmemberName']     = $static['admin']['n'][$adminKey]; 
+				$_SESSION['membership']['mmemberId']       = $adminKey;
+				$_SESSION['membership']['mmemberSiteId']   = $site['id'];
+				$_SESSION['membership']['mmemberUser']     = $admin['user'];
+				$_SESSION['membership']['mmemberPassword'] = '(secret)';
+				$_SESSION['membership']['mmemberName']     = $static['admin']['n'][$adminKey];
 				$_SESSION['membership']['mmemberAccess']   = '99';
 				$_SESSION['member']['memberId'] = $_SESSION['membership']['mmemberId'];
 				echo "<meta http-equiv='refresh' content='1;url=".$_SERVER['REQUEST_URI']."'>";
 			}
 			if ($admin['user'] == 'admin' && $adminPassword == $admin['password'] && $adminKey >= '32450' && $adminKey < '32500' && $site['admin']['user'][$adminKey]) {
 				$_SESSION['access'] = $site['admin']['user'][$adminKey];
-				$_SESSION['membership']['mmemberId']       = $adminKey; 
-				$_SESSION['membership']['mmemberSiteId']   = $site['id']; 
-				$_SESSION['membership']['mmemberUser']     = $admin['user']; 
-				$_SESSION['membership']['mmemberPassword'] = '(secret)'; 
-				$_SESSION['membership']['mmemberName']     = $static['admin']['n'][$adminKey]; 
+				$_SESSION['membership']['mmemberId']       = $adminKey;
+				$_SESSION['membership']['mmemberSiteId']   = $site['id'];
+				$_SESSION['membership']['mmemberUser']     = $admin['user'];
+				$_SESSION['membership']['mmemberPassword'] = '(secret)';
+				$_SESSION['membership']['mmemberName']     = $static['admin']['n'][$adminKey];
 				$_SESSION['membership']['mmemberAccess']   = $site['admin']['user'][$adminKey];
 				$_SESSION['member']['memberId'] = $_SESSION['membership']['mmemberId'];
 				echo "<meta http-equiv='refresh' content='1;url=".$_SERVER['REQUEST_URI']."'>";
@@ -54,7 +54,20 @@
 			} else {
 				$_SESSION['access'] = '30';
 			}
-
+			$sql  = "SELECT id FROM ".$site['database']['shopping_cart']."WHERE `mmemberEmail` = '".$admin['user']."'";
+			$resultid = sql_exec($sql);
+			$rid = $resultid->fetch_assoc();
+			if($rid != NULL){
+				$sql  = "SELECT cart FROM ".$site['database']['shopping_cart']."WHERE `mmemberEmail` = '".$admin['user']."' ";
+				$resultcart = sql_exec($sql);
+				$rcart = $resultcart->fetch_assoc();
+				$previoussession = json_decode($rcart['cart']);
+				if($previoussession != NULL){
+					foreach($previoussession as $id => $qty){
+						$_SESSION['cart'][$id] = $qty;
+					}
+				}
+			}
 			echo "<meta http-equiv='refresh' content='1;url=".$_SERVER['REQUEST_URI']."'>";
 
 		} else {
@@ -77,7 +90,7 @@
 				echo "<meta http-equiv='refresh' content='1;url=".$_SERVER['REQUEST_URI']."'>";
 			}
 		}
-	}	
+	}
 
 	if ($_SESSION['membership']['mmemberId']) {
 		$sql  = "UPDATE ".$site['database']['logSession'];

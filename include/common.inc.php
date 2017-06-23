@@ -2,11 +2,11 @@
 	session_start();
 
 	##############################################################
-	# DEVELOPED BY UBC WEB DESIGN - ubcwebdesign.com.au 
+	# DEVELOPED BY UBC WEB DESIGN - ubcwebdesign.com.au
 	##############################################################
 
 	##############################################################
-	# SITE INFORMATION 
+	# SITE INFORMATION
 	##############################################################
 
 	$site['email']['development']		= "janelle@ubcwebdesign.com.au";
@@ -51,7 +51,7 @@
 	$site['template']['recommend']['blurb']		= '';
 
 	$site['template']['shadow']['offset']		= '29';
-	
+
 	$site['template']['subpage']['columns']		= '5';
 	$site['template']['subpageadmin']['columns']	= '5';
 	$site['template']['page_gallery']['display']	= '4';
@@ -73,7 +73,7 @@
 	$table['product']['productFlag']	= array('type'=>'I', 'heading'=>'Flag',		'size'=>'20');
 	$table['product']['productAdmin']	= array('type'=>'I', 'heading'=>'Admin',	'size'=>'20');
 	$table['product']['productDateCreate']	= array('type'=>'d', 'heading'=>'Create Date',	'size'=>'20');
-	$table['product']['productDateUpdate']	= array('type'=>'d', 'heading'=>'Update Date',	'size'=>'20');	
+	$table['product']['productDateUpdate']	= array('type'=>'d', 'heading'=>'Update Date',	'size'=>'20');
 
 	$table['order']['orderId']		= array('type'=>'Index', 'heading'=>'Index');
 	$table['order']['customer']		= array('type'=>'H', 'heading'=>'Customer Details');
@@ -148,7 +148,7 @@
 	$table['membership']['buttonCancel']		= array('type'=>'B', 'heading'=>'Cancel');
 
 	##############################################################
-	# EDM translation options. 
+	# EDM translation options.
 	##############################################################
 
 
@@ -162,11 +162,11 @@
 	$contactType[] = 'General Enquiry';
 
 	##############################################################
-	# DATABASE SETTINGS 
+	# DATABASE SETTINGS
 	##############################################################
 
 	$dbUser     = 'root';//'newg_ubc';	# database user
-	$dbPassword = '';//'eureka2009';	# database password
+	$dbPassword = 'root';//'eureka2009';	# database password
 	$dbDatabase = 'newg_hosting';	# database definition file
 	$dbServer   = 'localhost';	# database server -- usually localhost, but one never knows
 
@@ -200,11 +200,12 @@
 	$site['database']['edm-pdf']		= $dbPrefix."edm_pdf`";
 	$site['database']['edm-sent']		= $dbPrefix."edm_sent`";
 	$site['database']['sms']		= $dbPrefix."sms`";
-	
+	$site['database']['shopping_cart']		= $dbPrefix."shopping_cart`";
+
 	$site['id']				= "64"; # New Global Mel
 
 	##############################################################
-	# GLOBAL SETTINGS 
+	# GLOBAL SETTINGS
 	##############################################################
 
 	include 'template-v0d/global.php';
@@ -274,7 +275,7 @@
 	$site['path']['page_gallery']['buffer']	= "content/page_gallery/buffer/";
 	$site['path']['page_gallery']['thumb']	= "content/page_gallery/thumb/";
 	$site['path']['page_gallery']['full']	= "content/page_gallery/full/";
-	
+
 	$site['path']['edm']['image']['buffer']	= "content/edm/image/buffer/";
 	$site['path']['edm']['image']['thumb']	= "content/edm/image/thumb/";
 	$site['path']['edm']['image']['full']	= "content/edm/image/full/";
@@ -284,7 +285,7 @@
 	$site['path']['pdf']			= "content/pdf/";
 
 	##############################################################
-	# FUNCTIONS 
+	# FUNCTIONS
 	##############################################################
 
 	$site['url']['decode'] = url_decode();

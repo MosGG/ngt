@@ -30,7 +30,9 @@
 			echo "<![endif]-->";
 			echo "<script type='text/javascript' src='".$site['url']['full']."include/jquery-3.2.0.min.js'></script>";
 			// if (($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] != 'on')) {
+
 				echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
+
 			// }
 			echo "<script type='text/javascript' src='".$site['url']['full']."images/tours/swfObject.js'></script>";
 			// echo "<script type='text/javascript' src='".$site['url']['full']."include/prototype.js'></script>";
@@ -51,7 +53,9 @@
 			echo "<div id='header-container' class='bgblue'>";
 				echo "<div id='header'>";
 				if (isset($_SESSION['membership'])){
-					echo "<div id='loginblock'><a class='hvr-underline-from-left' href='/order_cart'><div id='shopping-bag' class='floatleft'>6</div>My Shopping Cart</a>|<a class='hvr-underline-from-left' href='javascript:void(0);' onclick='formLogout();'>Log Out</a></div>";
+
+					echo "<div id='loginblock'><a class='hvr-underline-from-left' href='/order_cart'><div id='shopping-bag' class='floatleft'></div>My Shopping Cart</a>|<a class='hvr-underline-from-left' href='javascript:void(0);' onclick='formLogout();'>Log Out</a></div>";
+
 				} else {
 					echo "<div id='loginblock'><a class='hvr-underline-from-left' href='/become-a-member'>Register</a>|<a class='hvr-underline-from-left' href='http://www.newglobalmel.com.au/login'>Login</a></div>";
 				}
@@ -70,10 +74,10 @@
 						<img id="cloud-header-1" class="cloud-big" src="/images/new/landing-cloud.png" alt=""/>
 						<img id="cloud-header-2" class="cloud-mid" src="/images/new/landing-cloud.png" alt=""/>
 						<img id="cloud-header-3" class="cloud-sml" src="/images/new/landing-cloud.png" alt=""/>
-						<img id="window" src="/images/new/landing-window.png" alt=""/>';	
+						<img id="window" src="/images/new/landing-window.png" alt=""/>';
 			echo "</div><!-- header -->";
 		echo "<div id='wrapper' class='mainbody'>";
-	
+
 #################################################################################################
 # Left Container and Vertical Menu                                                              #
 #################################################################################################
@@ -115,14 +119,15 @@
 	}
 	if(isset($page['pageFile'])) {
 		include $page['pageFile'];
-		if ($page['pageId'] != '1' && $page['pageFile'] != 'admin.php' && isset($page['subpage'])) { 
+		if ($page['pageId'] != '1' && $page['pageFile'] != 'admin.php' && isset($page['subpage'])) {
 			echo $page['subpage'];
 		}
 	}
+
 	// if (isset($page['contactMessage'])) { 
 		// echo $page['contactMessage']; 
 	// }
-							
+
 			// echo "<div style='clear: both;'></div>";
 			echo "</div> <!-- middle -->";
 		echo "</div> <!-- wrapper -->";
@@ -147,10 +152,18 @@
 						echo "<img class='footer-ads' src='".$site['url']['full']."images/logo-kingston.png' width='45' height='50' alt='' title='' border='0' />";
 					echo "</div>";
 					echo "<div id='footleft'>".$site['pageFooter']."</div>";
-					
+
 				echo "</div>";
 			echo "</div> <!-- footer -->";
 		echo "</div>"; ## Site Container ##
+		if($_SESSION['cart']==NULL){
+			$num = 0;
+		}
+		else{
+			$num = count($_SESSION['cart']);
+		}
+		echo "<script> var number = $num;document.getElementById('shopping-bag').innerHTML = number</script>";
 	echo "</body>";
 	echo "</html>";
+
 ?>

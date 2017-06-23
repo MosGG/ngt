@@ -1,5 +1,8 @@
 <?php
 function product_template($line, $image) {
+	if($line['productStock'] <= "0" && $line['productCategory'] != "Out of Stock" && $line['productCategory'] != "Coming Soon"){
+	}
+	else{
 	global $site;
 	global $pointer;
 	$pointer ++;
@@ -52,19 +55,18 @@ function product_template($line, $image) {
 		}
 	echo "</div>\n";
 	echo "<div class='productlink'>";
-	if ($line['productPrice1'] > 0 && ($line['productCategory'] != "Out of Stock" && $line['productCategory'] != "Coming Soon") && ($_SESSION['membership'] || $_SESSION['member'])) {
+	if ($line['productPrice1'] > 0 && $line['productStock'] != "0" && ($line['productCategory'] != "Out of Stock" && $line['productCategory'] != "Coming Soon") && ($_SESSION['membership'] || $_SESSION['member'])) {
 		echo "<a href='".$site['url']['full']."order_cart/add/".$line['productId']."'>Add to Cart</a>";
 	} else if (!$_SESSION['membership'] && !$_SESSION['member']) {
 		echo "<a href='".$site['url']['full']."login/'>Login</a>";
 	} else {
-		echo "<a href='".$site['url']['full']."contact/?description=".$line['productTitle']." - Stock Item ".$line['productPart']."'>Contact Us</a>";
+
+			echo "<a href='".$site['url']['full']."contact/?description=".$line['productTitle']." - Stock Item ".$line['productPart']."'>Contact Us</a>";
 	}
 	echo "</div>\n";
 	echo "</div>\n <!-- productitem -->";
+	
 	// echo "<br />\n";
 
 } # (product_template)
 ?>
-
-
-

@@ -5,6 +5,9 @@
 	# 01/07/2012 - David - Showed Inner and Carton Qty
 	# 03/12/2012 - David - Added Business name to Order
 
+
+	$currentEmail = $_SESSION['membership']['mmemberEmail'];
+
 	echo content_converter($page['pageText']);
 
 	if ($_POST['button'] == "Continue to Checkout" || $_POST['button-checkout_x']) {
@@ -21,7 +24,60 @@
 
 	## ADD TO CART ##
 	if ($site['url']['decode']['add']) {
+		if($currentEmail == NULL){
+			$_SESSION['cart'][$site['url']['decode']['add']] = "1-".getmin($site['url']['decode']['add']);
+		}else{
+		$sql  = "SELECT id FROM ".$site['database']['shopping_cart']."WHERE `mmemberEmail` = '".$currentEmail."'";
+		$resultid = sql_exec($sql);
+	  $rid = $resultid->fetch_assoc();
+		if($rid == NULL){
+			$sql = "INSERT INTO ".$site['database']['shopping_cart']." (`mmemberEmail`) VALUES ('".$currentEmail. "')";
+			sql_exec($sql);
+		}
 		$_SESSION['cart'][$site['url']['decode']['add']] = "1-".getmin($site['url']['decode']['add']);
+		$json_session = json_encode($_SESSION['cart']);
+		$sql ="UPDATE".$site['database']['shopping_cart']."SET cart = '".$json_session."' WHERE `mmemberEmail` = '".$currentEmail."'";
+		sql_exec($sql);
+	  }
+		// $sql  = "SELECT id FROM ".$site['database']['shopping_cart']."WHERE `mmemberEmail` = '".$currentEmail."'";
+		// $resultid = sql_exec($sql);
+	  // $rid = $resultid->fetch_assoc();
+		// if($rid == NULL){
+		// 	$sql = "INSERT INTO ".$site['database']['shopping_cart']." (`mmemberEmail`) VALUES ('".$currentEmail. "')";
+		// 	sql_exec($sql);
+		// }
+		//
+		// $sql  = "SELECT cart FROM ".$site['database']['shopping_cart']."WHERE `mmemberEmail` = '".$currentEmail."' ";
+		// $resultcart = sql_exec($sql);
+		// $rcart = $resultcart->fetch_assoc();
+		// $previoussession = json_decode($rcart['cart']);
+		//
+		// if($previoussession == NULL){
+		// // echo "have nothing";
+    // $_SESSION['cart'][$site['url']['decode']['add']] = "1-".getmin($site['url']['decode']['add']);
+		// $json_session = json_encode($_SESSION['cart']);
+		// // echo $json_session;
+		// $sql ="UPDATE".$site['database']['shopping_cart']."SET cart = '".$json_session."' WHERE `mmemberEmail` = '".$currentEmail."'";
+		// sql_exec($sql);
+	  // }
+		// else{
+		// 	$_SESSION['cart'][$site['url']['decode']['add']] = "1-".getmin($site['url']['decode']['add']);
+		// 	// echo "havesomthing";
+		// 	// echo var_dump($_SESSION['cart']);
+		// 	foreach($previoussession as $id => $qty){
+		// 		if(array_key_exists($id, $_SESSION['cart'])){
+		// 			// echo "dsadsa".$id;
+		// 			Continue;
+		// 		}else{
+		// 			$_SESSION['cart'][$id] = $qty;
+		// 			// echo "hereboy";
+		// 		}
+		// 	}
+		// echo var_dump($_SESSION['cart']);
+		// $json_session = json_encode($_SESSION['cart']);
+		// $sql ="UPDATE".$site['database']['shopping_cart']."SET cart = '".$json_session."' WHERE `mmemberEmail` = '".$currentEmail."'";
+		// sql_exec($sql);
+		// }
 	}
 
 	## UPDATE QTY ##
@@ -37,12 +93,25 @@
 				}
 			}
 		}
+		if($currentEmail == NULL){
+		}else{
+		$json_session = json_encode($_SESSION['cart']);
+		$sql ="UPDATE".$site['database']['shopping_cart']."SET cart = '".$json_session."' WHERE `mmemberEmail` = '".$currentEmail."'";
+		sql_exec($sql);
+	  }
 	}
 
 	## REMOVE PRODUCT ##
 	if ($_GET['remove']) {
 		unset($_SESSION['cart'][$_GET['remove']]);
+		if($currentEmail == NULL){
+		}else{
+		$json_session = json_encode($_SESSION['cart']);
+		$sql ="UPDATE".$site['database']['shopping_cart']."SET cart = '".$json_session."' WHERE `mmemberEmail` = '".$currentEmail."'";
+		sql_exec($sql);
+	  }
 	}
+
 
 	if ($_POST['button'] == "Checkout" || $_POST['button-checkout_x']) {
 		$_SESSION['cartMode'] = "Enter Details";
@@ -241,6 +310,7 @@
 				$ordercolspan = "3";
 				$_SESSION['order']  = "<table>";
 				$_SESSION['order'] .= "<tr>";
+
 					if ($display['cart']['part']['heading']) {
 						$_SESSION['order'] .= "<th align=\"left\">".$display['cart']['part']['heading']."</th>";
 						$ordercolspan++;
@@ -254,11 +324,13 @@
 					$_SESSION['order'] .= "<th>".$display['cart']['subPrice']['heading']."</th>";
 				$_SESSION['order'] .= "</tr>";
 				$totalweight = "";
+
 				foreach ($_SESSION['cart'] as $id => $qty) {
 					$sql  = "SELECT * FROM ".$site['database']['product']." ";
 					$sql .= "WHERE `productId` = '".$id."' ";
 					$resultproduct = sql_exec($sql);
 					$product = $resultproduct->fetch_assoc();
+
 					$totalweight += $product['productWeight']*$_SESSION['cart'][$id];
 					if ($product['productTitle']) {
 						$product['productTitle'] = str_replace("'", "`", $product['productTitle']);
@@ -396,11 +468,13 @@
 
 					$_SESSION['order'] .= "<td align=\"right\">$".number_format($subtotal, $site['template']['price']['decimal'])."</td>";
 					$_SESSION['order'] .= "</tr>";
+
 				} ## End Foreach
 				echo "</table>\n";
 				echo "<div id='cart-summary'>\n";
 				echo "<div id='summary-title'><span class='cart-title'>ORDER SUMMARY</span></div>";
 					echo "<div id='total'>\n";
+
 					if ($display['cart']['weight']['heading']) {
 						echo "<span class='cartweight'>(Total ".$display['cart']['weight']['heading'].": ".$totalweight." ".$display['cart']['weight']['unit'].")</span> \n";
 					}
@@ -442,6 +516,7 @@
 			} else {
 				echo "<div><img id='checkout-lock' src='/images/new/checkout-lock.png'><input id='shopping-checkout' type='submit' name='button' value='Checkout' /></div> \n";
 			}
+
 			echo "</div>\n";
 			echo "</div>\n";
 			echo "</form>\n";
@@ -512,7 +587,7 @@
 			}
 			foreach ($table['freight'][$_SESSION['weightLevel']] as $key=>$data) {
 				$layout['orderFreight']['item'][$data] = "$".$data." - ".$key;
-			}	
+			}
 
 		}
 #		echo display_layout('orderFreight');
@@ -649,7 +724,7 @@
 				$smsBody    = "[".$_SESSION['log']."] ";
 				$smsBody   .= $_SESSION['submit']['orderNameF']." ".$_SESSION['submit']['orderNameS'].".";
 				$smsBody   .= "P ".$_SESSION['submit']['orderPhone']." E ".$_SESSION['submit']['orderEmail']." ";
-				$smsBody   .= "Online Order";	
+				$smsBody   .= "Online Order";
 				mail($site['sms']['number'], $smsSubject, $smsBody, $site['sms']['email']."\r\nMIME-Version:1.0 \r\nContent-type:text/html; charset=iso-8859-1\r\n" ) or print $errorMSG;
 				mail($static['sms']['email'], "SMS COPY - ".$site['company']['name'], $site['company']['name'].$smsBody, $site['sms']['email']."\r\nMIME-Version:1.0 \r\nContent-type:text/html; charset=iso-8859-1\r\n" ) or print $errorMSG;
 			}
@@ -821,6 +896,12 @@
 
 		unset($_SESSION['cart']);
 		unset($_SESSION['cartMode']);
+		if($currentEmail == NULL){
+		}else{
+		$json_session = json_encode($_SESSION['cart']);
+		$sql ="UPDATE".$site['database']['shopping_cart']."SET cart = '".$json_session."' WHERE `mmemberEmail` = '".$currentEmail."'";
+		sql_exec($sql);
+	  }
 	}
 
 	#########################
