@@ -306,8 +306,8 @@ p {
 #pageheading {
 	text-align: center;
 	width: auto;
-	padding-bottom: 30px;
-	padding-top:50px;
+	padding-bottom: 40px;
+	padding-top:10px;
 	text-transform: uppercase;
 }
 #pageheading h1{
@@ -840,22 +840,31 @@ p {
 }
 
 #cart table {
-	border-top: 1px solid #afafaf;
-	border-right: 1px solid #afafaf;
-	border-left: 1px solid #afafaf;
-	background: #ffffff;
-	margin-left: auto;
-	margin-right: auto;
+	/*border-top: 1px solid #afafaf;*/
+	/*border-right: 1px solid #afafaf;*/
+	/*border-left: 1px solid #afafaf;*/
+	/*background: #fff;*/
+	/*margin-left: auto;*/
+	margin-right: 20px;
+	color: #4A4A4A;
+	float:left;
 }
 
 #cart th {
-	background: url(../images/popupbar.png) repeat;
-	border-bottom: 1px solid #afafaf;
-	color: #ffffff;
+	background-color: #D8D8D8;
+	/*border-bottom: 1px solid #afafaf;*/
+	text-align: left;
+	height:36px;
+	font-size: 16px;
 }
 
 #cart td {
-	border-bottom: 1px solid #afafaf;
+	border-bottom: 1px solid #4A4A4A;
+	height:130px;
+	padding:10px;
+	vertical-align: top;
+	text-align: left;
+	font-size: 14px;
 }
 
 #cart a:link, #cart a:visited {

@@ -228,16 +228,16 @@
 			echo "<div id='shopping'><a href='".$_SESSION['pageurl']."'>Browse</a></div><br />\n";
 			echo "<form action='".$site['url']['form']."' method='post'>\n";
 			echo "<div id='cart'>\n";
-			echo "<table cellspacing='0' cellpadding='3' border='0' width='680'>\n";
+			echo "<table id='cart-tb' cellspacing='0' cellpadding='3' border='0' width='533'>\n";
 				echo "<tr>\n";
-					echo "<th width='150'>&nbsp;</th>\n";
-					echo "<th>&nbsp;</th>\n";
+					echo "<th width='80'>".$display['cart']['title']['heading']."</th>\n";
+					// echo "<th>&nbsp;</th>\n";
 					if ($display['cart']['part']['heading']) {
-						echo "<th align='center' width='90'>".$display['cart']['part']['heading']."</th>\n";
+						echo "<th align='center' width='90'></th>\n";
 					}
-					echo "<th width='80' align='center'>".$display['cart']['price']['heading']."</th>\n";
-					echo "<th width='90' align='center'>".$display['cart']['quantity']['heading']."</th>\n";
-					echo "<th width='80'>".$display['cart']['subPrice']['heading']."</th>\n";
+					echo "<th width='100' align='center'>".$display['cart']['price']['heading']."</th>\n";
+					echo "<th width='100' align='center'>".$display['cart']['quantity']['heading']."</th>\n";
+					echo "<th width='100'>".$display['cart']['subPrice']['heading']."</th>\n";
 				echo "</tr>\n";
 				$ordercolspan = "3";
 				$_SESSION['order']  = "<table>";
@@ -276,9 +276,9 @@
 						if ($display['cart']['weight']['heading']) {
 							echo "<br /><span class='cartweight'>(".$product['productWeight']." ".$display['cart']['weight']['unit']." each)</span>";
 						}
-						echo "</td>\n";
+						// echo "</td>\n";
 						if ($display['cart']['part']['heading']) {
-							echo "<td align='center'>".$product['productPart']."</td>\n";
+							echo "<br>".$product['productPart']."</td>\n";
 						}
 
 						## SUBTOTAL CALCULATION ##
@@ -554,7 +554,7 @@
 		echo "<input type='submit' name='button' value='Edit Details' />\n";
 		echo "<p>Here are your order details</p>\n";
 		echo "<div id='cart'>\n";
-		echo "<table cellspacing='0' cellpadding='3' border='0' width='680'>\n";
+		echo "<table cellspacing='0' cellpadding='3' border='0' width='533'>\n";
 			echo "<tr>\n";
 				echo "<th width='150'></th>\n";
 				echo "<th>Title</th>\n";

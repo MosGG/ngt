@@ -323,7 +323,10 @@
 #forget-password a:hover{
 	color: #4ABDAC;
 }
-
+/* shoppong cart*/
+#cart{
+	padding: 0 35px;
+}
 @media(max-width:1439px){
 	#hand{
 		width:45px;
