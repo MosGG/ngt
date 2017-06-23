@@ -61,7 +61,7 @@
 	$path = url_path($_SESSION['page']);
 
 	if (isset($site['layoutParent'][$_SESSION['page']])) {
-		$page['subpage'] = "<table border='0' cellpadding='0' cellspacing='12'>";
+		$page['subpage'] = "<table id='subpage-tb' border='0' cellpadding='0' cellspacing='12'>";
 		$pointer = "0";
 		foreach($site['layoutParent'][$_SESSION['page']] as $key=>$data) {
 			$pointer ++;
@@ -78,7 +78,7 @@
 				$url .= $key;
 				$page['subpage'] .=  "<td class='subpage'>";
 				$page['subpage'] .=   "<table border='0' width='150'>";
-				$page['subpage'] .=    "<tr><td valign='top' align='center'><a href='".$url."'><img src='".$site['url']['full'].image_display($site['path']['page']['thumb'], $site['layout'][$data]['pageId'])."' alt='".$site['layout'][$data]['pageMenu']."' /><br />".$site['layout'][$data]['pageMenu']."</a></td></tr>";
+				$page['subpage'] .=    "<tr><td valign='top' align='center'><a href='".$url."'><img src='".$site['url']['full'].image_display($site['path']['page']['thumb'], $site['layout'][$data]['pageId'])."' alt='".$site['layout'][$data]['pageMenu']."' /><div>".$site['layout'][$data]['pageMenu']."</div></a></td></tr>";
 				$page['subpage'] .=   "</table>";
 				$page['subpage'] .=  "</td>";
 			}

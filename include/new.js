@@ -30,3 +30,13 @@ function formLogout(){
     form1.submit();   
     document.body.removeChild(form1);  
 }
+
+function moveSearchDiv(){
+	var searchDiv = document.getElementById('search-div');
+	var left = searchDiv.style.left;
+	if (left == "" || left == "78px") {
+	 	searchDiv.style.left = "342px";
+	} else {
+		searchDiv.style.left = "78px";
+	}
+}

@@ -30,7 +30,7 @@
 			echo "<![endif]-->";
 			echo "<script type='text/javascript' src='".$site['url']['full']."include/jquery-3.2.0.min.js'></script>";
 			// if (($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] != 'on')) {
-				// echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
+				echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
 			// }
 			echo "<script type='text/javascript' src='".$site['url']['full']."images/tours/swfObject.js'></script>";
 			// echo "<script type='text/javascript' src='".$site['url']['full']."include/prototype.js'></script>";
@@ -63,6 +63,8 @@
 					echo "<div id='menuh'><p>".$site['menu']['h']."</p></div><!-- menuh -->";
 					echo '<div id="our-product"><a href="/product"><span class="hvr-underline-from-left-blue blue">OUR PRODUCT</span></a></div>';
 					echo '<div id="after-out-product"></div>';
+					echo '<img id="search-icon" onclick="moveSearchDiv();" src="/images/new/search.png">';
+					echo '<form action="/searchresult" method="post" id="search-div"><input type="text" name="query" placeholder="Type your search here..."/></form>';
 				echo "</div><!-- header -->";
 				echo '	<img id="hand" src="/images/new/landing-hand.png" alt=""/>
 						<img id="cloud-header-1" class="cloud-big" src="/images/new/landing-cloud.png" alt=""/>
@@ -79,7 +81,7 @@
 			echo "<div id='leftcontainer'>";
 				echo "<ul id='left-menu-top'>";
 					echo "<li class='";
-					if (strstr($_SERVER['REQUEST_URI'], "comming-soon")) {
+					if (strstr($_SERVER['REQUEST_URI'], "coming-soon")) {
 						echo "left-menu-selected'><a href='/product/coming-soon'><span class='hvr-underline-from-left'>New Arrival</span></a></li>";
 					} else {
 						echo "'><a href='/product/coming-soon'><span class='hvr-underline-from-left-orange'>New Arrival</span></a></li>";
@@ -102,7 +104,7 @@
 #################################################################################################
 # Middle Container                                                                              #
 #################################################################################################
-			echo "<div id='middle'>";
+			echo "<div id='middle'>";;
 	if ($page['pageId'] != '1' && !$page['pageAdmin']) {
 					echo "<div id='pagetree'><p>".$page['tree']."</p></div>";
 	} else {

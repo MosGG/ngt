@@ -225,7 +225,6 @@
 			echo "<p>Please take a look at our Product Range.</p>\n";
 			echo "<p>To add an item to the ".$page['pageMenu']." just click on the \"Add to Cart\" button.</p>\n";
 		} else {
-			echo "<div id='shopping'><a href='".$_SESSION['pageurl']."'>Browse</a></div><br />\n";
 			echo "<form action='".$site['url']['form']."' method='post'>\n";
 			echo "<div id='cart'>\n";
 			echo "<table id='cart-tb' cellspacing='0' cellpadding='3' border='0' width='533'>\n";
@@ -272,13 +271,13 @@
 					}
 					echo "<tr>\n";
 						echo "<td align='center'><img src='".$site['url']['full'].image_display($site['path']['product']['thumb'], $image_array['0']['productImageFile'])."' border='0' alt='".$product['productTitle']."' title='".$product['productTitle']."' /></td>\n";
-						echo "<td align='center'>".$product['productTitle'];
+						echo "<td align='center'><span class='cart-title'>".$product['productTitle']."</span>";
 						if ($display['cart']['weight']['heading']) {
 							echo "<br /><span class='cartweight'>(".$product['productWeight']." ".$display['cart']['weight']['unit']." each)</span>";
 						}
 						// echo "</td>\n";
 						if ($display['cart']['part']['heading']) {
-							echo "<br>".$product['productPart']."</td>\n";
+							echo "<br><span class='cart-des'>".$product['productPart']."</span></td>\n";
 						}
 
 						## SUBTOTAL CALCULATION ##
@@ -325,16 +324,15 @@
 
 						$minorder = getmin($product['productId']);
 
-						echo "<td align='center'>$".number_format($product[$site['template']['price']['field']],$site['template']['price']['decimal'])." ea";
+						echo "<td align='center'><span class='cart-title'>$".number_format($product[$site['template']['price']['field']],$site['template']['price']['decimal'])." ea</span>";
 						if ($minorder || $_SESSION['membership']['mmemberDiscount']) {
-							echo "<br /><span class='cartnote'>";
+							echo "<br />";
 							if ($_SESSION['membership']['mmemberDiscount']) {
 								echo "<span style='color: #cf0000;'>$".number_format($b, $site['template']['price']['decimal'])." discount</span><br />";
 							}
 							if ($minorder) {
-								echo "<br />Min Order:<br /><b>1 ".$minorder."</b>";
+								echo "<span class='cart-des'>MIN ORDER:<br />1 ".$minorder."</span>";
 							}
-							echo "</span>";
 						}
 						echo "</td>\n";
 						echo "<td align='center' height='90'><input type='text' size='1' name='cart[".$id."]' value='".$qtysize['0']."' onChange='form.submit()' />";
@@ -361,11 +359,11 @@
 								}
 								$sel = "";
 							echo "</select>\n";
-							echo "<br />(Total $amount)\n";
+							echo "<br />Total $amount\n";
 						}
 
-						echo "<br /><br /><a href='#' onclick=\"confirmWindow('Are you sure you want to remove this item?','".$site['url']['actual']."?remove=".$product['productId']."'); return false;\"><img src='".$site['url']['full']."images/remove.png' border='0' /><br />Remove</a></td>\n";
-						echo "<td align='right'>$".number_format($subtotal, $site['template']['price']['decimal'])."&nbsp;&nbsp;</td>\n";
+						echo "</td>\n";
+						echo "<td style='text-align:right'><span class='cart-title'>$".number_format($subtotal, $site['template']['price']['decimal'])."&nbsp;&nbsp;</span><a class='cart-delete' href='#' onclick=\"confirmWindow('Are you sure you want to remove this item?','".$site['url']['actual']."?remove=".$product['productId']."'); return false;\">X&nbsp;&nbsp;REMOVE</a></td>\n";
 						$total += $subtotal;
 					echo "</tr>\n";
 					$_SESSION['order'] .= "<tr>";
@@ -399,18 +397,18 @@
 					$_SESSION['order'] .= "<td align=\"right\">$".number_format($subtotal, $site['template']['price']['decimal'])."</td>";
 					$_SESSION['order'] .= "</tr>";
 				} ## End Foreach
-				echo "<tr>\n";
-					echo "<td colspan='6' align='right' id='total'>\n";
+				echo "</table>\n";
+				echo "<div id='cart-summary'>\n";
+				echo "<div id='summary-title'><span class='cart-title'>ORDER SUMMARY</span></div>";
+					echo "<div id='total'>\n";
 					if ($display['cart']['weight']['heading']) {
 						echo "<span class='cartweight'>(Total ".$display['cart']['weight']['heading'].": ".$totalweight." ".$display['cart']['weight']['unit'].")</span> \n";
 					}
-					echo "Total Price: $".number_format($total, $site['template']['price']['decimal'])."&nbsp;&nbsp;";
+					echo "<span style='float:left'>Sub Total</span><span style='float:right'>$".number_format($total, $site['template']['price']['decimal'])."&nbsp;&nbsp;</span>";
 					if ($_SESSION['membership']['mmemberDiscount']) {
 						echo "<br />Including ".$_SESSION['membership']['mmemberDiscount']."% discount&nbsp;&nbsp;";
 					}
-					echo "</td>\n";
-				echo "</tr>\n";
-			echo"</table>\n";
+					echo "</div>\n";
 
 			$_SESSION['order'] .= "<tr><td colspan=\"".$ordercolspan."\" align=\"right\">Total Price: $".number_format($total, $site['template']['price']['decimal']);
 			if ($_SESSION['membership']['mmemberDiscount']) {
@@ -429,23 +427,23 @@
 				$_SESSION['submit']['orderTotal'] = $total;
 				$_SESSION['submit']['orderWeight'] = $totalweight;
 			}
-
-			echo "</div>\n";
-			echo "<br />\n";
+			echo "<div><a id='shopping-browse' href='".$_SESSION['pageurl']."'>Browse</a></div>";
 
 			if ($table['order']['orderFreight']['insert']) {
 				echo "<p align='center'>*Please note that $".$table['order']['orderFreight']['insert']." freight will be added to you order.</p>\n";
 			}
-			if ($button['cart']['update']['image']) {
-				echo "<input type='image' src='".$site['url']['full']."images/".$button['cart']['update']['image']."' name='button-update' width='".$button['cart']['update']['width']."' height='".$button['cart']['update']['height']."'/> \n";
-			} else {
-				echo "<input type='submit' name='button' value='Update' /> \n";
-			}
+			// if ($button['cart']['update']['image']) {
+			// 	echo "<input type='image' src='".$site['url']['full']."images/".$button['cart']['update']['image']."' name='button-update' width='".$button['cart']['update']['width']."' height='".$button['cart']['update']['height']."'/> \n";
+			// } else {
+			// 	echo "<input type='submit' name='button' value='Update' /> \n";
+			// }
 			if ($button['cart']['checkout']['image']) {
 				echo "<input type='image' src='".$site['url']['full']."images/".$button['cart']['checkout']['image']."' name='button-checkout' width='".$button['cart']['checkout']['width']."' height='".$button['cart']['checkout']['height']."'/> \n";
 			} else {
-				echo "<input type='submit' name='button' value='Checkout' /> \n";
+				echo "<div><img id='checkout-lock' src='/images/new/checkout-lock.png'><input id='shopping-checkout' type='submit' name='button' value='Checkout' /></div> \n";
 			}
+			echo "</div>\n";
+			echo "</div>\n";
 			echo "</form>\n";
 		}
 	}
@@ -460,8 +458,8 @@
 	#########################
 
 	if ($_SESSION['cartMode'] == "Enter Details") {
-		echo "<p>".$message['info']."</p>\n";
-		echo "<form action='".$site['url']['cart']."' method='post'>\n";
+		// echo "<p>".$message['info']."</p>\n";
+		echo "<form id='edit-cart-form' action='".$site['url']['cart']."' method='post'>\n";
 		if ($button['cart']['editcart']['image']) {
 			echo "<a href='".$site['url']['cart']."/?edit_cart=y'><img src='".$site['url']['full']."images/".$button['cart']['editcart']['image']."' border='0' /></a>\n";
 		} else {
@@ -526,7 +524,7 @@
 		if ($button['cart']['placeorder']['image']) {
 			echo "<input type='image' src='".$site['url']['full']."images/".$button['cart']['placeorder']['image']."' name='button-placeorder' width='".$button['cart']['placeorder']['width']."' height='".$button['cart']['placeorder']['height']."'/>\n";
 		} else {
-			echo "<input type='submit' name='button' value='Place Order' />\n";
+			echo "<input id='place-order' type='submit' name='button' value='Place Order' />\n";
 		}
 		echo "</th>\n";
 		echo "</tr>\n";

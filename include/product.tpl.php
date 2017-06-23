@@ -61,7 +61,7 @@ function product_template($line, $image) {
 	}
 	echo "</div>\n";
 	echo "</div>\n <!-- productitem -->";
-	echo "<br />\n";
+	// echo "<br />\n";
 
 } # (product_template)
 ?>

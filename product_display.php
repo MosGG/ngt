@@ -18,7 +18,7 @@
 
 		echo "<div class='productdisplayouter'>";
 		echo "<div class='productdisplayinner'>";
-		echo "<div class='productdisplayclose'><a href='#' onClick='productwin.hide(); return false'>Close <span id='closex'>X</span></a></div>";
+		// echo "<div class='productdisplayclose'><a href='#' onClick='productwin.hide(); return false'>Close <span id='closex'>X</span></a></div>";
 
 		echo "<div class='productdisplayleft'>";
 			echo "<div class='productdisplaylarge'>";
