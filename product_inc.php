@@ -13,7 +13,7 @@
 	}
 
 	$sql  = "SELECT count(*) FROM ".$site['database']['product-link'].", ".$site['database']['product']." ";
-	$sql .= "WHERE `product-linkPage` = '".$page['pageId']."' AND `productId` = `product-linkProduct` AND `productPrice1` > '0' AND `productStock` > '0' ";
+	$sql .= "WHERE `product-linkPage` = '".$page['pageId']."' AND `productId` = `product-linkProduct` AND `productPrice1` > '0' ";
 	$sql .= "ORDER BY `productCategory`, `productTitle`;";
 	$sqlresult = sql_exec($sql);
 	while ($value = $sqlresult->fetch_assoc()) {
@@ -24,7 +24,7 @@
 		echo "<div id='product'>";
 		echo "<form action='".$site['url']['actual']."' method='post'>";
 		$sql  = "SELECT * FROM ".$site['database']['product-link'].", ".$site['database']['product']." ";
-		$sql .= "WHERE `product-linkPage` = '".$page['pageId']."' AND `productId` = `product-linkProduct` AND `productPrice1` > '0' AND `productStock` > '0' ";
+		$sql .= "WHERE `product-linkPage` = '".$page['pageId']."' AND `productId` = `product-linkProduct` AND `productPrice1` > '0'";
 #		$sql .= "ORDER BY `productPart` DESC, `productTitle` ASC";
 		$sql .= "ORDER BY `productDateUpdate` DESC, `productDateCreate` DESC, `productPart` DESC, `productTitle` ASC";
 
