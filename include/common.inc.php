@@ -24,7 +24,7 @@
 	$site['company']['managerT']		= 'Manager';
 	$site['company']['phone']		= '(03) 9563 2655';
 	$site['company']['fax']			= '(03) 9563 2656';
-	$site['company']['address']		= '4 Croft St,<br />Oakleigh Vic 3166';
+	$site['company']['address']		= '4 Croft St, Oakleigh Vic 3166';
 	$site['company']['address2']		= '6/25 Alfred Rd,<br />Chipping Norton NSW 3166';
 #	$site['company']['abn']			= 'xx xxx xxx xxx';
 
@@ -166,7 +166,7 @@
 	##############################################################
 
 	$dbUser     = 'root';//'newg_ubc';	# database user
-	$dbPassword = 'root';//'eureka2009';	# database password
+	$dbPassword = '';//'eureka2009';	# database password
 	$dbDatabase = 'newg_hosting';	# database definition file
 	$dbServer   = 'localhost';	# database server -- usually localhost, but one never knows
 

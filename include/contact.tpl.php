@@ -1,3 +1,95 @@
+<style>
+/* contact */
+#contactpage>form{
+	width:592px;
+	margin:0 auto;
+}
+#contactinfo-table{
+	margin:0 auto;
+	padding: 50px 0 30px 0;
+}
+#contactinfo-table .contactheading{
+	text-align: center;
+}
+#contactinfo-table td{
+	font-size: 14px;
+	padding: 5px 5px;
+}
+#contactinfo-table a{
+	color: #4A4A4A;
+	text-decoration: none;
+}
+#contactinfo-table a:hover{
+	color: #4ABDAC;
+}
+#enquiry-table{
+	width:592px;
+	padding:15px;
+	border: 1px solid #4A4A4A;
+	margin: 0 auto 60px auto;
+}
+#enquiry-table td{
+	padding:10px 15px;
+	font-size: 16px;
+	position: relative;
+
+}
+#contact-submit{
+	width:114px;
+	height:40px;
+	color:#4ABDAC;
+	border:2px solid #4ABDAC;
+	font-family: Montserrat-Bold;
+	font-size: 16px;
+	line-height: 34px;
+	transition: all .3s linear;
+	background-color: #EFEFEF;
+}
+#contact-submit:hover{
+	color:#FFF;
+	background-color: #4ABDAC;
+}
+#enquiry-table textarea,
+#enquiry-table select,
+#enquiry-table input{
+	width:calc(100% - 20px);
+	font-size: 16px;
+	border:1px solid #4A4A4A;
+	background-color: #EFEFEF;
+	font-family: Montserrat;
+	color:#4A4A4A;
+}
+#enquiry-table select,
+#enquiry-table input{	
+	height:40px;
+	padding:0 10px;
+}
+#enquiry-table textarea{
+	height: 214px;
+	padding:10px 10px;
+}
+#enquiry-title{
+	font-weight: bold;
+	font-size: 18px;
+}
+#enquiry-required{
+	font-family: Montserrat-Light;
+	font-size: 12px;
+	/*padding: 20px 0;*/
+}
+.red-star{
+	color:#FC4A1A;
+	padding-right: 3px;
+}
+.contact-sub-des{
+	position: relative;
+	font-family: Montserrat-Ultralight;
+	/*top:50px;*/
+	z-index:10;
+	font-size: 14px;
+}
+
+</style>
 <?php
 	##############################################################################################################
 	# UPDATES
@@ -73,18 +165,18 @@
 
 		echo $ContactMessage;
 
-		$RecommendImage = "recommend.jpg";
-		if ($ContactRecommendImage) {
-			$RecommendImage  = $ContactRecommendImage;
-		}
-		if ($ContactRecommendImage != "") {
-			echo "<br /><a href='".$site['url']['full']."recommend'><img src='".$site['url']['full']."images/".$RecommendImage."' alt='Click here to recommend ".$site['company']['name']." to a friend' border='0' /></a>";
-		}
+		// $RecommendImage = "recommend.jpg";
+		// if ($ContactRecommendImage) {
+		// 	$RecommendImage  = $ContactRecommendImage;
+		// }
+		// if ($ContactRecommendImage != "") {
+		// 	echo "<br /><a href='".$site['url']['full']."recommend'><img src='".$site['url']['full']."images/".$RecommendImage."' alt='Click here to recommend ".$site['company']['name']." to a friend' border='0' /></a>";
+		// }
 
-		echo "<table summary=''>"; 
+		echo "<table summary='' id='contactinfo-table'>"; 
 			if ($contact['business']) {
 				echo "<tr>";
-					echo "<td colspan='2' class='contactheading'>Business:</td>";
+					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-company.png'></td>";
 					echo "<td><b>".$site['company']['name'];
 					if ($contact['abn']) {
 						echo " - ABN: ".$site['company']['abn'];
@@ -115,13 +207,13 @@
 			}
 			if ($contact['phone']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>Phone:</td>";
+					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-tel.png'></td>";
 					echo "<td><b>".$site['company']['phone']."</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['fax']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>Fax:</td>";
+					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-fax.png'></td>";
 					echo "<td><b>".$site['company']['fax']."</b></td>";
 				echo "</tr>";
 			}
@@ -133,7 +225,7 @@
 			}
 			if ($contact['address']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>Address:</td>";
+					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
 					echo "<td><b>".$site['company']['address']."</b></td>";
 				echo "</tr>";
 			}
@@ -145,19 +237,27 @@
 			}
 			if ($contact['email']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>Email:</td>";
+					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-email.png'></td>";
 					echo "<td><b>".encrypt_email($site['company']['email']['to'], $site['company']['email']['to'], $site['company']['name']." Enquiry")."</b></td>";
 				echo "</tr>";
 			}
+			echo "<tr>";
+				echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-website.png'></td>";
+				echo "<td><b><a href='/'>www.newglobalmel.com.au</a></b></td>";
+			echo "</tr>";
 			if ($site['company']['email']['enabled'] != "y") {
 				echo "<tr>";
 					echo "<td valign='top' colspan='2'></td>";
 					echo "<td><b>DISABLED</b></td>";
 				echo "</tr>";
 			}
-			echo "<tr>";
-				echo "<td colspan='3'><br />or <b>Submit</b> your details below and we will contact you promptly.<br /><br /></td>";
-			echo "</tr>";
+			echo "</table>";
+			echo "<table id='enquiry-table'>";
+			echo "<tr><td align='center' colspan='2' id='enquiry-title'>ENQUIRES</td></tr>";
+			echo "<tr><td align='right' colspan='2' id='enquiry-required'><span class='red-star'>*</span>Required</td></tr>";
+			// echo "<tr>";
+			// 	echo "<td colspan='3'><br />or <b>Submit</b> your details below and we will contact you promptly.<br /><br /></td>";
+			// echo "</tr>";
 			## CHECK IF CONTACTTYPE HAS MORE THAN ONE OPTION BEFORE BOTHERING WITH A DROPDOWN/SELECT ##
 			$bother = count($contactType);
 			if ($bother > 1) {
@@ -178,7 +278,7 @@
 					echo "<td>&nbsp;</td>";
 				echo "</tr>";
 			} else {
-				echo "<tr><td><input type='hidden' name='enquiry[Type]' value='".$contactType['0']."' /></td></tr>";
+				echo "<tr style='display:none'><td><input type='hidden' name='enquiry[Type]' value='".$contactType['0']."' /></td></tr>";
 			}
 			echo "<tr>";
 				if($error_field['Name']) {
@@ -188,23 +288,7 @@
 					$error_on  = "";
 					$error_off = "";
 				}
-				echo "<td><b>".$error_on."Your Name:".$error_off."</b></td>";
-				echo "<td>".$error_on."*".$error_off."</td>";
-				echo "<td><input size='50' type='text' name='enquiry[Name]' value='".$_SESSION['enquiry']['Name']."' id='name' title='Enter Your Name' maxlength='100' /></td>";
-			echo "</tr>";
-			echo "<tr>";
-				if($error_field['Email']) {
-					$error_on  = "<span class='error'>";
-					$error_off = "</span>";
-				} else {
-					$error_on  = "";
-					$error_off = "";
-				}
-				echo "<td><b>".$error_on."Email:".$error_off."</b></td>";
-				echo "<td>".$error_on."*".$error_off."</td>";
-				echo "<td><input size='50' name='enquiry[Email]' value='".$_SESSION['enquiry']['Email']."' type='text' /></td>";
-			echo "</tr>";
-			echo "<tr>";
+				echo "<td><span class='red-star'>*</span><b>".$error_on."Name:".$error_off."</b></td>";
 				if($error_field['Phone']) {
 					$error_on  = "<span class='error'>";
 					$error_off = "</span>";
@@ -212,9 +296,11 @@
 					$error_on  = "";
 					$error_off = "";
 				}
-				echo "<td><b>".$error_on."Phone:".$error_off."</b></td>";
-				echo "<td>".$error_on."*".$error_off."</td>";
-				echo "<td><input size='50' name='enquiry[Phone]' title='Please enter 10 digit phone number' type='text' maxlength='20' value='".$_SESSION['enquiry']['Phone']."' /></td>";
+				echo "<td><span class='red-star'>*</span><b>".$error_on."Contact Number:".$error_off."</b></td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td><input type='text' name='enquiry[Name]' value='".$_SESSION['enquiry']['Name']."' id='name' title='Enter Your Name' maxlength='100' /></td>";
+				echo "<td><input type='text' name='enquiry[Phone]' title='Please enter 10 digit phone number' type='text' maxlength='20' value='".$_SESSION['enquiry']['Phone']."' /></td>";
 			echo "</tr>";
 			echo "<tr>";
 				if($error_field['ABN']) {
@@ -224,28 +310,43 @@
 					$error_on  = "";
 					$error_off = "";
 				}
-				echo "<td><b>".$error_on."ABN:".$error_off."</b></td>";
-				echo "<td>".$error_on."*".$error_off."</td>";
-				echo "<td><input size='50' name='enquiry[ABN]' title='' type='text' maxlength='20' value='".$_SESSION['enquiry']['ABN']."' /></td>";
+				echo "<td colspan='2'><span class='red-star'>*</span><b>".$error_on."ABN:".$error_off."</b></td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td colspan='2'><input name='enquiry[ABN]' title='' type='text' maxlength='20' value='".$_SESSION['enquiry']['ABN']."' /></td>";
+			echo "</tr>";
+			echo "<tr>";
+				if($error_field['Email']) {
+					$error_on  = "<span class='error'>";
+					$error_off = "</span>";
+				} else {
+					$error_on  = "";
+					$error_off = "";
+				}
+				echo "<td colspan='2'><span class='red-star'>*</span><b>".$error_on."Email:".$error_off."</b></td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td colspan='2'><input name='enquiry[Email]' value='".$_SESSION['enquiry']['Email']."' type='text'/></td>";
 			echo "</tr>";
 			echo "<tr>";
 				echo "<td><b>Address:</b></td>";
-				echo "<td>&nbsp;</td>";
-				echo "<td><input size='50' type='text' name='enquiry[Address]' value='".$_SESSION['enquiry']['Address']."' /></td>";
 			echo "</tr>";
 			echo "<tr>";
-				echo "<td><b>Suburb:</b></td>";
-				echo "<td>&nbsp;</td>";
-				echo "<td><input size='50' type='text' name='enquiry[Suburb]' value='".$_SESSION['enquiry']['Suburb']."' /></td>";
+				// echo "<td>&nbsp;</td>";
+				echo "<td colspan='2'><input type='text' name='enquiry[Address]' value='".$_SESSION['enquiry']['Address']."' /><span class='contact-sub-des'>Street Address</span></td>";
 			echo "</tr>";
 			echo "<tr>";
-				echo "<td><b>Postcode:</b></td>";
-				echo "<td>&nbsp;</td>";
-				echo "<td><input size='50' type='text' name='enquiry[Postcode]' value='".$_SESSION['enquiry']['Postcode']."' /></td>";
+				// echo "<td><b>Suburb:</b></td>";
+				// echo "<td>&nbsp;</td>";
+				echo "<td><input type='text' name='enquiry[Suburb]' value='".$_SESSION['enquiry']['Suburb']."' /><span class='contact-sub-des'>Suburb</span></td>";
+
+				// echo "<td><b>Postcode:</b></td>";
+				// echo "<td>&nbsp;</td>";
+				echo "<td><input type='text' name='enquiry[Postcode]' value='".$_SESSION['enquiry']['Postcode']."' /><span class='contact-sub-des'>Postcode</span></td>";
 			echo "</tr>";
 			echo "<tr>";
-				echo "<td><b>State:</b><br /></td>";
-				echo "<td>&nbsp;</td>";
+				// echo "<td><b>State:</b><br /></td>";
+				// echo "<td>&nbsp;</td>";
 				echo "<td>";
 					echo "<select name='enquiry[State]'>";
 						echo "<option selected='selected'>Victoria</option>";
@@ -258,11 +359,11 @@
 						echo "<option>Tasmania</option>";
 						echo "<option>International Enquiry</option>";
 					echo "</select>";
-				echo "</td>";
+				echo "<span class='contact-sub-des'>State</span></td>";
 			echo "</tr>";
-			echo "<tr>";
-				echo "<td>&nbsp;</td>";
-			echo "</tr>";
+			// echo "<tr>";
+			// 	echo "<td>&nbsp;</td>";
+			// echo "</tr>";
 			echo "<tr>";
 				if($error_field['Description']) {
 					$error_on  = "<span class='error'>";
@@ -271,32 +372,33 @@
 					$error_on  = "";
 					$error_off = "";
 				}
-				echo "<td><b>".$error_on."Comments:".$error_off."</b></td>";
-				echo "<td>".$error_on."*".$error_off."</td>";
-				echo "<td><textarea cols='38' rows='5' name='enquiry[Description]'>".$_SESSION['enquiry']['Description']."</textarea></td>";
+				echo "<td><span class='red-star'>*</span><b>".$error_on."Comments:".$error_off."</b></td>";
+			echo "</tr><tr>";
+				// echo "<td>".$error_on."*".$error_off."</td>";
+				echo "<td colspan='2'><textarea cols='38' rows='5' name='enquiry[Description]'>".$_SESSION['enquiry']['Description']."</textarea></td>";
 			echo "</tr>";
 			echo "<tr>";
-				echo "<td colspan='2'>&nbsp;</td>";
+				echo "<td colspan='1'>&nbsp;</td>";
 			echo "</tr>";
 			echo "<tr>";
-				echo "<td align='center' colspan='3'>";
+				echo "<td align='center' colspan='2'>";
 				if ($button['contact']['continue']['image']) {
 					echo "<input type='image' src='".$site['url']['full']."images/".$button['contact']['continue']['image']."' name='button-continue' width='".$button['contact']['continue']['width']."' height='".$button['contact']['continue']['height']."'/> ";
 				} else {
-					echo "<input type='submit' name='Button' value='Continue' />";
+					echo "<button id='contact-submit' type='submit' name='Button' value='Continue'>Submit</button>";
 				}
 				echo "</td>";
 			echo "</tr>";
-			echo "<tr>";
-				if($error_field) {
-					$error_on  = "<strong><span class='error'>";
-					$error_off = "</span></strong>";
-				} else {
-					$error_on  = "";
-					$error_off = "";
-				}
-				echo "<td colspan='3'><br /><br />".$error_on."* Indicates mandatory fields".$error_off."</td>";
-			echo "</tr>";
+			// echo "<tr>";
+			// 	if($error_field) {
+			// 		$error_on  = "<strong><span class='error'>";
+			// 		$error_off = "</span></strong>";
+			// 	} else {
+			// 		$error_on  = "";
+			// 		$error_off = "";
+			// 	}
+			// 	echo "<td colspan='2'><br /><br />".$error_on."* Indicates mandatory fields".$error_off."</td>";
+			// echo "</tr>";
 		echo "</table>";
 
 		$_SESSION['contactMode'] == "Confirm";

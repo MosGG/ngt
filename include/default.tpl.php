@@ -30,7 +30,9 @@
 			echo "<![endif]-->";
 			echo "<script type='text/javascript' src='".$site['url']['full']."include/jquery-3.2.0.min.js'></script>";
 			// if (($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] != 'on')) {
-				 echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
+
+				echo "<script type='text/javascript' src='".$static['server']['inc']."acewebengine-v1.js'></script>";
+
 			// }
 			echo "<script type='text/javascript' src='".$site['url']['full']."images/tours/swfObject.js'></script>";
 			// echo "<script type='text/javascript' src='".$site['url']['full']."include/prototype.js'></script>";
@@ -46,13 +48,14 @@
 #################################################################################################
 # Body                                                                                          #
 #################################################################################################
-
 	echo "<body>";
 		echo "<div id='container'>";
 			echo "<div id='header-container' class='bgblue'>";
 				echo "<div id='header'>";
 				if (isset($_SESSION['membership'])){
-					echo "<div id='loginblock'><a class='hvr-underline-from-left' href='/become-a-member'><div id='shopping-bag' class='floatleft'></div>My Shopping Cart</a></div>";
+
+					echo "<div id='loginblock'><a class='hvr-underline-from-left' href='/order_cart'><div id='shopping-bag' class='floatleft'></div>My Shopping Cart</a>|<a class='hvr-underline-from-left' href='javascript:void(0);' onclick='formLogout();'>Log Out</a></div>";
+
 				} else {
 					echo "<div id='loginblock'><a class='hvr-underline-from-left' href='/become-a-member'>Register</a>|<a class='hvr-underline-from-left' href='http://www.newglobalmel.com.au/login'>Login</a></div>";
 				}
@@ -62,8 +65,10 @@
 						echo "<area shape='rect' coords='5, 29, 235, 100' href='".$site['url']['full']."' alt='".$site['company']['name']."' title='".$site['company']['name']."' />";
 					echo "</map>";
 					echo "<div id='menuh'><p>".$site['menu']['h']."</p></div><!-- menuh -->";
-					echo '<div id="our-product" class="blue">OUR PRODUCT</div>';
+					echo '<div id="our-product"><a href="/product"><span class="hvr-underline-from-left-blue blue">OUR PRODUCT</span></a></div>';
 					echo '<div id="after-out-product"></div>';
+					echo '<img id="search-icon" onclick="moveSearchDiv();" src="/images/new/search.png">';
+					echo '<form action="/searchresult" method="post" id="search-div"><input type="text" name="query" placeholder="Type your search here..."/></form>';
 				echo "</div><!-- header -->";
 				echo '	<img id="hand" src="/images/new/landing-hand.png" alt=""/>
 						<img id="cloud-header-1" class="cloud-big" src="/images/new/landing-cloud.png" alt=""/>
@@ -79,35 +84,31 @@
 		echo "<div id='leftcontainer-bg'>";
 			echo "<div id='leftcontainer'>";
 				echo "<ul id='left-menu-top'>";
-				if (strstr($site['menu']['v'], "NEW ARRIVAL")) {
 					echo "<li class='";
-					if (strstr($_SERVER['REQUEST_URI'], "comming-soon")) {
+					if (strstr($_SERVER['REQUEST_URI'], "coming-soon")) {
 						echo "left-menu-selected'><a href='/product/coming-soon'><span class='hvr-underline-from-left'>New Arrival</span></a></li>";
 					} else {
 						echo "'><a href='/product/coming-soon'><span class='hvr-underline-from-left-orange'>New Arrival</span></a></li>";
 					}
-				}
-				if (strstr($site['menu']['v'], "SPECIAL")) {
 					echo "<li class='";
 					if (strstr($_SERVER['REQUEST_URI'], "specials")) {
 						echo " left-menu-selected'><a href='/product/specials'><span class='hvr-underline-from-left'>Special Offer</span></a></li>";
 					} else {
 						echo "'><a href='/product/specials'><span class='hvr-underline-from-left-orange'>Special Offer</span></a></li>";
 					}
-				}
 				echo "</ul>";
 				echo "<div id='left-menu-line'></div>";
 
 				echo "".$site['menu']['v']."";
 				//echo "<div id='facebook'><a href='http://www.facebook.com/NewGlobalTradingMelbourne' target='_blank'><img src='".$site['url']['full']."images/facebook.jpg' alt='Find us on Facebook link' title='Click to visit New Global Trading on Facebook' width='159' height='36' /></a></div>";
 			echo "</div> <!-- leftcontainer -->";
+			echo "<div style='width:10px;height:190px'></div>";
 		echo "</div>";
-		echo "<img id='left-cart' src='/images/new/left-cart.png'/>";
+
 #################################################################################################
 # Middle Container                                                                              #
 #################################################################################################
-
-			echo "<div id='middle'>";
+			echo "<div id='middle'>";;
 	if ($page['pageId'] != '1' && !$page['pageAdmin']) {
 					echo "<div id='pagetree'><p>".$page['tree']."</p></div>";
 	} else {
@@ -122,9 +123,10 @@
 			echo $page['subpage'];
 		}
 	}
-	if (isset($page['contactMessage'])) {
-		echo $page['contactMessage'];
-	}
+
+	// if (isset($page['contactMessage'])) { 
+		// echo $page['contactMessage']; 
+	// }
 
 			// echo "<div style='clear: both;'></div>";
 			echo "</div> <!-- middle -->";
@@ -134,6 +136,7 @@
 # Footer                                                                                        #
 #################################################################################################
 			echo "<div id='footer'>";
+			echo "<img id='left-cart' src='/images/new/left-cart.png'/>";
 				echo "<div id='footercont'>";
 				echo "<div id='footet-contact'>
 						<div><img src='/images/new/footer-tel.png'/><span>(03) 9563 2655</span></div>

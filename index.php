@@ -50,7 +50,7 @@
 	# Create Page Tree ($page['tree'])
 	#######################################################################
 
-	$page['tree'] = url_tree($_SESSION['page'], '//');
+	$page['tree'] = url_tree($_SESSION['page'], '>');
 
 	#######################################################################
 	# Create Page Subpage ($page['subpage'])
@@ -61,7 +61,7 @@
 	$path = url_path($_SESSION['page']);
 
 	if (isset($site['layoutParent'][$_SESSION['page']])) {
-		$page['subpage'] = "<table border='0' cellpadding='0' cellspacing='12'>";
+		$page['subpage'] = "<table id='subpage-tb' border='0' cellpadding='0' cellspacing='12'>";
 		$pointer = "0";
 		foreach($site['layoutParent'][$_SESSION['page']] as $key=>$data) {
 			$pointer ++;
@@ -73,14 +73,14 @@
 				} else {
 					$url = $site['url']['full'].$path."".$page['pageUrl'];
 				}
-
+				$site['layout'][$data]['pageMenu'] = strtolower($site['layout'][$data]['pageMenu']);
 				if ($page['pageUrl']) {$url .= "/";}
 				$url .= $key;
-				$page['subpage'] .=  "<td class='subpage'>";
-				$page['subpage'] .=   "<table border='0' width='150'>";
-				$page['subpage'] .=    "<tr><td valign='top' align='center'><a href='".$url."'><img src='".$site['url']['full'].image_display($site['path']['page']['thumb'], $site['layout'][$data]['pageId'])."' alt='".$site['layout'][$data]['pageMenu']."' /><br />".$site['layout'][$data]['pageMenu']."</a></td></tr>";
-				$page['subpage'] .=   "</table>";
-				$page['subpage'] .=  "</td>";
+				$page['subpage'] .= "<td class='subpage'>";
+				$page['subpage'] .= "<table border='0' width='150'>";
+				$page['subpage'] .= "<tr><td valign='top' align='center'><a href='".$url."'><img src='".$site['url']['full'].image_display($site['path']['page']['thumb'], $site['layout'][$data]['pageId'])."' alt='".$site['layout'][$data]['pageMenu']."' /><div>".$site['layout'][$data]['pageMenu']."</div></a></td></tr>";
+				$page['subpage'] .= "</table>";
+				$page['subpage'] .= "</td>";
 			}
 		}
 		$page['subpage'] .= "</tr></table>";
@@ -165,7 +165,7 @@
 				$class2 = "hvr-underline-from-left-blue";
 			}
 			if ($data['pageMenuV'] && $_SESSION['access'] > $data['pageMenuVAccess']) {
-				$site['menu']['v'] .= "<li class='".$class."'><a href='".$url."' title='".$data['pageMenu']."' $target><span class='".$class2."'>".$data['pageMenuV']."</span></a></li>\n";
+				$site['menu']['v'] .= "<li class='".$class."'><a href='".$url."' title='".$data['pageMenu']."' $target><span class='".$class2."'>".strtolower($data['pageMenuV'])."</span></a></li>\n";
 			}
 		}
 	}

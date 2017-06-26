@@ -18,7 +18,7 @@
 
 		echo "<div class='productdisplayouter'>";
 		echo "<div class='productdisplayinner'>";
-		echo "<div class='productdisplayclose'><a href='#' onClick='productwin.hide(); return false'>Close <span id='closex'>X</span></a></div>";
+		// echo "<div class='productdisplayclose'><a href='#' onClick='productwin.hide(); return false'>Close <span id='closex'>X</span></a></div>";
 
 		echo "<div class='productdisplayleft'>";
 			echo "<div class='productdisplaylarge'>";
@@ -28,45 +28,55 @@
 
 		echo "<div class='productdisplayright'>";
 			echo "<div class='productdisplaytitle'>";
-				echo "<span style='font-size: 12px;'>".$value['productPart']."</span>";
 				echo "<h1>".$value['productTitle']."</h1>";
+				echo "<span>".$value['productPart']."</span>";
+// var_dump($value);
+				$value['productCategory'] = "Out of Stock";
+			echo "</div>";
+			echo "<div class='productdisplaystock'>";
 				if ($value['productCategory'] == "Out of Stock") {
 					echo "<span class='productsold'>Out of Stock</span>";
-				}
-				if ($value['productCategory'] == "Coming Soon") {
+				} else if ($value['productCategory'] == "Coming Soon") {
 					echo "<span class='productsoon'>Coming Soon</span>";
+				} else {
+					echo "<span class='productstock'>Availability: ".$value['productStock']." In Stock</span>";
 				}
+				echo "<span class='cartnote'>Min Order qty: ".$value['productInner']."<br />Carton Qty: ".$value['productCarton']."</span>";
 			echo "</div>";
-			echo "<div class='productdisplaytext'>";
-				$value[productDescription] = str_replace("\r\n", "<br />", $value[productDescription]);
-				echo "<p>".$value['productDescription']."</p>";
-			echo "</div>";
+// $value['productDescription'] = "test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf est tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf est tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf est tes shf";
+$value['productPrice2'] = "3.75";
+			if (!empty($value['productDescription'])) {
+				echo "<div class='productdisplaytext'>";
+					echo "<span class='productdisplayDesTtl'>DESCRIPTION</span><br>";
+					$value['productDescription'] = str_replace("\r\n", "<br />", $value['productDescription']);
+					echo "<span id='productdisplaydes'>".$value['productDescription']."</span>";
+				echo "</div>";
+			}
 			echo "<div class='productdisplayprice'>";
+				if (!$_SESSION['membership'] && !$_SESSION['member']) {
+					echo "Login for Price";
+				} else if ($value['productPrice1'] == '0') {
+					echo "Call for Price";
+				} else {
+					if (($value['productPrice2'] !== null) && ($value['productPrice2'] !== 0)){
+						echo "<b style='color:#4A4A4A;padding-right:10px;text-decoration:line-through;'>$".number_format($value['productPrice2'], $site['template']['price']['decimal'])." ea</b>";
+					}
+					echo "<b>$".number_format($value['productPrice1'], $site['template']['price']['decimal'])." ea</b>";
+#					if ($m = getmin($value['productId'])) {
+#						echo "<br /><span class='cartnote'>Min Order: 1 ".$m."</span>";
+#					}
+					// echo "<br /><span class='cartnote'>Min Order qty: ".$value['productInner']."<br />Carton Qty: ".$value['productCarton']."</span>";
+
+				}
 				echo "<div class='productdisplaylink'>";
 					if ($value['productPrice1'] > 0 && ($value['productCategory'] != "Out of Stock" && $value['productCategory'] != "Coming Soon") && ($_SESSION['membership'] || $_SESSION['member'])) {
-						echo "<a href='".$site['url']['full']."order_cart/add/".$value['productId']."'>Add to Cart</a>";
+						echo "<a href='".$site['url']['full']."order_cart/add/".$value['productId']."'><img src='/images/new/shopping-bag.png'>Add to Cart</a>";
 					} else if (!$_SESSION['membership'] && !$_SESSION['member']) {
 						echo "<a href='".$site['url']['full']."login/'>Login</a>";
 					} else {
 						echo "<a href='".$site['url']['full']."contact/?description=".$value['productTitle']." - Stock Item ".$value['productPart']."'>Contact Us</a>";
 					}
 				echo "</div>";
-				if (!$_SESSION['membership'] && !$_SESSION['member']) {
-					echo "Login for Price";
-				} else if ($value['productPrice1'] == '0') {
-					echo "Call for Price";
-				} else {
-					echo "<b>$".number_format($value['productPrice1'], $site['template']['price']['decimal'])."</b>";
-					if (($value['productPrice2'] !== null) && ($value['productPrice2'] !== 0)){
-						echo "<b style='padding-left:10px;text-decoration:line-through;'>WAS $".number_format($value['productPrice2'], $site['template']['price']['decimal'])."</b>";
-					}
-					
-#					if ($m = getmin($value['productId'])) {
-#						echo "<br /><span class='cartnote'>Min Order: 1 ".$m."</span>";
-#					}
-					echo "<br /><span class='cartnote'>Min Order qty: ".$value['productInner']."<br />Carton Qty: ".$value['productCarton']."</span>";
-
-				}
 			echo "</div>";
 			if (count($image_array) > '1') {
 				echo "<div class='productdisplayimages'>";

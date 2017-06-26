@@ -22,7 +22,7 @@
 #	$button['contact']['edit']['width']      = '111';
 #	$button['contact']['edit']['height']     = '20';
 
-	$ContactMessage = "<p>For further information or enquiries please contact <b>".$site['company']['name'].".</b></p>";
+	$ContactMessage = "<p>For further information or enquiries please contact <b>".$site['company']['name']."</b> or <b>Submit</b> your details below and we will contact you promptly</p>";
 
 	$ContactRecommendImage = "recommend.png";
 	

@@ -1,4 +1,3 @@
-
 <?php
 $query = "  6/      ";
 if($query == Null || ctype_space($query)){
@@ -71,7 +70,7 @@ function createsql($array,$database){
         echo " <div>MIN ORDER QTY: ".$result[$i]['productInner']."</div>";
         echo " <div>CARTON QTY: ".$result[$i]['productCarton']."</div>";
         echo "</td>";
-        
+
         if($i%4==0){
           echo "</tr>";
           echo "<tr>";

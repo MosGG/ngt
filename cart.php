@@ -29,13 +29,14 @@
 #	$message['thankyou'] = "<p>Your order is complete. An email will be sent with your order details.</p><p>You will be contacted soon to be advised of freight costing.</p><br />";
 
 	$productlink = "";
-	$message['empty'] = '<p>The Order Cart is currently empty.</p><p>Please take a look at our '.content_converter("[page|products|Products]").'.</p><p>To add an item to the Order Cart, just click on the "Add to Cart" button.</p>';
+	$message['empty'] = '<p>The Order Cart is currently empty.</p><p>Please take a look at our <a style="position:relative;top:-2px;" class="hvr-underline-from-left-blue" href="/product">Products</a>.</p><p>To add an item to the Order Cart, just click on the "Add to Cart" button.</p>';
+
 
 	$display['cart']['part']['heading']     = 'Item No.';
-	$display['cart']['title']['heading']    = 'Title';
-	$display['cart']['price']['heading']    = 'Price';
-	$display['cart']['quantity']['heading'] = 'Quantity';
-	$display['cart']['subPrice']['heading'] = 'Subtotal';
+	$display['cart']['title']['heading']    = '&nbsp;PRODUCT';
+	$display['cart']['price']['heading']    = 'PRICE';
+	$display['cart']['quantity']['heading'] = 'QTY';
+	$display['cart']['subPrice']['heading'] = 'TOTAL PRICE';
 
 #	$button['cart']['update']['image']      = 'update.jpg';
 #	$button['cart']['update']['width']      = '111';
