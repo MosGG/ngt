@@ -228,6 +228,10 @@
 					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
 					echo "<td><b>".$site['company']['address']."</b></td>";
 				echo "</tr>";
+				echo "<tr>";
+					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
+					echo "<td><b>6/25-33 Alfred Rd, Chipping Norton, NSW 2170</b></td>";
+				echo "</tr>";
 			}
 			if ($contact['mapref']) {
 				echo "<tr>";
