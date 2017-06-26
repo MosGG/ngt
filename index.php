@@ -73,14 +73,14 @@
 				} else {
 					$url = $site['url']['full'].$path."".$page['pageUrl'];
 				}
-
+				$site['layout'][$data]['pageMenu'] = strtolower($site['layout'][$data]['pageMenu']);
 				if ($page['pageUrl']) {$url .= "/";}
 				$url .= $key;
-				$page['subpage'] .=  "<td class='subpage'>";
-				$page['subpage'] .=   "<table border='0' width='150'>";
-				$page['subpage'] .=    "<tr><td valign='top' align='center'><a href='".$url."'><img src='".$site['url']['full'].image_display($site['path']['page']['thumb'], $site['layout'][$data]['pageId'])."' alt='".$site['layout'][$data]['pageMenu']."' /><div>".$site['layout'][$data]['pageMenu']."</div></a></td></tr>";
-				$page['subpage'] .=   "</table>";
-				$page['subpage'] .=  "</td>";
+				$page['subpage'] .= "<td class='subpage'>";
+				$page['subpage'] .= "<table border='0' width='150'>";
+				$page['subpage'] .= "<tr><td valign='top' align='center'><a href='".$url."'><img src='".$site['url']['full'].image_display($site['path']['page']['thumb'], $site['layout'][$data]['pageId'])."' alt='".$site['layout'][$data]['pageMenu']."' /><div>".$site['layout'][$data]['pageMenu']."</div></a></td></tr>";
+				$page['subpage'] .= "</table>";
+				$page['subpage'] .= "</td>";
 			}
 		}
 		$page['subpage'] .= "</tr></table>";

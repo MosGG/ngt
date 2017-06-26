@@ -477,6 +477,33 @@
 	overflow: hidden;
 	padding:10px;
 }
+.productdisplaystock{
+	border-top: 1px solid #4A4A4A;
+	border-bottom: 1px solid #4A4A4A;
+	padding:10px 0;
+}
+.productstock{
+	font-weight: lighter;
+	font-size: 12px;
+	line-height: 36px;
+}
+.productdisplayDesTtl{
+	color:#4A4A4A;
+	line-height: 18px;
+	font-size:12px;
+}
+.productdisplaylink>a>img{
+	padding-right:10px;
+}
+#productdisplaydes{
+	max-height: 200px;
+	text-overflow: ellipsis;
+	overflow: auto;
+	display: block;
+}
+#productwin > div.drag-handle > div > img:nth-child(1){
+	display:none;
+}
 @media(max-width:1439px){
 	#hand{
 		width:45px;

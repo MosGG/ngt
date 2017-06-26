@@ -30,18 +30,18 @@
 
 .dhtmlwindow {
 	position: absolute;
-	border: 1px solid #757575;
+	border: 1px solid #4A4A4A;
 	visibility: hidden;
-	background-color: white;
+	background-color: #EFEFEF;
 	z-index: 10;
 }
 
 .drag-handle { /*CSS for Drag Handle*/
 	padding: 1px;
-	text-indent: 3px;
-	font: bold 14px arial, helvetica, sans-serif;
+	/*text-indent: 3px;*/
+	/*font: bold 14px arial, helvetica, sans-serif;*/
 	/*background: url(../images/popupbar.png) repeat;*/
-	color: white;
+	color: #EFEFEF;
 	cursor: move;
 	overflow: hidden;
 	width: auto;
@@ -68,10 +68,10 @@
 
 .drag-contentarea { /*CSS for Content Display Area div*/
 	/*border-top: 1px solid #454545;*/
-	background-color: white;
-	color: black;
-	height: 150px;
-	padding: 35px 65px 65px 65px;
+	/*background-color: white;*/
+	color: #4A4A4A;
+	/*height: 150px;*/
+	padding: 35px 65px 45px 65px;
 	overflow: auto;
 }
 

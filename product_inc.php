@@ -1,7 +1,20 @@
 <script type="text/javascript">
 	function openproduct(productid, imageid, productTitle){ //Product Window
-		productwin=dhtmlwindow.open('productwin', 'ajax', '<?php echo $site['url']['full']."product_display.php?id="; ?>'+productid+'&image='+imageid, productTitle,'width=705px,height=460px,left=100px,top=20px,resize=1,scrolling=1')
+		productwin=dhtmlwindow.open('productwin', 'ajax', '<?php echo $site['url']['full']."product_display.php?id="; ?>'+productid+'&image='+imageid, productTitle,'width=auto,height=auto,resize=1,scrolling=1');
 	}
+
+	function putMiddle(){
+		var windowWidth = 822;
+		var screenWidth = document.body.clientWidth;
+		console.log(windowWidth + "/" + screenWidth);
+		var left = 0.5 * (screenWidth - windowWidth);
+		var windowHeight = 562;
+		var screenHeight = document.body.clientHeight;
+		var top = 0.5 * (screenHeight - windowHeight);
+		console.log(windowHeight + "/" + screenHeight);
+		document.getElementById("productwin").style.top = top + "px";
+		document.getElementById("productwin").style.left = left + "px";
+	};
 </script>
 <?php
 #	echo content_converter($page['pageText']);

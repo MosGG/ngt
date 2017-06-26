@@ -13,11 +13,11 @@ function product_template($line, $image) {
 			$class = 'odd';
 		}
 		echo "<div class='productitem ".$class."'>\n";
-		echo "<div class='productimage'><a href='#' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); return false\"><img src='".$site['url']['full'].image_display($site['path']['product']['thumb'], $image['0']['productImageFile'])."' border='0' alt='".$line['productTitle']."' title='".$line['productTitle']."'>&nbsp;</a></div>\n";
+		echo "<div class='productimage'><a href='#' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); putMiddle(); return false\"><img src='".$site['url']['full'].image_display($site['path']['product']['thumb'], $image['0']['productImageFile'])."' border='0' alt='".$line['productTitle']."' title='".$line['productTitle']."'>&nbsp;</a></div>\n";
 		echo "<div class='producttitle'>";
 		$text = breaktext($line['productTitle'], 40);
 		$text['text'] = "<span style='font-size: 10px;'>".$line['productPart']." (".$line['productStock']." Available)</span><br />".$text['text'];
-		echo "<a href='#' class='line".$text['lines']."' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); return false\">";
+		echo "<a href='#' class='line".$text['lines']."' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); putMiddle(); return false\">";
 		echo $text['text'];
 			if ($line['productCategory'] == "Out of Stock") {
 				echo "<span class='sold'><b>Out of Stock</b></span>";
