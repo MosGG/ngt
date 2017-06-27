@@ -34,8 +34,7 @@
 	}
 
 	if ($sqlcount) {
-		echo "<div id='product'>";
-		echo "<form action='".$site['url']['actual']."' method='post'>";
+		
 		$sql  = "SELECT * FROM ".$site['database']['product-link'].", ".$site['database']['product']." ";
 		$sql .= "WHERE `product-linkPage` = '".$page['pageId']."' AND `productId` = `product-linkProduct` AND `productPrice1` > '0'";
 #		$sql .= "ORDER BY `productPart` DESC, `productTitle` ASC";
@@ -43,29 +42,112 @@
 
 		$result = sql_exec($sql);
 		$pointer = "0";
+
+		$prodList = array();
 		while ($line = $result->fetch_assoc()) {
-			$image_array = array();
-			$sql  = "SELECT * FROM ".$site['database']['product-image']." WHERE `productImageProduct` = '".$line['productId']."' ORDER BY `productImageOrder`, `productImageId`, `productImageTitle`";
-			$resultimage = sql_exec($sql);
-			while ($image = $resultimage->fetch_assoc()) {
-				$image_array[] = $image;
+			if ($line['productCategory'] !== 'In Stock' || $line['productStock'] > '0') {
+				$prodList[] = $line;
 			}
-			if ($site['database']['product-pdf']) {
-				$pdf_array = array();
-				$sql  = "SELECT * FROM ".$site['database']['product-pdf']." WHERE `productPdfProduct` = '".$line['productId']."' ORDER BY `productPdfOrder`, `productPdfDescription`";
-				$resultpdf = sql_exec($sql);
-				while ($pdf = $resultpdf->fetch_assoc()) {
-					$pdf_array[] = $pdf;
+		}
+		
+		if (count($prodList) > 0) {
+			//logic and html for slice page
+			$itemsPerPage = 8;
+			$offset = 0;
+			$allPages = (int)Floor(count($prodList) / $itemsPerPage) + 1;
+			$num = 1;
+
+			if (!empty($_SERVER['QUERY_STRING'])){
+				$query = substr($_SERVER['QUERY_STRING'], 0, 5);
+				if ($query == 'page=') {
+					$num = substr($_SERVER['QUERY_STRING'], 5);
+					if ((int)($num) < 1){
+						$num = 1;
+					}
 				}
-				product_template($line, $image_array, $pdf_array);
 			}
+			$prod = array_slice($prodList, ($num - 1) * $itemsPerPage, $itemsPerPage);
 
-			if (!$site['database']['product-pdf']) {
-				product_template($line, $image_array);
+			echo "<div id='product'>";
+			if ($allPages > 1) {
+				echo "<div id='layPage' class='laypage'></div>";
 			}
+			//echo product list
+			
+			echo "<form action='".$site['url']['actual']."' method='post'>";
+			foreach($prod as $line) {
+				$image_array = array();
+				$sql  = "SELECT * FROM ".$site['database']['product-image']." WHERE `productImageProduct` = '".$line['productId']."' ORDER BY `productImageOrder`, `productImageId`, `productImageTitle`";
+				$resultimage = sql_exec($sql);
+				while ($image = $resultimage->fetch_assoc()) {
+					$image_array[] = $image;
+				}
 
-		} # (while-$line)
-		echo "</form>";
-		echo "</div> <!-- product -->";
+				if ($site['database']['product-pdf']) {
+					$pdf_array = array();
+					$sql  = "SELECT * FROM ".$site['database']['product-pdf']." WHERE `productPdfProduct` = '".$line['productId']."' ORDER BY `productPdfOrder`, `productPdfDescription`";
+					$resultpdf = sql_exec($sql);
+					while ($pdf = $resultpdf->fetch_assoc()) {
+						$pdf_array[] = $pdf;
+					}
+					product_template($line, $image_array, $pdf_array);
+				}
+
+				if (!$site['database']['product-pdf']) {
+					product_template($line, $image_array);
+				}
+
+			} # (while-$line)
+			echo "</form>";
+			if ($allPages > 1) {
+				echo "<div id='layPage2' class='laypage'></div>";
+				?>
+				<script type="text/javascript" src="/include/laypage/laypage.js"></script>
+				<script type="text/javascript">
+					laypage({
+					  	cont: 'layPage',
+						skin: '#4A4A4A',
+						groups: 5,
+						prev: "<img src='/images/new/prev.png'>", //若不显示，设置false即可
+					  	next: "<img src='/images/new/next.png'>",//若不显示，设置false即可
+					  	first: '1',
+						last: <?php echo $allPages; ?>,
+						pages: <?php echo $allPages; ?>, //可以叫服务端把总页数放在某一个隐藏域，再获取。假设我们获取到的是18
+						curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取
+							var page = location.search.match(/page=(\d+)/);
+						    return page ? page[1] : 1;
+					  	}(), 
+						jump: function(e, first){ //触发分页后的回调
+						    if(!first){ //一定要加此判断，否则初始时会无限刷新
+							    location.href = '?page='+e.curr;
+						    }
+						}
+					});
+
+					laypage({
+					  	cont: 'layPage2',
+						skin: '#4A4A4A',
+						groups: 5,
+						prev: "<img src='/images/new/prev.png'>", //若不显示，设置false即可
+					  	next: "<img src='/images/new/next.png'>",//若不显示，设置false即可
+					  	first: '1',
+						last: <?php echo $allPages; ?>,
+						pages: <?php echo $allPages; ?>, //可以叫服务端把总页数放在某一个隐藏域，再获取。假设我们获取到的是18
+						curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取
+							var page = location.search.match(/page=(\d+)/);
+						    return page ? page[1] : 1;
+					  	}(), 
+						jump: function(e, first){ //触发分页后的回调
+						    if(!first){ //一定要加此判断，否则初始时会无限刷新
+							    location.href = '?page='+e.curr;
+						    }
+						}
+					});
+				</script>
+				<?php
+			}
+			echo "</div> <!-- product -->";
+		}
 	}
+
 ?>

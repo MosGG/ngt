@@ -88,7 +88,27 @@
 	z-index:10;
 	font-size: 14px;
 }
-
+#contact-confirm td{
+	padding: 10px;
+}
+#contact-confirm input[type='submit']{
+    display: inline-block;
+    width: 114px;
+    height: 44px;
+    background-color: #EFEFEF;
+    border: 2px solid #4ABDAC;
+    /*line-height: 27px;*/
+    color: #4ABDAC;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+#contact-confirm input[type='submit']:hover{
+	color:#fff;
+	background-color: #4ABDAC;
+}
 </style>
 <?php
 	##############################################################################################################
@@ -189,69 +209,69 @@
 			}
 			if ($contact['manager']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>".$site['company']['managerT'].":</td>";
+					echo "<td colspan='2' class='contactheading'>".$site['company']['managerT'].":</td>";
 					echo "<td><b>".$site['company']['manager']."</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['hours']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>Business Hours:</td>";
+					echo "<td colspan='2' class='contactheading'>Business Hours:</td>";
 					echo "<td><b>".$site['company']['hours']."</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['mobile']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>Mobile:</td>";
+					echo "<td colspan='2' class='contactheading'>Mobile:</td>";
 					echo "<td><b>".$site['company']['mobile']."</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['phone']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-tel.png'></td>";
+					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-tel.png'></td>";
 					echo "<td><b>".$site['company']['phone']."</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['fax']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-fax.png'></td>";
+					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-fax.png'></td>";
 					echo "<td><b>".$site['company']['fax']."</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['postal']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>Mail:</td>";
+					echo "<td colspan='2' class='contactheading'>Mail:</td>";
 					echo "<td><b>".$site['company']['postal']."</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['address']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
+					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
 					echo "<td><b>".$site['company']['address']."</b></td>";
 				echo "</tr>";
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
+					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
 					echo "<td><b>6/25-33 Alfred Rd, Chipping Norton, NSW 2170</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['mapref']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'>Map Reference:</td>";
+					echo "<td colspan='2' class='contactheading'>Map Reference:</td>";
 					echo "<td><b>".$site['company']['mapref']."</b></td>";
 				echo "</tr>";
 			}
 			if ($contact['email']) {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-email.png'></td>";
+					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-email.png'></td>";
 					echo "<td><b>".encrypt_email($site['company']['email']['to'], $site['company']['email']['to'], $site['company']['name']." Enquiry")."</b></td>";
 				echo "</tr>";
 			}
 			echo "<tr>";
-				echo "<td valign='top' colspan='2' class='contactheading'><img src='/images/new/footer-website.png'></td>";
+				echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-website.png'></td>";
 				echo "<td><b><a href='/'>www.newglobalmel.com.au</a></b></td>";
 			echo "</tr>";
 			if ($site['company']['email']['enabled'] != "y") {
 				echo "<tr>";
-					echo "<td valign='top' colspan='2'></td>";
+					echo "<td colspan='2'></td>";
 					echo "<td><b>DISABLED</b></td>";
 				echo "</tr>";
 			}
@@ -419,16 +439,16 @@
 
 	if ($_SESSION['contactMode'] == "Confirm") {
 
-		echo "<table border='0' cellpadding='5' cellspacing='0' align='center'>";
+		echo "<table id='contact-confirm' border='0' cellpadding='5' cellspacing='0' align='center'>";
 			echo "<tr>";
-				echo "<td colspan='2'>";
+				echo "<td colspan='2' style='border-bottom:1px solid #979797;'>";
 					echo "<h2>";
 						echo "Are the details correct? &nbsp;&nbsp;&nbsp;";
-						if ($button['contact']['edit']['image']) {
-							echo "<input type='image' src='".$site['url']['full']."images/".$button['contact']['edit']['image']."' name='button-edit' width='".$button['contact']['edit']['width']."' height='".$button['contact']['edit']['height']."'/> ";
-						} else {
-							echo "<input type='submit' name='Back' value='Edit Details' size='10' />";
-						}
+						// if ($button['contact']['edit']['image']) {
+						// 	echo "<input type='image' src='".$site['url']['full']."images/".$button['contact']['edit']['image']."' name='button-edit' width='".$button['contact']['edit']['width']."' height='".$button['contact']['edit']['height']."'/> ";
+						// } else {
+						// 	echo "<input type='submit' name='Back' value='Edit Details' size='10' />";
+						// }
 					echo "</h2>";
 				echo "</td>";
 			echo "</tr>";
@@ -480,34 +500,23 @@
 					echo "<td>".$_SESSION['enquiry']['State']."</td>";
 				echo "</tr>";
 			}
-			echo "<tr>";
-				echo "<td colspan='2'>&nbsp;</td>";
-			echo "</tr>";
 			if ($_SESSION['enquiry']['Description']) {
 				echo "<tr>";
-					echo "<td valign='top'><b>Comments:</b></td>";
-					echo "<td>";
-					echo "<table width='300' cellpadding='0' cellspacing='0'>";
-						echo "<tr>";
+					echo "<td><b>Comments:</b></td>";
+					// echo "<td>";
+					// echo "<table width='300' cellpadding='0' cellspacing='0'>";
+					// 	echo "<tr>";
 							echo "<td>".$_SESSION['enquiry']['Description']."</td>";
-						echo "</tr>";
-					echo "</table>";
-					echo "</td>";
+					// 	echo "</tr>";
+					// echo "</table>";
+					// echo "</td>";
 				echo "</tr>";
 			}
 			echo "<tr>";
-				echo "<td colspan='2'>&nbsp;</td>";
-			echo "</tr>";
-			echo "<tr>";
-				echo "<td colspan='2' align='center'>";
-					if ($button['contact']['submit']['image']) {
-						echo "<input type='image' src='".$site['url']['full']."images/".$button['contact']['submit']['image']."' name='button-submit' width='".$button['contact']['submit']['width']."' height='".$button['contact']['submit']['height']."'/> ";
-					} else {
-						echo "<input type='submit' name='Button' value='Submit' />";
-					}
-				echo "</td>";
+				echo "<td align='center' colspan='2' style='border-top: 1px solid #979797;padding:20px;'><input type='submit' name='Back' value='Edit Details' size='10' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='submit' name='Button' value='Submit' /></td>";
 			echo "</tr>";
 		echo "</table>";
+
 
 	}
 

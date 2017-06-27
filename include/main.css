@@ -531,7 +531,7 @@ p {
 }
 
 .productitem {
-	height: 330px;
+	height: 335px;
 	width: calc(25% - 20px);
 	margin: 0 auto;
 	position: relative;
@@ -628,7 +628,7 @@ p {
 
 .productprice {
 	position: absolute;
-	bottom: 5px;
+	bottom: 0px;
 /*	left: 454px;
 	width: 140px;
 	height: 92px;
@@ -649,10 +649,10 @@ p {
 
 .productlink a:link, .productlink a:visited {
 	position: relative;
-	bottom: 30px;
+	bottom: 25px;
 	right:0px;
     color: #4ABDAC;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .productlink a:hover {
@@ -829,7 +829,7 @@ p {
 	font-size: 24px;
 	font-weight: bold;
 	/*text-transform: uppercase;*/
-	color: #FC4A1A;
+	color: #4A4A4A;
 	padding: 20px 0;
 	border-top: 1px solid #4A4A4A;
     margin-top: -1px;
@@ -1184,8 +1184,8 @@ p {
 /*	vertical-align: top;
 	padding: 5px 0;*/
 	background-color: #D8D8D8;
-	width:150px;
-	height:200px;
+/*	width:150px;
+	height:200px;*/
 	position: relative;
 
 }
