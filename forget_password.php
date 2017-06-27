@@ -1,59 +1,49 @@
+
 <?php
 if (isset($_POST['email'])) {
-$email = $_POST['email'];
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo("$email is not a valid email address");
-		exit();
-} else {
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "newg_hosting";
+		$email = $_POST['email'];
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+		if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$servername = "localhost";
+				$username = "root";
+				$password = "root";
+				$dbname = "newg_hosting";
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+				// Create connection
+				$conn = new mysqli($servername, $username, $password, $dbname);
 
-// prepare and bind
-$sql = "SELECT * FROM ".$site['database']['membership']." ";
-$sql .= "WHERE `mmemberEmail` = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email);
+				// Check connection
+				if ($conn->connect_error) {
+    			die("Connection failed: " . $conn->connect_error);
+				}
 
-if ($stmt->execute()) {
-  //  echo "New records ex successfully";
-} else {
-   echo $stmt->error;
-}
+				// prepare and bind
+				$sql = "SELECT * FROM ".$site['database']['membership']." ";
+				$sql .= "WHERE `mmemberEmail` = ?";
+				// echo $sql;
+				$stmt = $conn->prepare($sql);
+				$stmt->bind_param("s", $email);
 
-$result = $stmt->get_result();
-$members = $result->fetch_assoc();
+				if (!$stmt->execute()) {
+   			echo $stmt->error;
+				}
 
-$stmt->free_result();
+				$result = $stmt->get_result();
+				$members = $result->fetch_assoc();
 
-$stmt->close();
-$conn->close();
-}
-		if ($members == NULL){
-			echo " Your email is not registered.";
-		}else{
-		$name = $members["mmemberNameF"];
-		$useremail = $members["mmemberEmail"];
-		$password = $members["mmemberPassword"];
-		// ob_start();
-		// include 'reset_email.html';
-	  // $mail_html = ob_get_clean();
-		// echo var_dump($mail_html);
+				$stmt->free_result();
+
+				$stmt->close();
+				$conn->close();
+
+			if ($members != NULL){
+
+				$name = $members["mmemberNameF"];
+				$useremail = $members["mmemberEmail"];
+				$password = $members["mmemberPassword"];
 
 		$mail_html ="
 		<!doctype html>
-
-
-
 		<html>
 		<img src='/images/headernew.png' style='width:404px;height:108px;'>
 		<p>Hi ".$name."<br>
@@ -88,20 +78,55 @@ $conn->close();
 		// More headers
 		$headers .= 'From: sales@newglobalmel.com.au' . "\r\n";
 		mail($to,$subject,$mail_html,$headers);
-		echo "<p>Hi, ".$members["mmemberNameF"]."</p>";
-		echo "<p>Mail has been sent successfully.</p>";
+
+		// echo "<p style='font-size:18px'>Hi, ".$members["mmemberNameF"]."</p>";
+		echo "<h1 style='font-family:Montserrat;color:#4ABDAC;text-align:center;font-size:70px'>SUCCESSFUL!</h1>";
+		echo "<p style='font-size:18px'>Your password has been sent to your email successfully.</p>";
 	}
-} else{
+else{
+	echo "<div id='wholesaler' style='height:440px'>";
+	echo "<a href='/forget-password'><div class='login-tab login-tab-active'>Forget Password</div></a>";
+	echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
+	echo "<div style='padding-top: 152px' >";
+	echo "<div class='login-div'><img style='margin:0 11px 0 19px;' class='login-logo' src='/images/new/login-email.png'/>";
+	echo "<input type='text' id='fp-email' size='20' maxlength='50' placeholder='Enter Email Address'/><p style='position: absolute;
+    left: 120px;'>Your email is not registered</p></div>";
+	echo "<input type='submit' value='Submit' onclick='fpsubmit()'/>";
+	echo "</div>";
+	echo "</div>";
+
+}
+}
+else{
+	echo "<div id='wholesaler' style='height:440px'>";
+	echo "<a href='/forget-password'><div class='login-tab login-tab-active'>Forget Password</div></a>";
+	echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
+	echo "<div style='padding-top: 152px' >";
+	echo "<div class='login-div'><img style='margin:0 11px 0 19px;' class='login-logo' src='/images/new/login-email.png'/>";
+	echo "<input type='text' id='fp-email' size='20' maxlength='50' placeholder='Enter Email Address'/><p style='position: absolute;
+    left: 120px;'>This is invalid email</p></div>";
+	echo "<input type='submit' value='Submit' onclick='fpsubmit()'/>";
+	echo "</div>";
+	echo "</div>";
+}
+}
+else{
+	echo "<div id='wholesaler' style='height:440px'>";
+	echo "<a href='/forget-password'><div class='login-tab login-tab-active'>Forget Password</div></a>";
+	echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
+	echo "<div style='padding-top: 152px' >";
+	echo "<div class='login-div'><img style='margin:0 11px 0 19px;' class='login-logo' src='/images/new/login-email.png'/>";
+	echo "<input type='text' id='fp-email' size='20' maxlength='50' placeholder='Enter Email Address'/></div>";
+	echo "<input type='submit' value='Submit' onclick='fpsubmit()'/>";
+	echo "</div>";
+}
+
 ?>
 
-<div id="email_input">
-<p>Please input your email address:</p>
-<input type="email" id="fp-email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required /><br>
-<input type="button" id="fp-submit" value="Submit" onclick="fpsubmit()"/>
-</div>
-<?php } ?>
+
 <!-- <script type='text/javascript' src='include/jquery-3.2.0.min.js'></script> -->
 <script>
+
 
 function fpsubmit(){
 	post('/forget-password', {email: document.getElementById('fp-email').value});
