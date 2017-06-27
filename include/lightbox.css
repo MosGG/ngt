@@ -29,7 +29,7 @@
 #overlay { position: absolute; top: 0; left: 0; z-index: 90; width: 100%; height: 500px; background-color: #000; filter:progid:DXImageTransform.Microsoft.alpha(opacity=80); opacity: 0.8; }
 
 .dhtmlwindow {
-	position: absolute;
+	position: fixed;
 	border: 1px solid #4A4A4A;
 	visibility: hidden;
 	background-color: #EFEFEF;

@@ -514,7 +514,7 @@
 			if ($button['cart']['checkout']['image']) {
 				echo "<input type='image' src='".$site['url']['full']."images/".$button['cart']['checkout']['image']."' name='button-checkout' width='".$button['cart']['checkout']['width']."' height='".$button['cart']['checkout']['height']."'/> \n";
 			} else {
-				echo "<div><img id='checkout-lock' src='/images/new/checkout-lock.png'><input id='shopping-checkout' type='submit' name='button' value='Checkout' /></div> \n";
+				echo "<div><button id='shopping-checkout' type='submit' name='button' value='Checkout'><img id='checkout-lock' src='/images/new/checkout-lock.png'>&nbsp;&nbsp;Checkout</button></div> \n";
 			}
 
 			echo "</div>\n";

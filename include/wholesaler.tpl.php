@@ -106,26 +106,12 @@
 			echo "<div class='login-tab login-tab-active'>Login</div>";
 			echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
 			echo "<form style='padding-top: 152px' action='".$_SERVER['REQUEST_URI']."' method='post'>\n";
-			// echo "<table cellspacing='5' summary=''>\n";
-			// echo "\t<tr>\n";
-			// echo "\t\t<th>Email Address:</th>\n";
-			// echo "\t</tr>\n";
-			// echo "\t<tr>\n";
 			echo "<div class='login-div'><img style='margin:0 11px 0 19px;' class='login-logo' src='/images/new/login-email.png'/>
 			<input type='text' name='login' size='20' maxlength='50' placeholder='Email Address'/></div>";
-			// echo "\t</tr>\n";
-			// echo "\t<tr>\n";
-			// echo "\t\t<th>Password:</th>\n";
-			// echo "\t</tr>\n";
-			// echo "\t<tr>\n";
 			echo "<div class='login-div'><img style='margin:0 13px 0 21px;' class='login-logo' src='/images/new/login-password.png'/>
 			<input id='input-password' type='password' name='password' size='20' maxlength='50' placeholder='Password'/>
 			<img id='login-eye' src='/images/new/login-eye.png' onclick='passwordeye()'/></div>";
-			// echo "\t</tr>\n";
-			// echo "\t<tr>\n";
 			echo "<input type='submit' name='button-login' value='Sign In' />";
-			// echo "\t</tr>\n";
-			// echo "</table>\n";
 			echo "</form>\n";
 			echo "<div id='forget-password'><a href='".$site['url']['full']."forget-password'>Forgot your passowrd ?</a></div>";
 		echo "</div>\n";

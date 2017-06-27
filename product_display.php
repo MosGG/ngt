@@ -15,7 +15,7 @@
 		while ($line = $result->fetch_assoc()) {
 			$image_array[] = $line;
 		}
-
+	
 		echo "<div class='productdisplayouter'>";
 		echo "<div class='productdisplayinner'>";
 		// echo "<div class='productdisplayclose'><a href='#' onClick='productwin.hide(); return false'>Close <span id='closex'>X</span></a></div>";
@@ -30,8 +30,7 @@
 			echo "<div class='productdisplaytitle'>";
 				echo "<h1>".$value['productTitle']."</h1>";
 				echo "<span>".$value['productPart']."</span>";
-// var_dump($value);
-				$value['productCategory'] = "Out of Stock";
+// $value['productCategory'] = "Out of Stock";
 			echo "</div>";
 			echo "<div class='productdisplaystock'>";
 				if ($value['productCategory'] == "Out of Stock") {
@@ -43,8 +42,6 @@
 				}
 				echo "<span class='cartnote'>Min Order qty: ".$value['productInner']."<br />Carton Qty: ".$value['productCarton']."</span>";
 			echo "</div>";
-// $value['productDescription'] = "test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf est tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf est tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf test tes shfaldkjsh kljasdb mznbvlauielkj fvasdfasf est tes shf";
-$value['productPrice2'] = "3.75";
 			if (!empty($value['productDescription'])) {
 				echo "<div class='productdisplaytext'>";
 					echo "<span class='productdisplayDesTtl'>DESCRIPTION</span><br>";
