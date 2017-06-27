@@ -564,7 +564,7 @@
 
 		## Thank You Message ##
 		echo "<div class='contactThankyou'>";
-			echo "<p>Thank you ".$_SESSION['enquiry']['Name'].",</p>";
+			echo "<p style='font-size:72px;color:#4ABDAC;font-weight:bold;'>THANK YOU!</p>";
 			echo "<p>Your enquiry has been sent to ".$site['company']['name'].".</p>";
 			echo "<p>You will be contacted shortly.</p>";
 		echo "</div>";

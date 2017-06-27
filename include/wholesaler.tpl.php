@@ -120,7 +120,7 @@
 		// 	"<p>Forget password? <a href='".$site['url']['full']."forget-password'>Click here</a>.</p>".
 		// 	"</div>";
 	} else {
-		echo "<p class='notification-p'>Welcome ".$_SESSION['membership']['mmemberNameF'].$_SESSION['membership']['mmemberName'].",<br />Feel free to browse through our <a  class='hvr-underline-from-left-blue' href='".$site['url']['full']."product'>product range</a>.</p>";
+		echo "<p class='notification-p' style='color:#4ABDAC;font-size:24px;font-weight:bold;'>Welcome ".$_SESSION['membership']['mmemberNameF'].$_SESSION['membership']['mmemberName'].",</p><p class='notification-p'>Feel free to browse through our <a  class='hvr-underline-from-left-blue' href='".$site['url']['full']."product'>product range</a>.</p>";
 		echo "<form action='".$site['url']['actual']."' method='post'>";
 		// echo "<input class='logout' name='logout' type='submit' value='Logout' />\n";
 		echo "</form>";
