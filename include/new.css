@@ -179,7 +179,7 @@
 	left:39%;
 }
 #header-logo{
-	top:calc(50% - 71px); 
+	top:calc(50% - 71px);
 	left:30px;
 	z-index:99;
 }
@@ -238,6 +238,24 @@
 	cursor: pointer;
 	z-index: 15;
 }
+
+#box{
+  position: absolute;
+  bottom: -21px;
+  left: 371px;
+  cursor: pointer;
+  background-color: #4A4A4A;
+  width:47px;
+  height:47px;
+}
+
+#search-icon2{
+	position:relative;
+  left:12px;
+  top:12px;
+
+}
+
 #search-div{
 	transition: all .5s ease-in-out;
 	position:absolute;
@@ -262,6 +280,58 @@
 #search-div input::-webkit-input-placeholder{
 	color:#fff;
 	letter-spacing: 1.5px;
+}
+
+#we_are_sorry{
+  font-family: .AppleSystemUIFont;
+  font-size: 16px;
+  color: #FC4A1A;
+  letter-spacing: 0.11px;
+}
+
+#search_tip_content{
+  font-family: .AppleSystemUIFont;
+  font-size: 12px;
+  color: #4A4A4A;
+  letter-spacing: 0.09px;
+}
+
+#try_new_search{
+  position: relative;
+  bottom: -36px;
+  font-family: .AppleSystemUIFont;
+  font-size: 12px;
+  color: #4A4A4A;
+  letter-spacing: 0.09px;
+}
+
+
+#bottom_stuff{
+  position: absolute;
+  bottom: 990px;
+  width: inherit;
+}
+#search_tip_content li{
+  padding-bottom: 5px;
+}
+
+
+#forget-search input{
+  position: relative;
+  left: 49px;
+  bottom:-21px;
+  width:257px;
+	height:44px;
+	border-width: 1px;
+	border-color: #4A4A4A;
+  background-color: transparent;
+	font-family: Montserrat-Ultralight;
+	font-size: 14px;
+  padding-left: 10px;
+}
+
+#forget-search input::-webkit-input-placeholder{
+  color: #4A4A4A;
 }
 /* left container*/
 #leftcontainer-bg{
