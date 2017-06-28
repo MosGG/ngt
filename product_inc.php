@@ -72,10 +72,20 @@
 			if ($allPages > 1) {
 				echo "<div id='layPage' class='laypage'></div>";
 			}
+			//get new arrival list
+			$sql  = "SELECT `product-linkProduct` FROM ".$site['database']['product-link']." WHERE `product-linkPage` = '308'";
+			$result = sql_exec($sql);
+			$newArrivalList = array();
+			while ($line = $result->fetch_assoc()) {
+					$newArrivalList[$line['product-linkProduct']] = TRUE;
+			}
+
 			//echo product list
-			
 			echo "<form action='".$site['url']['actual']."' method='post'>";
 			foreach($prod as $line) {
+				if ($newArrivalList[$line['product-linkProduct']]) {
+					$line['newarrival'] = true;
+				}
 				$image_array = array();
 				$sql  = "SELECT * FROM ".$site['database']['product-image']." WHERE `productImageProduct` = '".$line['productId']."' ORDER BY `productImageOrder`, `productImageId`, `productImageTitle`";
 				$resultimage = sql_exec($sql);

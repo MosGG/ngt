@@ -1,11 +1,10 @@
 <?php 
 	$LandingPeriod = 86400 * 1;
-	// setcookie('landingPageFlag','1',time() + $LandingPeriod, "/");
+	setcookie('landingPageFlag','1',time() + $LandingPeriod, "/");
 ?>
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html>
 <head>
-	<!-- <link rel='stylesheet' href='include/new.css'/> -->
 	<link rel='stylesheet' href='include/landing.css'/>
 </head>
 <body class='bgblue'>

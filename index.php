@@ -1,7 +1,7 @@
 <?php
-	// if(!isset($_COOKIE["landingPageFlag"])){
-	// 	header('location: /landingPage');
-	// }
+	if(!isset($_COOKIE["landingPageFlag"])){
+		header('location: /landingPage');
+	}
 
 	$timerstart = time()+microtime();
 

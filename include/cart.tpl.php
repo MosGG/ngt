@@ -400,7 +400,7 @@
 						if ($minorder || $_SESSION['membership']['mmemberDiscount']) {
 							echo "<br />";
 							if ($_SESSION['membership']['mmemberDiscount']) {
-								echo "<span style='color: #cf0000;'>$".number_format($b, $site['template']['price']['decimal'])." discount</span><br />";
+								echo "<span style='color: #FC4A1A;font-size:10px;'>$".number_format($b, $site['template']['price']['decimal'])." discount</span><br />";
 							}
 							if ($minorder) {
 								echo "<span class='cart-des'>MIN ORDER:<br />1 ".$minorder."</span>";
@@ -480,7 +480,7 @@
 					}
 					echo "<span style='float:left'>Sub Total</span><span style='float:right'>$".number_format($total, $site['template']['price']['decimal'])."&nbsp;&nbsp;</span>";
 					if ($_SESSION['membership']['mmemberDiscount']) {
-						echo "<br />Including ".$_SESSION['membership']['mmemberDiscount']."% discount&nbsp;&nbsp;";
+						echo "<br /><span style='font-size:12px;color:#FC4A1A;'>Including ".$_SESSION['membership']['mmemberDiscount']."% discount</span>";
 					}
 					echo "</div>\n";
 

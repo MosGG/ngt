@@ -156,13 +156,15 @@
 				echo "</div>";
 			echo "</div> <!-- footer -->";
 		echo "</div>"; ## Site Container ##
-		if($_SESSION['cart']==NULL){
-			$num = 0;
+		if (isset($_SESSION['membership'])) {
+			if(empty($_SESSION['cart'])){
+				$num = 0;
+			}
+			else{
+				$num = count($_SESSION['cart']);
+			}
+			echo "<script> var number = ".$num.";document.getElementById('shopping-bag').innerHTML = number;</script>";
 		}
-		else{
-			$num = count($_SESSION['cart']);
-		}
-		echo "<script> var number = $num;document.getElementById('shopping-bag').innerHTML = number</script>";
 	echo "</body>";
 	echo "</html>";
 

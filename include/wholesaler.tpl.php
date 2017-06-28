@@ -54,8 +54,9 @@
 			} else {
 				$_SESSION['access'] = '30';
 			}
-			$sql  = "SELECT id FROM ".$site['database']['shopping_cart']."WHERE `mmemberEmail` = '".$admin['user']."'";
+			$sql  = "SELECT id FROM ".$site['database']['shopping_cart']." WHERE `mmemberEmail` = '".$admin['user']."'";
 			$resultid = sql_exec($sql);
+
 			$rid = $resultid->fetch_assoc();
 			if($rid != NULL){
 				$sql  = "SELECT cart FROM ".$site['database']['shopping_cart']."WHERE `mmemberEmail` = '".$admin['user']."' ";

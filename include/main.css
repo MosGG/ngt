@@ -1,7 +1,7 @@
 @charset "utf-8"; /* Must Remain Here */
 
 body { 
-	color: #555555;
+	color: #4A4A4A;
 	/*background: #ffffff url(../images/siteback.jpg) top center no-repeat;*/
 	background-color: #EFEFEF;
 	padding: 0px;
@@ -16,6 +16,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	overflow-x: hidden;
 }
 
 html>body .outerpair1 {
@@ -102,6 +103,7 @@ html[xmlns] .clearfix {
 	/*float:left;*/
 	/*width: 706px;*/
 	margin-left: 372px;
+	margin-bottom: 30px;
 	/*margin: 0px 5px 0px 240px;*/
 	/*padding: 3px 0px 80px 0px;*/
 }
@@ -531,7 +533,7 @@ p {
 }
 
 .productitem {
-	height: 335px;
+	height: 285px;
 	width: calc(25% - 20px);
 	margin: 0 auto;
 	position: relative;
@@ -597,16 +599,16 @@ p {
 }
 
 .producttitle a:hover {
-	color: #d4251c;
+	color: #4ABDAC;
 }
 
 .productimage {
 	height: auto;
 	top: 0;
 	width: 100%;
-	height:220px;
-	line-height: 92px;
-	text-align: center;
+	height:182px;
+	/*line-height: 92px;*/
+	/*text-align: center;*/
 	/*background-color: red;*/
 	/*position: absolute;*/
 }
@@ -624,6 +626,7 @@ p {
 	border: 1px solid #c9c9c9;*/
 	width: 100%;
     height: 100%;
+    opacity: 0;
 }
 
 .productprice {
@@ -681,28 +684,43 @@ p {
 .nodisc {
 	/*margin-top: 34px;*/
 }
-
+.sold,
+.soon{
+	position: absolute;
+	height: 26px;
+	top: 0;
+	left:-3px;
+}
 .sold {
-	margin-top: -3px;
-	display: inline-block;
-	width: 100%;
-	font-size: 13px;
-	color: #FC4A1A;
+	width: 79px;
+    background:url('/images/new/out-of-stock.png') no-repeat center;
 }
-
 .soon {
-	margin-top: -3px;
-	display: inline-block;
-	width: 100%;
-	font-size: 13px;
-	color: #4ABDAC;
+	width:85px;
+	background:url('/images/new/coming-soon.png') no-repeat center;
 }
-
-.discount {
-	font-size: 13px;
-	display: inline-block;
-	margin-top: 20px;
-	text-transform: lowercase;
+.sold span,
+.soon span{
+	font-size: 10px;
+	font-family: Montserrat-Ultralight;
+	color:#fff;
+	position: relative;
+	top:4px;
+	left:6px;
+}
+.discount{
+	position: absolute;
+	top:0;
+	right: 0;
+	width: 80px;
+	height: 20px;
+	background:url('/images/new/extra-off.png') no-repeat center;
+}
+.discount span{
+	font-size: 10px;
+	line-height: 20px;
+	color:#fff;
+	padding-left: 8px;
 }
 
 #red {

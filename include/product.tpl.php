@@ -10,18 +10,12 @@ function product_template($line, $image) {
 		$class = 'odd';
 	}
 	echo "<div class='productitem ".$class."'>\n";
-	echo "<div class='productimage'><a href='#' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); putMiddle(); return false\"><img src='".$site['url']['full'].image_display($site['path']['product']['full'], $image['0']['productImageFile'])."' border='0' alt='".$line['productTitle']."' title='".$line['productTitle']."'></a></div>\n";
+	echo "<div class='productimage' style='background:url(".$site['url']['full'].image_display($site['path']['product']['full'], $image['0']['productImageFile']).") no-repeat center;background-size:cover;'><a href='#' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); putMiddle(); return false\"><img src='".$site['url']['full'].image_display($site['path']['product']['full'], $image['0']['productImageFile'])."' border='0' alt='".$line['productTitle']."' title='".$line['productTitle']."'></a></div>\n";
 	echo "<div class='producttitle'>";
 	$text = breaktext($line['productTitle'], 40);
 	$text['text'] = "<span style='font-size: 10px;'>".$line['productPart']." (".$line['productStock']." Available)</span><br />".$text['text'];
 	echo "<a href='#' class='line".$text['lines']."' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); putMiddle(); return false\">";
 	echo $text['text'];
-		if ($line['productCategory'] == "Out of Stock") {
-			echo "<span class='sold'><b>Out of Stock</b></span>";
-		}
-		if ($line['productCategory'] == "Coming Soon") {
-			echo "<span class='soon'><b>Coming Soon</b></span>";
-		}
 	echo "<br /></a>";
 	echo "</div>\n";
 	$line[productDescription] = str_replace("\r\n", "<br />", $line[productDescription]);
@@ -38,12 +32,11 @@ function product_template($line, $image) {
 				$d = $line['productPrice1'] - $b;
 
 				$line['productPrice1'] = $d;
-				echo "<span class='discount'>$".number_format($b, $site['template']['price']['decimal'])." discount</span><br />";
 				$nodisc = "";
 			} else {
 				$nodisc = " nodisc";
 			}
-			if (isset($line['productPrice2'])) {					
+			if (isset($line['productPrice2']) and $line['productPrice2'] != '0') {					
 				echo "<span class='price".$nodisc."'><b><span class='prod-sale'>$".number_format($line['productPrice1'], $site['template']['price']['decimal'])." ea</span></b></span>";
 				echo "&nbsp;<span class='prod-was'>$".number_format($line['productPrice2'], $site['template']['price']['decimal'])." ea</span>";
 			} else {
@@ -66,8 +59,24 @@ function product_template($line, $image) {
 			echo "<a href='".$site['url']['full']."contact/?description=".$line['productTitle']." - Stock Item ".$line['productPart']."'>Contact</a>";
 	}
 	echo "</div>\n";
-	if (isset($line['productPrice2'])) {
+	//discount block 
+	if ($_SESSION['membership']['mmemberDiscount']) {
+		echo "<div class='discount'><span>".$_SESSION['membership']['mmemberDiscount']."% Extra Off</span></div>";
+	}
+	//out of stock and coming soon block
+	if ($line['productCategory'] == "Out of Stock") {
+		echo "<div class='sold'><span>Out of Stock</span></div>";
+	}
+	if ($line['productCategory'] == "Coming Soon") {
+		echo "<div class='soon'><span>Coming Soon</span></div>";
+	}
+	//sale block
+	if (isset($line['productPrice2']) and $line['productPrice2'] != '0') {
 		echo "<div class='sale-div'>SALE</div>";
+	}
+	//new arrival block
+	if (isset($line['newarrival'])){
+		echo "<div class='new-div'>NEW</div>";
 	}
 	echo "</div>\n <!-- productitem -->";
 }# (product_template)
