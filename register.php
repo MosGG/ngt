@@ -55,6 +55,7 @@
 	border: 1px solid #4A4A4A;
 	margin-left:10px;
 	margin-top:10px;
+	padding-left:10px;
 }
 .red-star{
 	color:#FC4A1A;
@@ -115,7 +116,47 @@
 #already a{
 	color:#4ABDAC;
 }
+.reg-error{
+	border-color: #FC4A1A!important;
+}
 </style>
+<?php 
+var_dump($_SESSION['captcha']);
+	$required = array(
+		"mmemberBusiness",
+		"mmemberABN",
+		"mmemberNameF" ,
+		"mmemberNameS",
+		// "mmemberEmail",
+		);
+	if (!empty($_POST)) {
+		foreach ($required as $require) {
+			if (empty($_POST['submit'][$require])) {
+				$error[$require] = "Y";
+			}
+		}
+		if (strtolower($_POST['submit']['mmemberCaptcha']) != $_SESSION['captcha']) {
+			$error['mmemberCaptcha'] = "Y"; 
+		}
+		if (!filter_var($_POST['submit']['mmemberEmail'], FILTER_VALIDATE_EMAIL)) {
+			$error['mmemberEmail'] = "Y";
+		} else {
+			$sql = "SELECT `mmemberId` FROM ".$site['database']['membership']." WHERE `mmemberEmail` = '".$_POST['submit']['mmemberEmail']."'";
+			$result = sql_exec($sql);
+			$row = $result->fetch_assoc();
+			if (!empty($row)) {
+				$error['mmemberEmail'] = "Y";
+				$error['msg'] = "<span style='color:#FC4A1A;position:relative;left:10px;top:-7px;'>This email has been registered.</span>";
+			}
+		}
+
+		if (empty($error)) {
+			$emailBits = explode("@",$_POST['submit']['mmemberEmail']);
+			$password = $emailBits[0];
+			$table['membership']['mmemberPassword']['insert']  = $password;
+		}
+	}
+?>
 <div id='register'>
 	<a href='/login'>
 		<div class='login-tab login-tab-inactive'>
@@ -134,56 +175,72 @@
 					<tr>
 						<td colspan="2">
 							<img src='/images/new/footer-company.png'>
-							<input type="text" maxlength="" name="submit[mmemberBusiness]" value="" placeholder="Business Name *">
+							<input type="text" maxlength="" name="submit[mmemberBusiness]"
+							<?php echo (isset($error['mmemberBusiness']))?'class="reg-error"':'';?>
+							value="<?php echo (!empty($_POST['submit']['mmemberBusiness']))?$_POST['submit']['mmemberBusiness']:'';?>" placeholder="Business Name *">
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<img src='/images/new/login-abn.png'>
-							<input type="text" maxlength="" name="submit[mmemberABN]" value="" placeholder="ABN *">
+							<input type="text" maxlength="" name="submit[mmemberABN]" 
+							<?php echo (isset($error['mmemberABN']))?'class="reg-error"':'';?>
+							value="<?php echo (!empty($_POST['submit']['mmemberABN']))?$_POST['submit']['mmemberABN']:'';?>" placeholder="ABN *">
 						</td>
 					</tr>
 					<tr>
 						<td>
 						<img src='/images/new/login-email.png'>
-						<input type="text" maxlength="" name="submit[mmemberNameF]" value="" placeholder="First Name *">
+						<input type="text" maxlength="" name="submit[mmemberNameF]" 
+						<?php echo (isset($error['mmemberNameF']))?'class="reg-error"':'';?>
+						value="<?php echo (!empty($_POST['submit']['mmemberNameF']))?$_POST['submit']['mmemberNameF']:'';?>" placeholder="First Name *">
 						</td>
 						<td>
 						<img src='/images/new/login-email.png'>
-						<input type="text" maxlength="" name="submit[mmemberNameS]" value="" placeholder="Surname *">
+						<input type="text" maxlength="" name="submit[mmemberNameS]" 
+						<?php echo (isset($error['mmemberNameS']))?'class="reg-error"':'';?>
+						value="<?php echo (!empty($_POST['submit']['mmemberNameS']))?$_POST['submit']['mmemberNameS']:'';?>" placeholder="Surname *">
 						</td>
 					</tr>
 					<tr>
 						<!-- <th align="right">Email:<b>*</b></th> -->
 						<td colspan="2">
 						<img src='/images/new/footer-email.png'>
-						<input type="text" maxlength="" name="submit[mmemberEmail]" value="" placeholder="Email *">
+						<input type="text" maxlength="" name="submit[mmemberEmail]" 
+						<?php echo (isset($error['mmemberEmail']))?'class="reg-error"':'';?>
+						value="<?php echo (!empty($_POST['submit']['mmemberEmail']))?$_POST['submit']['mmemberEmail']:'';?>" placeholder="Email *">
+						<?php if(isset($error['msg'])) {echo $error['msg'];} ?>
 						</td>
 					</tr>
 					<tr>
 						<td>
 						<img src='/images/new/footer-tel.png'>
-						<input type="text" maxlength="" name="submit[mmemberPhone]" value="" placeholder="Phone">
+						<input type="text" maxlength="" name="submit[mmemberPhone]" 
+						value="<?php echo (!empty($_POST['submit']['mmemberPhone']))?$_POST['submit']['mmemberPhone']:'';?>" placeholder="Phone">
 						</td>
 						<td>
 						<img src='/images/new/login-mobile.png'>
-						<input type="text" maxlength="" name="submit[mmemberMobilePhone]" value="" placeholder="Mobile">
+						<input type="text" maxlength="" name="submit[mmemberMobilePhone]" 
+						value="<?php echo (!empty($_POST['submit']['mmemberMobilePhone']))?$_POST['submit']['mmemberMobilePhone']:'';?>" placeholder="Mobile">
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 						<img src='/images/new/footer-location.png'>
-						<input type="text" maxlength="" name="submit[mmemberAddress]" value="" placeholder="Address">
+						<input type="text" maxlength="" name="submit[mmemberAddress]" 
+						value="<?php echo (!empty($_POST['submit']['mmemberAddress']))?$_POST['submit']['mmemberAddress']:'';?>" placeholder="Address">
 						</td>
 					</tr>
 					<tr>
 						<td>
 						<img src='/images/new/footer-location.png'>
-						<input type="text" maxlength="" name="submit[mmemberSuburb]" value="" placeholder="Suburb">
+						<input type="text" maxlength="" name="submit[mmemberSuburb]" 
+						value="<?php echo (!empty($_POST['submit']['mmemberSuburb']))?$_POST['submit']['mmemberSuburb']:'';?>" placeholder="Suburb">
 						</td>
 						<td>
 						<img src='/images/new/footer-location.png'>
-						<input type="text" maxlength="" name="submit[mmemberPostcode]" value="" placeholder="Postcode">
+						<input type="text" maxlength="" name="submit[mmemberPostcode]" 
+						value="<?php echo (!empty($_POST['submit']['mmemberPostcode']))?$_POST['submit']['mmemberPostcode']:'';?>" placeholder="Postcode">
 						</td>
 					</tr>
 					<tr>
@@ -199,23 +256,26 @@
 								<option value="SA">South Australia</option>
 								<option value="TAS">Tasmania</option>
 							</select>
+							<script>
+								document.getElementById('mmemberState').value = '<?php echo (!empty($_POST['submit']['mmemberState']))?$_POST['submit']['mmemberState']:'';?>';
+							</script>
 						</td>
 					</tr>
 					
-					</tbody>
-					</table>
-					<div id='tb-captcha'>
-						<a href="javascript:updateimage();">
-						<img src="http://www.newglobalmel.com.au/include/captcha.php/captcha.php" border="0" name="captcha" id="captcha" alt="Click for New Security Code" title="Click for New Security Code" data-pagespeed-url-hash="1193997884" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-						</a>
-						<input id='input-captcha' type="text" name="submit[mmemberCaptcha]" value="" placeholder="Enter the Security Code *">
-						<input id='reg-submit' type="submit" name="submit[button]" value="Submit">
-						<a href="javascript:updateimage();">
-						<img id='cap-reload' title="Click for New Security Code" data-pagespeed-url-hash="1193997884" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" src='images/new/reg-cap-reload.png'>
-						</a>
-						<div id='already'>Already have an account? <a class="hvr-underline-from-left-blue" href="/Login">Login</a></div>
-					</div>
-
+				</tbody>
+			</table>
+			<div id='tb-captcha'>
+				<a href="javascript:updateimage();">
+				<img src="http://www.newglobalmel.com.au/include/captcha.php" border="0" name="captcha" id="captcha" alt="Click for New Security Code" title="Click for New Security Code" data-pagespeed-url-hash="1193997884" onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+				</a>
+				<input id='input-captcha' type="text" name="submit[mmemberCaptcha]" value="" 
+					<?php echo (isset($error['mmemberCaptcha']))?'class="reg-error"':'';?> placeholder="Enter the Security Code *">
+				<input id='reg-submit' type="submit" name="submit[button]" value="Submit">
+				<a href="javascript:updateimage();">
+				<img id='cap-reload' title="Click for New Security Code" data-pagespeed-url-hash="1193997884" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" src='/images/new/reg-cap-reload.png'>
+				</a>
+				<div id='already'>Already have an account? <a class="hvr-underline-from-left-blue" href="/Login">Login</a></div>
+			</div>
 		</form>
 	</div>
 </div>

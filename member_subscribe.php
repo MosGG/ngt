@@ -60,13 +60,13 @@
 	$message['info']   = "To become a member and join our mailing list, please enter your details below.<br />You will receive future sales announcements and special event notices.";
 	$message['insert'] = "Thank you for applying for membership and joining our mailing list.<br />You will be contacted with login details when your membership application has been processed.";
 
-		echo "<div id='register'>";
-			echo "<div class='login-tab login-tab-active'>Login</div>";
-			echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
-			echo "<div id='form'>";
+		// echo "<div id='register'>";
+		// 	echo "<div class='login-tab login-tab-active'>Login</div>";
+		// 	echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
+		// 	echo "<div id='form'>";
 			include '/template-v0d/admin_table.php';
-			echo "</div>";
-		echo "</div>\n";
+			// echo "</div>";
+		// echo "</div>\n";
 
 
 	
