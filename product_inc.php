@@ -1,17 +1,16 @@
 <script type="text/javascript">
 	function openproduct(productid, imageid, productTitle){ //Product Window
 		productwin=dhtmlwindow.open('productwin', 'ajax', '<?php echo $site['url']['full']."product_display.php?id="; ?>'+productid+'&image='+imageid, productTitle,'width=auto,height=auto,resize=1,scrolling=1');
+		putMiddle();
 	}
 
 	function putMiddle(){
 		var windowWidth = 822;
 		var screenWidth = document.body.clientWidth;
-		console.log(windowWidth + "/" + screenWidth);
 		var left = 0.5 * (screenWidth - windowWidth);
 		var windowHeight = 562;
 		var screenHeight = document.body.clientHeight;
 		var top = 0.5 * (screenHeight - windowHeight);
-		console.log(windowHeight + "/" + screenHeight);
 		document.getElementById("productwin").style.top = top + "px";
 		document.getElementById("productwin").style.left = left + "px";
 	};
@@ -118,17 +117,17 @@
 					  	cont: 'layPage',
 						skin: '#4A4A4A',
 						groups: 5,
-						prev: "<img src='/images/new/prev.png'>", //若不显示，设置false即可
-					  	next: "<img src='/images/new/next.png'>",//若不显示，设置false即可
+						prev: "<img src='/images/new/prev.png'>",
+					  	next: "<img src='/images/new/next.png'>",
 					  	first: '1',
 						last: <?php echo $allPages; ?>,
-						pages: <?php echo $allPages; ?>, //可以叫服务端把总页数放在某一个隐藏域，再获取。假设我们获取到的是18
-						curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取
+						pages: <?php echo $allPages; ?>,
+						curr: function(){
 							var page = location.search.match(/page=(\d+)/);
 						    return page ? page[1] : 1;
 					  	}(), 
-						jump: function(e, first){ //触发分页后的回调
-						    if(!first){ //一定要加此判断，否则初始时会无限刷新
+						jump: function(e, first){
+						    if(!first){
 							    location.href = '?page='+e.curr;
 						    }
 						}
@@ -138,17 +137,17 @@
 					  	cont: 'layPage2',
 						skin: '#4A4A4A',
 						groups: 5,
-						prev: "<img src='/images/new/prev.png'>", //若不显示，设置false即可
-					  	next: "<img src='/images/new/next.png'>",//若不显示，设置false即可
+						prev: "<img src='/images/new/prev.png'>",
+					  	next: "<img src='/images/new/next.png'>",
 					  	first: '1',
 						last: <?php echo $allPages; ?>,
-						pages: <?php echo $allPages; ?>, //可以叫服务端把总页数放在某一个隐藏域，再获取。假设我们获取到的是18
-						curr: function(){ //通过url获取当前页，也可以同上（pages）方式获取
+						pages: <?php echo $allPages; ?>,
+						curr: function(){
 							var page = location.search.match(/page=(\d+)/);
 						    return page ? page[1] : 1;
 					  	}(), 
-						jump: function(e, first){ //触发分页后的回调
-						    if(!first){ //一定要加此判断，否则初始时会无限刷新
+						jump: function(e, first){
+						    if(!first){
 							    location.href = '?page='+e.curr;
 						    }
 						}

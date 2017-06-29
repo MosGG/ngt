@@ -151,9 +151,21 @@ var_dump($_SESSION['captcha']);
 		}
 
 		if (empty($error)) {
-			$emailBits = explode("@",$_POST['submit']['mmemberEmail']);
-			$password = $emailBits[0];
-			$table['membership']['mmemberPassword']['insert']  = $password;
+			$data = array();
+			foreach ($_POST['submit'] as $key => $value) {
+				$data['submit['.$key.']'] = $value;
+			}
+			var_dump($data);
+			$url = "/becomeamember";
+			$sHtml = "<form id='requestForm' name='requestForm' action='".$url."' method='POST'>";
+		    while (list ($key, $val) = each ($data))
+		    {
+		        $sHtml.= "<input type='hidden' name='".$key."' value='".$val."' />";
+		    }
+		    $sHtml = $sHtml."<input type='submit[button]' value='Submit' style='display:none;'></form>";
+		    $sHtml = $sHtml."<script>document.forms['requestForm'].submit();</script>";
+		    echo $sHtml;
+		    exit();
 		}
 	}
 ?>

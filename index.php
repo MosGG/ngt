@@ -1,8 +1,7 @@
 <?php
-	if(!isset($_COOKIE["landingPageFlag"])){
+	if(!isset($_COOKIE["landingPageFlag"]) && $_SERVER['REQUEST_URI'] == "/"){
 		header('location: /landingPage');
 	}
-
 	$timerstart = time()+microtime();
 
 	include 'include/common.inc.php';
@@ -80,7 +79,7 @@
 				// $page['subpage'] .= "<table border='0' width='150'>";
 				$page['subpage'] .= "<a href='".$url."'><div class='sub-div-img' style='background:url(".
 					$site['url']['full'].image_display($site['path']['page']['thumb'], $site['layout'][$data]['pageId']).
-					") no-repeat center;background-size:contain;'></div><div class='sub-div-title'>".$site['layout'][$data]['pageMenu']."</div></a>";
+					") no-repeat center;background-size:cover;'></div><div class='sub-div-title'>".$site['layout'][$data]['pageMenu']."</div></a>";
 				// $page['subpage'] .= "</table>";
 				$page['subpage'] .= "</td>";
 			}

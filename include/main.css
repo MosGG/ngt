@@ -8,15 +8,13 @@ body {
 	margin: 0px;
 	text-align: left;
 	font-family: Montserrat;
-	overflow-x: hidden;
-	min-width: 1200px;
+	min-width: 991px;
 }
 
 html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	overflow-x: hidden;
 }
 
 html>body .outerpair1 {
@@ -952,7 +950,7 @@ p {
 }
 
 #form {
-	margin: 4px;
+	/*margin: 4px;*/
 	position: relative;
 }
 

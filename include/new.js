@@ -33,10 +33,13 @@ function formLogout(){
 
 function moveSearchDiv(){
 	var searchDiv = document.getElementById('search-div');
-	var left = searchDiv.style.left;
-	if (left == "" || left == "78px") {
-	 	searchDiv.style.left = "342px";
+	var left = window.getComputedStyle(searchDiv).left;
+	var leftNum = left.substring(0, left.indexOf("px"));
+	if (leftNum < 100) {
+	 	searchDiv.style.left = parseInt(leftNum) + 262 + "px";
+	 	document.querySelector("#search-div input").focus();
 	} else {
-		searchDiv.style.left = "78px";
+		searchDiv.style.left = parseInt(leftNum) - 262 + "px";
 	}
+
 }

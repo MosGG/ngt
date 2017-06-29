@@ -10,11 +10,11 @@ function product_template($line, $image) {
 		$class = 'odd';
 	}
 	echo "<div class='productitem ".$class."'>\n";
-	echo "<div class='productimage' style='background:url(".$site['url']['full'].image_display($site['path']['product']['full'], $image['0']['productImageFile']).") no-repeat center;background-size:cover;'><a href='#' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); putMiddle(); return false\"><img src='".$site['url']['full'].image_display($site['path']['product']['full'], $image['0']['productImageFile'])."' border='0' alt='".$line['productTitle']."' title='".$line['productTitle']."'></a></div>\n";
+	echo "<div class='productimage' style='background:url(".$site['url']['full'].image_display($site['path']['product']['full'], $image['0']['productImageFile']).") no-repeat center;background-size:cover;'><a href='#' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); return false\"><img src='".$site['url']['full'].image_display($site['path']['product']['full'], $image['0']['productImageFile'])."' border='0' alt='".$line['productTitle']."' title='".$line['productTitle']."'></a></div>\n";
 	echo "<div class='producttitle'>";
 	$text = breaktext($line['productTitle'], 40);
 	$text['text'] = "<span style='font-size: 10px;'>".$line['productPart']." (".$line['productStock']." Available)</span><br />".$text['text'];
-	echo "<a href='#' class='line".$text['lines']."' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); putMiddle(); return false\">";
+	echo "<a href='#' class='line".$text['lines']."' onclick=\"openproduct('".$line['productId']."', '0', '".$line['productTitle']."'); return false\">";
 	echo $text['text'];
 	echo "<br /></a>";
 	echo "</div>\n";

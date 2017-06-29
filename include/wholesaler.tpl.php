@@ -2,7 +2,6 @@
 	if ($_SESSION['membership']) {
 		echo content_converter($page['pageText']);
 	}
-
 	$admin['user']     = strtolower($_POST['login']);
 	$admin['password'] = strtolower($_POST['password']);
 

@@ -296,7 +296,7 @@
 		} else {
 			echo "<form action='".$site['url']['form']."' method='post'>\n";
 			echo "<div id='cart'>\n";
-			echo "<table id='cart-tb' cellspacing='0' cellpadding='3' border='0' width='533'>\n";
+			echo "<table id='cart-tb' cellspacing='0' cellpadding='3' border='0'>\n";
 				echo "<tr>\n";
 					echo "<th width='80'>".$display['cart']['title']['heading']."</th>\n";
 					// echo "<th>&nbsp;</th>\n";
