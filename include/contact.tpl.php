@@ -228,13 +228,13 @@
 			if ($contact['phone']) {
 				echo "<tr>";
 					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-tel.png'></td>";
-					echo "<td><b>".$site['company']['phone']."</b></td>";
+					echo "<td><a href='tel:".$site['company']['phone']."'><b>".$site['company']['phone']."</b></a></td>";
 				echo "</tr>";
 			}
 			if ($contact['fax']) {
 				echo "<tr>";
 					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-fax.png'></td>";
-					echo "<td><b>".$site['company']['fax']."</b></td>";
+					echo "<td><a href='tel:".$site['company']['fax']."'><b>".$site['company']['fax']."</b></a></td>";
 				echo "</tr>";
 			}
 			if ($contact['postal']) {
@@ -245,12 +245,12 @@
 			}
 			if ($contact['address']) {
 				echo "<tr>";
-					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
-					echo "<td><b>".$site['company']['address']."</b></td>";
+					echo "<td colspan='2' class='contactheading'><img src='/images/new/about-shop-vic.png' height='24'></td>";
+					echo "<td><a href='https://www.google.com.au/maps/place/4+Croft+St,+Oakleigh+VIC+3166' target='_blank'><b>".$site['company']['address']."</b></a></td>";
 				echo "</tr>";
 				echo "<tr>";
-					echo "<td colspan='2' class='contactheading'><img src='/images/new/footer-location.png'></td>";
-					echo "<td><b>6/25-33 Alfred Rd, Chipping Norton, NSW 2170</b></td>";
+					echo "<td colspan='2' class='contactheading'><img src='/images/new/about-shop-nsw.png' height='24'></td>";
+					echo "<td><a href='https://www.google.com.au/maps/place/6%2F25+Alfred+Rd,+Chipping+Norton+NSW+2170/' target='_blank'><b>6/25-33 Alfred Rd, Chipping Norton, NSW 2170</b></a></td>";
 				echo "</tr>";
 			}
 			if ($contact['mapref']) {

@@ -139,10 +139,10 @@
 			echo "<img id='left-cart' src='/images/new/left-cart.png'/>";
 				echo "<div id='footercont'>";
 				echo "<div id='footet-contact'>
-						<div><img src='/images/new/footer-tel.png'/><span>(03) 9563 2655</span></div>
-						<div><img src='/images/new/footer-fax.png'/><span>(03) 9563 2656</span></div>
-						<div><img src='/images/new/footer-location.png'/><span>4 Croft St, Oakleigh, VIC 3166</span></div>
-						<div><img src='/images/new/footer-email.png'/><span id='footet-contact-last'>sales@newglobalmel.com.au</span></div>
+						<div><img src='/images/new/footer-tel.png'/><a href='tel:0395632655'><span>".$site['company']['phone']."</span></a></div>
+						<div><img src='/images/new/footer-fax.png'/><a href='tel:0395632656'><span>".$site['company']['fax']."</span></a></div>
+						<div><img src='/images/new/footer-location.png'/><a href='https://www.google.com.au/maps/place/4+Croft+St,+Oakleigh+VIC+3166'><span>4 Croft St, Oakleigh, VIC 3166</span></a></div>
+						<div><img src='/images/new/footer-email.png'/><a href='melto:sales@newglobalmel.com.au'><span id='footet-contact-last'>sales@newglobalmel.com.au</span></a></div>
 					</div>";
 					echo "<div id='footright'>";
 						echo "<img class='footer-ads' src='".$site['url']['full']."images/logo-umbrella.png' width='47' height='50' alt='' title='' border='0' />";

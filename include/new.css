@@ -327,6 +327,9 @@
 	font-size: 14px;
 	color: #EFEFEF;
 }
+#footet-contact span:hover{
+	color:#4ABDAC;
+}
 .footer-ads{
 	position:relative;
 	top:-40px;

@@ -58,7 +58,7 @@
 	<br>
 
 	<div class="about-shops">
-		<img class="about-shops-img" src='/images/new/about-shop-vic.png'>
+		<img class="about-shops-img" src='/images/new/about-shop-nsw.png'>
 		<p>The Sydney Showroom is located at<br>
 			<a href="https://www.google.com.au/maps/place/6%2F25+Alfred+Rd,+Chipping+Norton+NSW+2170/" target="_blank" class='blue hvr-underline-from-left-blue'>6/25-33 Alfred Rd, Chipping Norton NSW</a></p>
 	</div>
