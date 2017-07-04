@@ -11,7 +11,7 @@
 			var windowWidth = 722;
 			var windowHeight = 502;
 		} else {
-			var windowWidth = 22;
+			var windowWidth = 822;
 			var windowHeight = 562;
 		}
 		var left = 0.5 * (screenWidth - windowWidth);

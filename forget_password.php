@@ -1,27 +1,16 @@
-
 <?php
 if (isset($_POST['email'])) {
 	$email = $_POST['email'];
 
 	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		$servername = "localhost";
-		$username = "root";
-		$password = "root";
-		$dbname = "newg_hosting";
 
-				// Create connection
-		$conn = new mysqli($servername, $username, $password, $dbname);
+		global $db;
 
-				// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
-
-				// prepare and bind
+		// prepare and bind
 		$sql = "SELECT * FROM ".$site['database']['membership']." ";
 		$sql .= "WHERE `mmemberEmail` = ?";
-				// echo $sql;
-		$stmt = $conn->prepare($sql);
+
+		$stmt = $db->prepare($sql);
 		$stmt->bind_param("s", $email);
 
 		if (!$stmt->execute()) {
@@ -32,9 +21,7 @@ if (isset($_POST['email'])) {
 		$members = $result->fetch_assoc();
 
 		$stmt->free_result();
-
 		$stmt->close();
-		$conn->close();
 
 		if ($members != NULL){
 
@@ -45,16 +32,18 @@ if (isset($_POST['email'])) {
 			$mail_html ="
 			<!doctype html>
 			<html>
-			<img src='/images/headernew.png' style='width:404px;height:108px;'>
+			<img src='http://www.newglobalmel.com.au/images/email-header.jpg' style='width:404px;height:108px;'>
 			<p>Hi ".$name."<br>
-			Thank you for applying for membership and joining our mailing list. <br><br>
+			We received a request to reset the password for your New Global Trading account. <br><br>
 
 			Your username is : ".$useremail."<br><br>
 
 			Your password is : ".$password."</n> <br>
-			<br></p>
+			<br>
 
-
+			If you didn't send the request, please ignore this message.<br>
+			For general inquires or to request support with your account, please email sales@newglobalmel.com.au.
+			</p>
 
 			<p>Regards,<br>
 			Stanley Shi<br>
@@ -64,50 +53,28 @@ if (isset($_POST['email'])) {
 
 			</html>
 
-
 			";
 
-
 			$to = $email;
-			$subject = "Reset email";
+			$subject = "New Global Trading - Forget Your Password";
 
-// Always set content-type when sending HTML email
+			// Always set content-type when sending HTML email
 			$headers = "MIME-Version: 1.0" . "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-// More headers
+			// More headers
 			$headers .= 'From: sales@newglobalmel.com.au' . "\r\n";
 			mail($to,$subject,$mail_html,$headers);
 
-// echo "<p style='font-size:18px'>Hi, ".$members["mmemberNameF"]."</p>";
-			echo "<h1 style='font-family:Montserrat;color:#4ABDAC;text-align:center;font-size:70px'>SUCCESSFUL!</h1>";
+			echo "<h1 style='font-family:Montserrat;color:#4ABDAC;text-align:center;font-size:48px'>DONE!</h1>";
 			echo "<p style='font-size:18px'>Your password has been sent to your email successfully.</p>";
 		}
 		else{
-			echo "<div id='wholesaler' style='height:440px'>";
-			echo "<a href='/forget-password'><div class='login-tab login-tab-active'>Forget Password</div></a>";
-			echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
-			echo "<div style='padding-top: 152px' >";
-			echo "<div class='login-div'><img style='margin:0 11px 0 19px;' class='login-logo' src='/images/new/login-email.png'/>";
-			echo "<input type='text' id='fp-email' size='20' maxlength='50' placeholder='Enter Email Address'/><p style='position: absolute;
-			left: 120px;top:40px;color:#FC4A1A;'>Please enter a valid email address</p></div>";
-			echo "<input type='submit' value='Submit' onclick='fpsubmit()'/>";
-			echo "</div>";
-			echo "</div>";
-
+			echoerror();
 		}
 	}
 	else{
-		echo "<div id='wholesaler' style='height:440px'>";
-		echo "<a href='/forget-password'><div class='login-tab login-tab-active'>Forget Password</div></a>";
-		echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
-		echo "<div style='padding-top: 152px' >";
-		echo "<div class='login-div'><img style='margin:0 11px 0 19px;' class='login-logo' src='/images/new/login-email.png'/>";
-		echo "<input type='text' id='fp-email' size='20' maxlength='50' placeholder='Enter Email Address'/><p style='position: absolute;
-		left: 120px;top:40px;color:#FC4A1A;'>Please enter a valid email address.</p></div>";
-		echo "<input type='submit' value='Submit' onclick='fpsubmit()'/>";
-		echo "</div>";
-		echo "</div>";
+		echoerror();
 	}
 }
 else{
@@ -120,6 +87,20 @@ else{
 	echo "<input type='submit' value='Submit' onclick='fpsubmit()'/>";
 	echo "</div>";
 }
+
+function echoerror(){
+	echo "<div id='wholesaler' style='height:440px'>";
+	echo "<a href='/forget-password'><div class='login-tab login-tab-active'>Forget Password</div></a>";
+	echo "<a href='/become-a-member'><div class='login-tab login-tab-inactive'>Register</div></a>";
+	echo "<div style='padding-top: 152px' >";
+	echo "<div class='login-div'><img style='margin:0 11px 0 19px;' class='login-logo' src='/images/new/login-email.png'/>";
+	echo "<input type='text' id='fp-email' size='20' maxlength='50' placeholder='Enter Email Address'/><p style='position: absolute;
+	left: 120px;top:40px;color:#FC4A1A;'>Please enter a valid email address</p></div>";
+	echo "<input type='submit' value='Submit' onclick='fpsubmit()'/>";
+	echo "</div>";
+	echo "</div>";
+}
+
 ?>
 <script>
 function fpsubmit(){

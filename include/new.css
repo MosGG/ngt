@@ -840,6 +840,10 @@
 	.drag-contentarea{
 		padding: 5px 15px 15px 15px;
 	}
+	.sub-div-img{
+		width:168px;
+		height:168px;
+	}
 }
 /*@media(max-width: 767px){
 	.productitem{

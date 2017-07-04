@@ -53,10 +53,10 @@
 				} else if ($value['productPrice1'] == '0') {
 					echo "Call for Price";
 				} else {
-					if (($value['productPrice2'] !== null) && ($value['productPrice2'] !== 0)){
-						echo "<b style='color:#4A4A4A;padding-right:10px;text-decoration:line-through;'>$".number_format($value['productPrice2'], $site['template']['price']['decimal'])." ea</b>";
-					}
 					echo "<b>$".number_format($value['productPrice1'], $site['template']['price']['decimal'])." ea</b>";
+					if (!empty($value['productPrice2'])){
+						echo "<b style='color:#9B9B9B;padding-left:10px;text-decoration:line-through;'>$".number_format($value['productPrice2'], $site['template']['price']['decimal'])." ea</b>";
+					}
 #					if ($m = getmin($value['productId'])) {
 #						echo "<br /><span class='cartnote'>Min Order: 1 ".$m."</span>";
 #					}
