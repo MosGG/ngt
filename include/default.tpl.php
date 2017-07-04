@@ -19,8 +19,8 @@
 			echo "<meta name='robots' content='index,follow' />";
 			echo "<link rel='shortcut icon' href='".$site['url']['full']."images/favicon.ico' />";
 			echo "<link rel='stylesheet' href='".$site['url']['full']."include/main.css' />";
-			echo "<link rel='stylesheet' href='".$site['url']['full']."include/new.css' />";
 			echo "<link rel='stylesheet' href='".$site['url']['full']."include/lightbox.css' type='text/css' media='screen' />";
+			echo "<link rel='stylesheet' href='".$site['url']['full']."include/new.css' />";
 			echo "<!--[if lte IE 7]>";
 				echo "<link rel='stylesheet' type='text/css' href='".$site['url']['full']."include/iemain.css' />";
 			echo "<![endif]-->";
@@ -66,6 +66,7 @@
 					echo "</map>";
 					echo "<div id='menuh'><p>".$site['menu']['h']."</p></div><!-- menuh -->";
 					echo '<div id="our-product"><a href="/product"><span class="hvr-underline-from-left-blue blue">OUR PRODUCT</span></a></div>';
+					echo '<div id="our-product-2"><a href="javascript:openleftmenu();"><span class="hvr-underline-from-left-blue blue">OUR PRODUCT</span></a></div>';
 					echo '<div id="after-out-product"></div>';
 					echo '<img id="search-icon" onclick="moveSearchDiv();" src="/images/new/search.png">';
 					echo '<form action="/searchresult" method="post" id="search-div"><input type="text" name="query" placeholder="Type your search here..."/></form>';
@@ -81,7 +82,7 @@
 #################################################################################################
 # Left Container and Vertical Menu                                                              #
 #################################################################################################
-		echo "<div id='leftcontainer-bg'>";
+		echo "<div id='leftcontainer-bg' class='leftcontainer-hide'>";
 			echo "<div id='leftcontainer'>";
 				echo "<ul id='left-menu-top'>";
 					echo "<li class='";

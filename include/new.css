@@ -212,6 +212,7 @@
 	text-align: center;
 	padding-right:5px;
 }
+#our-product-2,
 #our-product{
 	width: 282px;
 	height: 70px;
@@ -224,6 +225,9 @@
 	bottom:0px;
 	border-top: solid 12px #4A4A4A;
 	z-index: 10;
+}
+#our-product-2{
+	display: none;
 }
 #after-out-product{
 	width:30px;
@@ -279,6 +283,9 @@
 	border-color: #fff;
 	font-family: Montserrat-Ultralight;
 	font-size: 14px;
+}
+#search-div input:focus{
+	outline:none;
 }
 #search-div input::-webkit-input-placeholder{
 	color:#fff;
@@ -684,6 +691,7 @@
 	#menuh{
 		top:100px;
 	}
+	#our-product-2,
 	#our-product {
 		height:58px;
 		line-height: 58px;
@@ -734,13 +742,17 @@
 	#menuh a:link, #menuh a:visited{
 		font-size: 16px;
 	}
-	#subpage-tb tbody,
+/*	#subpage-tb tbody,
 	#subpage-tb tr,
 	#subpage-tb,
 	#subpage-tb td{
 		display: block;
 		float: left;
 		margin:10px;
+	}*/
+	.sub-div-img{
+		width:140px;
+		height:140px;
 	}
 	#cart-tb {
 	    width: 460px;
@@ -762,12 +774,74 @@
 		width:149px;
 	}
 }
-/*@media(max-width: 991px){
+@media(max-width: 991px){
 	.productitem{
 		width: calc(33% - 20px);
 	}
+	#leftcontainer-bg{
+		position: absolute;
+		transition: all .3s linear;
+		z-index: 20;
+	}
+	.leftcontainer-hide{
+		opacity: 0;
+		visibility: hidden;
+	}
+	.leftcontainer-show{
+		opacity: 1;
+		visibility: visible;
+	}
+	#middle{
+		margin-left: 0px;
+		margin-bottom: 200px;
+		min-height: 400px;
+	}
+	#footet-contact span{
+		font-size: 12px;
+	}
+	#footet-contact img{
+		height:20px;
+	}
+	#footet-contact{
+		max-width: 735px;
+	}
+	#pageheading{
+		padding-bottom: 20px;
+		padding-top: 10px;
+	}
+	#our-product-2{
+		height: 45px;
+		line-height: 45px;
+		font-size: 16px;
+	}
+	#after-out-product{
+		height: 45px
+	}
+	#search-div{
+		padding:13px;
+	}
+	#search-div input{
+		font-size:12px;
+	
+	}
+	#search-icon{
+		width: 20px;
+		bottom:  12px;
+	}
+	#cart{
+		padding:0 calc(50% - 320px);
+	}
+	#our-product{
+		display: none;
+	}
+	#our-product-2{
+		display: block;
+	}
+	.drag-contentarea{
+		padding: 5px 15px 15px 15px;
+	}
 }
-@media(max-width: 767px){
+/*@media(max-width: 767px){
 	.productitem{
 		width: calc(50% - 20px);
 	}

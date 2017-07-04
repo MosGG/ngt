@@ -5,10 +5,16 @@
 	}
 
 	function putMiddle(){
-		var windowWidth = 822;
+		// var windowWidth = 822;
 		var screenWidth = document.body.clientWidth;
+		if (screenWidth < 991){
+			var windowWidth = 722;
+			var windowHeight = 502;
+		} else {
+			var windowWidth = 22;
+			var windowHeight = 562;
+		}
 		var left = 0.5 * (screenWidth - windowWidth);
-		var windowHeight = 562;
 		var screenHeight = document.body.clientHeight;
 		var top = 0.5 * (screenHeight - windowHeight);
 		document.getElementById("productwin").style.top = top + "px";
@@ -53,7 +59,7 @@
 			//logic and html for slice page
 			$itemsPerPage = 8;
 			$offset = 0;
-			$allPages = (int)Floor(count($prodList) / $itemsPerPage) + 1;
+			$allPages = (count($prodList)%$itemsPerPage == 0)?(int)Floor(count($prodList) / $itemsPerPage):(int)Floor(count($prodList) / $itemsPerPage) + 1;
 			$num = 1;
 
 			if (!empty($_SERVER['QUERY_STRING'])){

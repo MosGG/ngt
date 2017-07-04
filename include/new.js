@@ -43,3 +43,13 @@ function moveSearchDiv(){
 	}
 
 }
+
+function openleftmenu(){
+	var classVal = document.getElementById("leftcontainer-bg").getAttribute("class");
+	if (classVal == "leftcontainer-hide") {
+		classVal = "leftcontainer-show";
+	} else {
+		classVal = "leftcontainer-hide";
+	}
+	document.getElementById("leftcontainer-bg").setAttribute("class",classVal);
+}

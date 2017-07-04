@@ -202,7 +202,7 @@ function createsql($array,$database,$column){
 }
 
 function noresult($queryStr){
-  echo "<div style='width:592px;margin: 0 auto;'>";
+  echo "<div style='width:592px;margin: 0 auto;height:400px;'>";
   echo "<div id ='we_are_sorry'>We're sorry, no products were found for your search: ".$queryStr."</div>";
   echo "<hr>";
   echo "<div id='search_tip_content'>Search Tips</div>";
