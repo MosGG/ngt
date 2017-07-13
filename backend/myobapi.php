@@ -4,10 +4,10 @@
 $api_key = "c2satxwfwh5qm843dtyr5bwx";
 $api_secret = "amAM4fyAP7u7NJPFUkh7RdZT";
 $$redirect_url = "http://www.newglobalmel.com.au/myobapi";
-$username = "cheee";
-$password = "saycheee";
-
-
+$api_url = "https://exo.api.myob.com/"
+$username = "newglobaltrading";
+$password = "NewGlobal5555";
+$exotoken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjUwMTA0MDAsImlzcyI6IlMtMS01LTIxLTI1MjMyNDA5MjUtMzk1NTc3NjkzMy0xOTUyOTY0Njk1OmVJUElaSklBcFRZdUFOaUZYa3dva3c9PSIsImF1ZCI6Imh0dHBzOi8vZXhvLmFwaS5teW9iLmNvbS8iLCJuYW1lIjoiTkVXR0xPQkFMVFJBRElORyIsInN0YWZmbm8iOiI0ODMwIiwiYXBwaWQiOiI0NDAwIn0.oeHq2BgoFeEbgWEHVyWX4CSdk14xnKICvTnkWPvv3j0";
 
 
 function getToken(){
